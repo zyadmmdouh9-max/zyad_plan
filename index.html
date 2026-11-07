@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تقرير الكوردينيتور · زياد ممدوح · Freelance Yard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f4f7; --surface:#ffffff; --surface-2:#f8f9fb; --surface-3:#eef1f5; --line:#e4e7ec; --line-2:#eef0f3;
+  --ink:#0e1525; --ink-2:#4a5468; --ink-3:#8b93a5;
+  --brand:#2a78d6; --brand-ink:#1c5cab; --brand-soft:#e9f2fd; --brand-deep:#0d2a4d;
+  --wa:#1fa855; --wa-ink:#137a3c; --wa-soft:#e5f7ec; --wa-bubble:#d9fdd3; --wa-bg:#efeae2;
+  --good:#0ca30c; --warn:#fab219; --serious:#ec835a; --crit:#d03b3b; --neutral:#c4c3be;
+  --good-soft:#e6f6e6; --warn-soft:#fff4d9; --serious-soft:#fdede6; --crit-soft:#fce9e9; --neu-soft:#f0f0ee;
+  --good-ink:#087208; --warn-ink:#8a5d00; --serious-ink:#a3461f; --crit-ink:#a12626;
+  --seq-250:#86b6ef; --seq-450:#2a78d6; --seq-600:#184f95;
+  --g1:#2a78d6; --g2:#eb6834; --g3:#1baf7a; --g4:#eda100; --g5:#e87ba4;
+  --r:18px; --r-sm:12px;
+  --shadow:0 1px 2px rgba(16,24,40,.04),0 8px 24px -8px rgba(16,24,40,.08);
+  --shadow-lg:0 24px 60px -12px rgba(16,24,40,.25);
+  --side:264px;
+}
+:root[data-theme="dark"]{
+  --bg:#0f1115; --surface:#181b21; --surface-2:#1e2229; --surface-3:#252a33; --line:#2c323c; --line-2:#242932;
+  --ink:#eef0f4; --ink-2:#b5bccb; --ink-3:#7f889a;
+  --brand:#3987e5; --brand-ink:#8fbcf2; --brand-soft:#1b2a40;
+  --wa-soft:#15301f; --wa-bubble:#005c4b; --wa-bg:#0b141a;
+  --good-soft:#15301a; --warn-soft:#352a10; --serious-soft:#3a2219; --crit-soft:#3a1c1c; --neu-soft:#2a2b2e;
+  --good-ink:#6fd56f; --warn-ink:#fbc85a; --serious-ink:#f3a585; --crit-ink:#f08a8a;
+  --seq-450:#3987e5; --seq-600:#5598e7; --neutral:#5d5c58;
+  --g1:#3987e5; --g2:#d95926; --g3:#199e70; --g4:#c98500; --g5:#d55181;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -8px rgba(0,0,0,.5);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Cairo","Tajawal",system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s}
+a{color:inherit}
+button{font-family:inherit}
+::selection{background:var(--brand-soft)}
+.mono{direction:ltr;unicode-bidi:isolate;font-variant-numeric:tabular-nums;font-size:12px;color:var(--ink-2);letter-spacing:.2px}
+
+/* ===== sidebar ===== */
+.side{position:fixed;top:0;right:0;bottom:0;width:var(--side);background:linear-gradient(180deg,#0b1f3a 0%,#0d2a4d 60%,#123866 100%);color:#dfe8f5;padding:22px 16px;display:flex;flex-direction:column;gap:18px;z-index:40;overflow-y:auto}
+.brand{display:flex;align-items:center;gap:10px;padding:0 6px}
+.logo{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#3987e5,#1baf7a);display:grid;place-items:center;font-weight:800;color:#fff;font-size:18px;box-shadow:0 6px 18px -4px rgba(57,135,229,.6)}
+.brand b{display:block;font-size:15px;color:#fff;line-height:1.2}
+.brand span{font-size:11.5px;opacity:.7}
+.side nav{display:flex;flex-direction:column;gap:3px}
+.side nav a{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:12px;text-decoration:none;color:#b9c7dc;font-weight:600;font-size:13.5px;transition:.15s}
+.side nav a .ni{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:rgba(255,255,255,.06);font-size:15px}
+.side nav a:hover{background:rgba(255,255,255,.07);color:#fff}
+.side nav a.on{background:rgba(57,135,229,.22);color:#fff}
+.side nav a.on .ni{background:#3987e5}
+.side nav a .cnt{margin-inline-start:auto;background:rgba(255,255,255,.12);padding:0 8px;border-radius:99px;font-size:11px}
+.side nav a .cnt.red{background:#d03b3b;color:#fff}
+.side-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:14px}
+.side-card .t{font-size:12px;opacity:.75;margin-bottom:8px}
+.side-prog{display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px}
+.side-prog b{color:#fff}
+.side-bar{height:7px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden}
+.side-bar i{display:block;height:100%;background:linear-gradient(90deg,#1fa855,#5fd68b);border-radius:99px;transition:width .4s}
+.side .who{margin-top:auto;display:flex;align-items:center;gap:10px;padding:10px;border-radius:14px;background:rgba(255,255,255,.05)}
+.side .who .av{background:#3987e5}
+.side .who b{display:block;font-size:13px;color:#fff;line-height:1.3}
+.side .who span{font-size:11px;opacity:.7}
+.side-btns{display:grid;gap:8px}
+.lang-btn{background:var(--brand-soft);color:var(--brand-ink);border-color:transparent}
+.theme-btn{border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#fff;border-radius:12px;padding:9px;cursor:pointer;font-weight:600;font-size:12.5px;display:flex;align-items:center;justify-content:center;gap:8px}
+.theme-btn:hover{background:rgba(255,255,255,.12)}
+
+/* ===== main ===== */
+.main{margin-right:var(--side);padding:26px 30px 40px;max-width:calc(1380px + var(--side))}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.crumbs{font-size:12.5px;color:var(--ink-3)}
+.crumbs b{color:var(--ink-2)}
+.top-actions{display:flex;gap:8px;flex-wrap:wrap}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:9px 15px;border-radius:12px;font-weight:700;font-size:13px;cursor:pointer;text-decoration:none;transition:transform .12s,box-shadow .15s,background .15s;white-space:nowrap;line-height:1.2}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px -6px rgba(16,24,40,.2)}
+.btn:active{transform:translateY(0)}
+.btn.wa{background:var(--wa);border-color:transparent;color:#fff}
+.btn.wa:hover{background:#178f47}
+.btn.primary{background:var(--brand);border-color:transparent;color:#fff}
+.btn.fix{background:var(--crit);border-color:transparent;color:#fff}
+.btn.dark{background:var(--ink);border-color:transparent;color:var(--surface)}
+.btn.sm{padding:6px 11px;font-size:12px;border-radius:10px}
+.btn.icon{padding:7px 9px}
+svg.i{width:16px;height:16px;flex:none}
+
+/* ===== hero ===== */
+.hero{position:relative;overflow:hidden;border-radius:24px;background:radial-gradient(1200px 400px at 0% 0%,rgba(57,135,229,.35),transparent 60%),linear-gradient(135deg,#0b1f3a 0%,#143e72 55%,#1f6bc4 100%);color:#fff;padding:28px 30px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;box-shadow:var(--shadow)}
+.hero:before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.08) 1px,transparent 1px);background-size:18px 18px;mask-image:linear-gradient(90deg,transparent,#000 70%);pointer-events:none}
+.hero > *{position:relative}
+.hello{font-size:13px;opacity:.8;font-weight:600}
+.hero h1{margin:4px 0 6px;font-size:30px;font-weight:800;letter-spacing:-.3px;line-height:1.3}
+.hero p{margin:0;opacity:.85;font-size:14px;max-width:640px}
+.hero-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.14);font-size:12px;font-weight:600;backdrop-filter:blur(4px)}
+.hero-cta{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.hero-cta .btn{border-color:transparent}
+.hero-cta .btn.ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2)}
+.hero-cta .btn.ghost:hover{background:rgba(255,255,255,.2)}
+.rings{display:flex;gap:18px}
+.ring{position:relative;width:132px;height:132px;display:grid;place-items:center;text-align:center}
+.ring svg{position:absolute;inset:0;transform:rotate(-90deg)}
+.ring .rv{font-size:28px;font-weight:800;line-height:1}
+.ring .rl{font-size:11px;opacity:.8;margin-top:4px;max-width:90px}
+.ring-wrap{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:11.5px;opacity:.9}
+
+/* ===== kpis ===== */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.kpi{background:var(--surface);border-radius:var(--r);padding:18px;box-shadow:var(--shadow);border:1px solid var(--line-2);position:relative;overflow:hidden;transition:transform .15s}
+.kpi:hover{transform:translateY(-2px)}
+.kpi .head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.kpi .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:19px}
+.kpi .lbl{color:var(--ink-2);font-size:12.5px;font-weight:700;margin-top:12px}
+.kpi .val{font-size:30px;font-weight:800;margin:2px 0 2px;letter-spacing:-.6px;font-variant-numeric:tabular-nums;line-height:1.25}
+.kpi .val small{font-size:13px;color:var(--ink-3);font-weight:700;letter-spacing:0}
+.kpi .foot{font-size:12px;color:var(--ink-3)}
+.meter{height:6px;background:var(--surface-3);border-radius:99px;overflow:hidden;margin-top:10px}
+.meter > i{display:block;height:100%;border-radius:99px}
+
+/* tags */
+.tag{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:999px;font-size:11.5px;font-weight:700;white-space:nowrap;line-height:1.5}
+.tag .d{width:7px;height:7px;border-radius:50%}
+.t-good{background:var(--good-soft);color:var(--good-ink)}.t-good .d{background:var(--good)}
+.t-warn{background:var(--warn-soft);color:var(--warn-ink)}.t-warn .d{background:var(--warn)}
+.t-ser{background:var(--serious-soft);color:var(--serious-ink)}.t-ser .d{background:var(--serious)}
+.t-crit{background:var(--crit-soft);color:var(--crit-ink)}.t-crit .d{background:var(--crit)}
+.t-neu{background:var(--neu-soft);color:var(--ink-2)}.t-neu .d{background:var(--neutral)}
+.t-blue{background:var(--brand-soft);color:var(--brand-ink)}
+.gdot{display:inline-flex;align-items:center;gap:6px}
+.gdot:before{content:"";width:8px;height:8px;border-radius:3px;background:var(--gc,var(--ink-3));flex:none}
+
+/* alert */
+.alert{display:flex;gap:14px;align-items:flex-start;background:var(--crit-soft);border:1px solid color-mix(in srgb,var(--crit) 25%,transparent);border-radius:var(--r);padding:16px 18px;margin-top:16px;color:var(--ink)}
+.alert .ai{width:38px;height:38px;border-radius:12px;background:var(--crit);display:grid;place-items:center;flex:none;font-size:18px}
+.alert b.h{color:var(--crit-ink);display:block;margin-bottom:2px}
+
+/* sections */
+section{padding-top:38px;scroll-margin-top:16px}
+.sec-h{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.sec-h h2{margin:0;font-size:22px;font-weight:800;display:flex;align-items:center;gap:10px;letter-spacing:-.2px}
+.sec-h h2 .sn{width:34px;height:34px;border-radius:11px;background:var(--brand-soft);color:var(--brand-ink);display:grid;place-items:center;font-size:16px}
+.sec-h p{margin:4px 0 0;color:var(--ink-2);font-size:13px}
+.card{background:var(--surface);border-radius:var(--r);border:1px solid var(--line-2);box-shadow:var(--shadow);padding:20px}
+.card h3{margin:0 0 2px;font-size:15px;font-weight:800}
+.card .hint{color:var(--ink-3);font-size:12px;margin:0 0 14px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px}
+.span-all{grid-column:1/-1}
+
+/* bars */
+.hbar{display:grid;grid-template-columns:140px 1fr 78px;align-items:center;gap:12px;margin:10px 0;font-size:13px}
+.hbar .nm{text-align:start;color:var(--ink-2);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hbar .track{height:12px;background:var(--surface-3);border-radius:4px;position:relative;display:flex;gap:2px;overflow:visible}
+.hbar .seg{height:100%;border-radius:4px;cursor:default;min-width:0;transition:filter .15s}
+.hbar .seg:hover{filter:brightness(1.1)}
+.hbar .num{font-weight:800;font-variant-numeric:tabular-nums;text-align:end;font-size:12.5px}
+.hbar .num span{color:var(--ink-3);font-weight:600}
+.target-line{position:absolute;top:-4px;bottom:-4px;width:2px;border-radius:2px;background:var(--ink)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--ink-2);margin-bottom:6px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:3px;display:inline-block}
+
+/* funnel */
+.funnel .step{display:grid;grid-template-columns:150px 1fr 86px;gap:12px;align-items:center;margin:8px 0}
+.funnel .bar{height:30px;border-radius:4px;background:var(--seq-450)}
+.funnel .lbl{font-weight:700;color:var(--ink-2);font-size:13px}
+.funnel .v{font-weight:800;font-variant-numeric:tabular-nums;font-size:15px}
+.funnel .v small{color:var(--ink-3);font-weight:700;font-size:11.5px}
+
+/* lists */
+.list .row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line-2)}
+.list .row:last-child{border-bottom:0}
+.list .row .l{min-width:0;display:flex;gap:11px;align-items:flex-start}
+.list .row .l b{display:block;font-size:13.5px}
+.list .row .l span{font-size:12px;color:var(--ink-3)}
+.list.cols{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));column-gap:28px}
+.list.cols .row:last-child{border-bottom:1px solid var(--line-2)}
+.list.cols .hint{grid-column:1/-1}
+.reason{font-size:11.5px;color:var(--crit-ink);font-weight:700}
+.quote{position:relative;background:var(--surface-2);border:1px solid var(--line-2);padding:12px 40px 12px 14px;border-radius:14px;font-size:13px;color:var(--ink-2)}
+.quote:before{content:"❝";position:absolute;right:12px;top:6px;font-size:22px;color:var(--serious)}
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px}
+
+/* avatar */
+.av{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:800;color:#fff;font-size:14px;flex:none;background:var(--gc,var(--brand))}
+.av.sm{width:32px;height:32px;border-radius:10px;font-size:12.5px}
+
+/* group cards */
+.gcard{position:relative;overflow:hidden;padding-top:24px}
+.gcard:before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:var(--gc)}
+.gcard .top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.gcard .code{font-size:18px;font-weight:800;letter-spacing:.2px;direction:ltr;text-align:start}
+.gcard .prof{color:var(--ink-2);font-size:12.5px;direction:ltr;text-align:start}
+.gprog{margin:16px 0 4px}
+.gprog .row1{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-2);font-weight:700;margin-bottom:6px}
+.gprog .bar{height:10px;border-radius:99px;background:var(--surface-3);position:relative;overflow:visible;display:flex;gap:2px}
+.gprog .bar i{display:block;height:100%;border-radius:99px}
+.gstats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+.gstat{background:var(--surface-2);border:1px solid var(--line-2);border-radius:12px;padding:9px 6px;text-align:center}
+.gstat b{display:block;font-size:19px;font-variant-numeric:tabular-nums;line-height:1.3}
+.gstat span{font-size:11px;color:var(--ink-3);font-weight:700}
+.kv{display:flex;justify-content:space-between;gap:8px;font-size:12.5px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.kv span:first-child{color:var(--ink-3)}
+.kv span:last-child{font-weight:700;text-align:end}
+.mini{display:flex;align-items:flex-end;gap:8px;height:78px;margin-top:12px;padding:8px 10px 4px;background:var(--surface-2);border-radius:12px}
+.mini .c{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;height:100%;justify-content:flex-end}
+.mini .c i{display:block;width:100%;max-width:30px;background:var(--seq-450);border-radius:4px 4px 0 0;cursor:default}
+.mini .c span{font-size:10.5px;color:var(--ink-3);font-weight:700}
+.mini .c em{font-style:normal;font-size:10.5px;font-weight:800;color:var(--ink-2)}
+.mini-t{font-size:11.5px;color:var(--ink-3);font-weight:700;margin-top:12px}
+.gactions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:14px}
+
+/* toolbar & table */
+.filters{background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r);box-shadow:var(--shadow);padding:14px;margin-bottom:14px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.search{position:relative;flex:1 1 260px}
+.search input{width:100%;padding-right:38px!important}
+.search:before{content:"🔎";position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:13px;opacity:.6}
+.toolbar input,.toolbar select{font:inherit;font-size:13px;padding:9px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);color:var(--ink);min-width:0;outline:none;transition:.15s}
+.toolbar input:focus,.toolbar select:focus{border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-soft)}
+.chips{display:flex;gap:7px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--surface-2);padding:6px 13px;border-radius:999px;cursor:pointer;font-size:12.5px;font-weight:700;color:var(--ink-2);display:inline-flex;gap:7px;align-items:center;transition:.15s}
+.chip:hover{border-color:var(--ink-3)}
+.chip b{font-variant-numeric:tabular-nums;background:var(--surface-3);padding:0 7px;border-radius:99px;font-size:11.5px}
+.chip.on{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.chip.on b{background:rgba(255,255,255,.18);color:inherit}
+.tbl-wrap{overflow:auto;border-radius:var(--r);border:1px solid var(--line-2);background:var(--surface);box-shadow:var(--shadow);max-height:780px}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:13px}
+thead th{position:sticky;top:0;background:var(--surface-2);z-index:2;text-align:right;font-weight:800;color:var(--ink-3);font-size:11.5px;padding:12px 12px;border-bottom:1px solid var(--line);white-space:nowrap;cursor:pointer;user-select:none;letter-spacing:.2px}
+thead th:hover{color:var(--ink)}
+tbody td{padding:12px 12px;border-bottom:1px solid var(--line-2);vertical-align:middle}
+tbody tr{transition:background .12s}
+tbody tr:hover{background:var(--surface-2)}
+tbody tr.done{background:color-mix(in srgb,var(--wa-soft) 70%,transparent)}
+tbody tr.done td:first-child{box-shadow:inset -3px 0 0 var(--wa)}
+.sname{display:flex;gap:11px;align-items:center;min-width:220px}
+td.c-prob{min-width:160px;max-width:200px;font-size:12.5px}
+tbody td,thead th{padding-left:9px;padding-right:9px}
+[dir="ltr"] .sname{min-width:190px}
+.sname b{display:block;font-weight:800;font-size:13.5px;line-height:1.35}
+.sname span{font-size:11.5px;color:var(--ink-3)}
+.sname .ok{color:var(--wa-ink);font-weight:700;display:block}
+.prio{font-weight:800;font-variant-numeric:tabular-nums;justify-content:center;min-width:44px}
+.acts{display:flex;gap:6px;flex-wrap:nowrap;justify-content:flex-end}
+.attcell{display:flex;align-items:center;gap:8px;min-width:100px}
+.attcell .meter{flex:1;margin:0;height:6px}
+.chk{width:19px;height:19px;accent-color:var(--wa);cursor:pointer}
+.counter{font-size:12.5px;color:var(--ink-2);background:var(--surface);border:1px solid var(--line-2);padding:6px 12px;border-radius:99px}
+.links{display:flex;gap:4px;align-items:center}
+.links .lk{min-width:22px;height:22px;padding:0 6px;border-radius:7px;display:inline-grid;place-items:center;font-size:11.5px;font-weight:800;background:var(--surface-3);color:var(--ink-2)}
+.links .lk.ok{background:var(--good-soft);color:var(--good-ink)}
+.links .lk.bad{background:var(--crit-soft);color:var(--crit-ink)}
+
+/* plan */
+.targets{overflow:auto}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:6px}
+.stp{background:var(--surface-2);border:1px solid var(--line-2);border-radius:14px;padding:12px;text-align:center;position:relative}
+.stp.cur{background:var(--crit-soft);border-color:color-mix(in srgb,var(--crit) 30%,transparent)}
+.stp .w{font-size:11.5px;color:var(--ink-3);font-weight:700}
+.stp .p{font-size:26px;font-weight:800;line-height:1.3}
+.stp .n{font-size:11.5px;color:var(--ink-2)}
+.stp .meter{margin-top:8px}
+.plan{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.phase{position:relative;padding-top:22px}
+.phase .num{position:absolute;top:18px;left:18px;font-size:40px;font-weight:800;opacity:.08;line-height:1}
+.phase .when{display:inline-block;font-size:11.5px;font-weight:800;padding:3px 10px;border-radius:99px;color:#fff;background:var(--pc)}
+.phase h3{font-size:17px;margin:10px 0 10px}
+.phase ol{margin:0;padding:0;list-style:none;counter-reset:s}
+.phase li{margin:0;padding:10px 0 10px 0;padding-right:34px;font-size:13.2px;position:relative;border-bottom:1px dashed var(--line);counter-increment:s;color:var(--ink-2)}
+.phase li:last-child{border-bottom:0}
+.phase li:before{content:counter(s);position:absolute;right:0;top:10px;width:24px;height:24px;border-radius:8px;background:color-mix(in srgb,var(--pc) 15%,transparent);color:var(--pc);font-weight:800;font-size:12px;display:grid;place-items:center}
+.phase li b{color:var(--ink)}
+
+/* broadcasts */
+.bc-body{white-space:pre-wrap;font-size:12.5px;color:var(--ink);background:var(--wa-bg);border-radius:14px;padding:14px;max-height:240px;overflow:auto}
+.bc-body .bub{background:var(--wa-bubble);border-radius:12px 0 12px 12px;padding:10px 12px;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+
+/* modal */
+.modal-bg{position:fixed;inset:0;background:rgba(10,14,22,.55);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:100;padding:16px}
+.modal-bg.show{display:flex;animation:fade .15s}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{transform:translateY(12px) scale(.98);opacity:0}to{transform:none;opacity:1}}
+.modal{background:var(--surface);border-radius:22px;max-width:640px;width:100%;max-height:94vh;display:flex;flex-direction:column;box-shadow:var(--shadow-lg);overflow:hidden;animation:pop .2s}
+.modal header{padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;background:#075e54;color:#fff}
+:root[data-theme="dark"] .modal header{background:#202c33}
+.modal header .who{display:flex;gap:11px;align-items:center}
+.modal header b{font-size:15.5px;display:block;line-height:1.3}
+.modal header .mono{color:rgba(255,255,255,.75)}
+.modal header .btn{background:rgba(255,255,255,.12);border-color:transparent;color:#fff}
+.modal .tpls{display:flex;gap:6px;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--line-2);background:var(--surface)}
+.modal .chat{background:var(--wa-bg);padding:16px;flex:1;overflow:auto;background-image:radial-gradient(rgba(0,0,0,.035) 1px,transparent 1px);background-size:14px 14px}
+.bubble{background:var(--wa-bubble);border-radius:14px 0 14px 14px;padding:4px;max-width:96%;margin-right:0;margin-left:auto;box-shadow:0 1px 1px rgba(0,0,0,.1);position:relative}
+.bubble textarea{width:100%;min-height:300px;font:inherit;font-size:14px;line-height:1.75;padding:10px 12px;border:0;border-radius:12px;resize:vertical;background:transparent;color:var(--ink);outline:none}
+.bubble .tm{font-size:10.5px;color:var(--ink-3);text-align:left;padding:0 10px 4px}
+.modal .hint2{font-size:11.5px;color:var(--ink-3);text-align:center;margin-top:8px}
+.modal footer{padding:12px 16px;border-top:1px solid var(--line-2);display:flex;gap:8px;justify-content:space-between;flex-wrap:wrap;align-items:center;background:var(--surface)}
+.qbar{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--ink-2);font-weight:700}
+.qbar .meter{width:130px;margin:0}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(30px);background:var(--ink);color:var(--surface);padding:11px 20px;border-radius:14px;font-weight:700;opacity:0;transition:.25s;z-index:200;pointer-events:none;box-shadow:var(--shadow-lg)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+#tip{position:fixed;pointer-events:none;background:#0e1525;color:#fff;padding:8px 11px;border-radius:10px;font-size:12px;z-index:150;opacity:0;transition:opacity .1s;max-width:280px;box-shadow:var(--shadow-lg);line-height:1.6}
+footer.page{color:var(--ink-3);font-size:12px;text-align:center;padding:44px 0 10px}
+
+/* mobile topbar */
+.mtop{display:none}
+
+@media (max-width:1180px){.kpis{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}.rings{justify-content:flex-start}}
+@media (max-width:980px){
+  .side{display:none}
+  .main{margin-right:0;padding:0 14px 30px}
+  .mtop{display:flex;position:sticky;top:0;z-index:40;margin:0 -14px 14px;padding:10px 14px;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-2);gap:6px;overflow-x:auto;align-items:center}
+  .mtop a{padding:7px 12px;border-radius:10px;text-decoration:none;font-weight:700;font-size:12.5px;color:var(--ink-2);white-space:nowrap;background:var(--surface-2)}
+  .mtop a.on{background:var(--brand);color:#fff}
+  .grid2{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .hero{padding:22px 18px}.hero h1{font-size:23px}
+  .ring{width:110px;height:110px}.ring .rv{font-size:23px}
+  .kpis{grid-template-columns:1fr 1fr;gap:10px}.kpi{padding:14px}.kpi .val{font-size:24px}
+  .hbar{grid-template-columns:96px 1fr 60px;gap:8px}
+  .funnel .step{grid-template-columns:100px 1fr 70px}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  /* table -> cards */
+  .tbl-wrap{max-height:none;background:transparent;border:0;box-shadow:none;overflow:visible}
+  table,tbody{display:block}
+  thead{display:none}
+  tbody tr{display:grid;grid-template-columns:auto 1fr auto;gap:8px 10px;background:var(--surface);border:1px solid var(--line-2);border-radius:16px;padding:14px;margin-bottom:10px;box-shadow:var(--shadow)}
+  tbody td{border:0;padding:0}
+  tbody td.c-chk{grid-column:1;grid-row:1}
+  tbody td.c-name{grid-column:2;grid-row:1}
+  tbody td.c-prio{grid-column:3;grid-row:1}
+  tbody td.c-grp,tbody td.c-st,tbody td.c-lk,tbody td.c-att{grid-column:auto}
+  tbody td.c-st{grid-column:1 / -1}
+  tbody td.c-lk{grid-column:1 / 2}
+  tbody td.c-att{grid-column:2 / 4}
+  tbody td.c-prob{grid-column:1 / -1;background:var(--surface-2);border-radius:10px;padding:8px 10px}
+  tbody td.c-act{grid-column:1 / -1}
+  .acts{justify-content:stretch}.acts .btn:first-child{flex:1}
+  .sname{min-width:0}
+}
+/* ===== LTR (English) ===== */
+[dir="ltr"] .side{right:auto;left:0}
+[dir="ltr"] .main{margin-right:0;margin-left:var(--side)}
+[dir="ltr"] .quote{padding:12px 14px 12px 40px}
+[dir="ltr"] .quote:before{right:auto;left:12px}
+[dir="ltr"] .phase li{padding-right:0;padding-left:34px}
+[dir="ltr"] .phase li:before{right:auto;left:0}
+[dir="ltr"] .phase .num{left:auto;right:18px}
+[dir="ltr"] .search:before{right:auto;left:12px}
+[dir="ltr"] .search input{padding-right:12px!important;padding-left:38px!important}
+[dir="ltr"] tbody tr.done td:first-child{box-shadow:inset 3px 0 0 var(--wa)}
+[dir="ltr"] thead th{text-align:left}
+[dir="ltr"] .hero:before{mask-image:linear-gradient(270deg,transparent,#000 70%)}
+[dir="ltr"] .quotes .quote{padding:12px 40px 12px 14px}
+[dir="ltr"] .quotes .quote:before{left:auto;right:12px}
+@media (max-width:980px){[dir="ltr"] .main{margin-left:0}}
+@media print{.side,.mtop,.toolbar,.chips,.acts,.hero-cta,.top-actions,.gactions,.btn,.filters{display:none!important}.main{margin:0}.tbl-wrap{max-height:none}body{background:#fff}.hero{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+
+</head>
+<body>
+
+<aside class="side">
+  <div class="brand"><div class="logo">FY</div><div><b>Freelance Yard</b><span>Coordinator Report · R5</span></div></div>
+  <nav id="sideNav">
+    <a href="#home"><span class="ni">🏠</span><span data-en="Home">الرئيسية</span></a>
+    <a href="#overview"><span class="ni">📊</span><span data-en="KPIs">الـ KPIs</span></a>
+    <a href="#late"><span class="ni">⏰</span><span data-en="Overdue">المتأخرات</span> <span class="cnt red" id="nLate"></span></a>
+    <a href="#groups"><span class="ni">👥</span><span data-en="Groups">الجروبات</span> <span class="cnt">5</span></a>
+    <a href="#students"><span class="ni">💬</span><span data-en="Students &amp; Actions">الطلبة والأكشن</span> <span class="cnt" id="nStud"></span></a>
+    <a href="#plan"><span class="ni">🎯</span><span data-en="Improvement Plan">خطة التحسين</span></a>
+    <a href="#checklist"><span class="ni">📣</span><span data-en="Group Messages">رسايل الجروبات</span></a>
+  </nav>
+  <div class="side-card">
+    <div class="t" data-en="Today's outreach progress">تقدّم التواصل النهارده</div>
+    <div class="side-prog"><span data-en="Contacted">تم التواصل</span><b id="sideDone">0 / 0</b></div>
+    <div class="side-bar"><i id="sideBar" style="width:0"></i></div>
+    <button class="btn wa sm" style="width:100%;margin-top:12px" onclick="startQueue()" data-en="⚡ Continue sending">⚡ كمّل الإرسال</button>
+  </div>
+  <div class="side-btns">
+    <button class="theme-btn" onclick="toggleLang()"><span>🌐</span> <span class="langTx">English</span></button>
+    <button class="theme-btn" onclick="toggleTheme()"><span id="themeIc">🌙</span> <span id="themeTx">الوضع الليلي</span></button>
+  </div>
+  <div class="who"><div class="av sm">ز</div><div><b data-en="Ziad Mamdouh Bastawy">زياد ممدوح بسطاوي</b><span>Program Coordinator · Target Team</span></div></div>
+</aside>
+
+<main class="main">
+  <div class="mtop" id="mNav">
+    <a href="#home" data-en="🏠 Home">🏠 الرئيسية</a><a href="#overview">📊 KPIs</a><a href="#late" data-en="⏰ Overdue">⏰ المتأخرات</a><a href="#groups" data-en="👥 Groups">👥 الجروبات</a><a href="#students" data-en="💬 Students">💬 الطلبة</a><a href="#plan" data-en="🎯 Plan">🎯 الخطة</a><a href="#checklist" data-en="📣 Messages">📣 الرسايل</a>
+    <a href="javascript:toggleTheme()">🌙</a>
+  </div>
+  <div class="topbar" id="home">
+    <div class="crumbs">Freelance Yard › Round 5 › <b>Target Team</b> · <span data-en="Supervisor">السوبرفايزر</span> Esraa Hamada</div>
+    <div class="top-actions">
+      <button class="btn lang-btn" onclick="toggleLang()" title="Language / اللغة">🌐 <span class="langTx">English</span></button>
+      <button class="btn" onclick="exportCSV()" data-en="⬇️ Export CSV">⬇️ تصدير CSV</button>
+      <button class="btn" onclick="window.print()" data-en="🖨️ Print">🖨️ طباعة</button>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div>
+      <div class="hello" id="hello"></div>
+      <h1 data-en="Group Performance Report &amp; Action Plan">تقرير أداء الجروبات وخطة العمل</h1>
+      <p id="heroSub"></p>
+      <div class="hero-meta">
+        <span class="pill" data-en="📅 Data as of 8 Nov 2026">📅 البيانات حتى 8 نوفمبر 2026</span>
+        <span class="pill" data-en="🎯 Target 85%">🎯 الهدف 85%</span>
+        <span class="pill" id="hContacted"></span>
+      </div>
+      <div class="hero-cta">
+        <button class="btn wa" onclick="startQueue()" data-en="⚡ Start sequential sending">⚡ ابدأ الإرسال المتتالي</button>
+        <a class="btn ghost" href="#late" data-en="⏰ View overdue">⏰ شوف المتأخرات</a>
+        <a class="btn ghost" href="#plan" data-en="🎯 Improvement plan">🎯 خطة التحسين</a>
+      </div>
+    </div>
+    <div class="rings" id="rings"></div>
+  </div>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="alert">
+    <div class="ai">🚨</div>
+    <div><b class="h" data-en="All 5 groups are in a critical state">الوضع الحالي حرج في الـ 5 جروبات</b><span id="alertTxt"></span></div>
+  </div>
+
+  <section id="overview">
+    <div class="sec-h"><div><h2><span class="sn">📊</span><span data-en="KPI Overview">نظرة عامة على الـ KPIs</span></h2><p data-en="All figures are calculated from the portal data (students, services, attendance, feedback, tasks)">كل الأرقام محسوبة من بيانات البورتال (الطلبة، الخدمات، الحضور، التقييمات، التاسكات)</p></div></div>
+    <div class="grid2">
+      <div class="card">
+        <h3 data-en="Service upload funnel">قمع رفع الخدمات (Funnel)</h3>
+        <p class="hint" data-en="From total students down to approved services and gigs">من إجمالي الطلبة لحد الخدمات المقبولة والجيجز المعتمدة</p>
+        <div class="funnel" id="funnel"></div>
+      </div>
+      <div class="card">
+        <h3 data-en="Upload status by group">حالة رفع الخدمات لكل جروب</h3>
+        <p class="hint" data-en="Students by upload status · black line = 85% target">عدد الطلبة حسب حالة الرفع · الخط الأسود = هدف 85%</p>
+        <div class="legend" id="statusLegend"></div>
+        <div id="subByGroup"></div>
+      </div>
+      <div class="card">
+        <h3 data-en="Average attendance by group">متوسط الحضور لكل جروب</h3>
+        <p class="hint" data-en="Attendance from the session register · black line = 70% risk threshold (policy)">نسبة الحضور من سجل السيشنات · الخط الأسود = حد الخطر 70% حسب السياسة</p>
+        <div id="attByGroup"></div>
+      </div>
+      <div class="card">
+        <h3 data-en="Student satisfaction with sessions (out of 5)">رضا الطلبة عن السيشنات (من 5)</h3>
+        <p class="hint" data-en="Average satisfaction · groups below 4 need a talk with the coach">متوسط تقييم الرضا · الجروبات اللي تحت 4 محتاجة تدخل مع الكوتش</p>
+        <div id="satByGroup"></div>
+      </div>
+      <div class="card">
+        <h3 data-en="Why services are sent back by QC (open tasks)">أسباب رجوع الخدمات من الجودة (التاسكات المفتوحة)</h3>
+        <p class="hint" data-en="Number of students with each reason">عدد الطلبة اللي عندهم كل سبب</p>
+        <div id="reasons"></div>
+      </div>
+      <div class="card">
+        <h3 data-en="Service links by platform">توزيع لينكات الخدمات على المنصات</h3>
+        <p class="hint" data-en="Total submitted links per platform">إجمالي اللينكات المرفوعة حسب المنصة</p>
+        <div id="platforms"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="late">
+    <div class="sec-h"><div><h2><span class="sn">⏰</span><span data-en="Overdue Items">المتأخرات</span></h2><p data-en="Everything behind policy or past its due date, sorted by priority">كل حاجة متأخرة عن السياسة أو عن الموعد، مرتبة حسب الأهمية</p></div></div>
+    <div class="grid2">
+      <div class="card">
+        <h3 data-en="🛠 Overdue service corrections">🛠 تعديلات خدمات متأخرة (Overdue)</h3>
+        <p class="hint" data-en="Services sent back by QC whose fix date has passed — send the fix message now">خدمات رجعت من الجودة ومعاد تعديلها عدّى — ابعت رسالة التعديل فورًا</p>
+        <div class="list" id="lateFix"></div>
+      </div>
+      <div class="card">
+        <h3 data-en="📋 Program-level overdue items">📋 بنود متأخرة على مستوى البرنامج</h3>
+        <p class="hint" data-en="Compared with the Round 5 policy">مقارنة بسياسة Round 5</p>
+        <div class="list" id="lateProgram"></div>
+      </div>
+      <div class="card span-all">
+        <h3 data-en="🚫 Repeated absences">🚫 طلبة غيابهم متكرر</h3>
+        <p class="hint" data-en="Missed the last 2+ sessions, or attendance below 50%">غاب آخر سيشنتين أو أكتر، أو حضوره أقل من 50%</p>
+        <div class="list cols" id="lateAtt"></div>
+      </div>
+      <div class="card span-all">
+        <h3 data-en="💬 Negative student comments">💬 تعليقات سلبية من الطلبة</h3>
+        <p class="hint" data-en="From the session feedback form (original Arabic) — discuss with the coach and supervisor">من فورم تقييم السيشنات — محتاجة مناقشة مع الكوتش والسوبرفايزر</p>
+        <div class="quotes" id="comments" dir="rtl"></div><p class="hint" style="margin:12px 0 0" id="commentsNote"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="groups">
+    <div class="sec-h"><div><h2><span class="sn">👥</span><span data-en="Groups">الجروبات</span></h2><p data-en="Each group's numbers plus quick buttons for its chat and links">كل جروب بالأرقام بتاعته وأزرار سريعة للجروب واللينكات</p></div></div>
+    <div class="grid3" id="groupCards"></div>
+  </section>
+
+  <section id="students">
+    <div class="sec-h">
+      <div><h2><span class="sn">💬</span><span data-en="Students &amp; Actions">الطلبة والأكشن</span></h2><p data-en="Click the WhatsApp button next to a student → the message is written with the problem and fix → it opens straight in their WhatsApp">دوس على زرار الواتساب جنب الطالب → الرسالة بتتكتب لوحدها بالمشكلة والحل → تفتح على واتساب الطالب على طول</p></div>
+      <div class="counter" id="tblCounter"></div>
+    </div>
+    <div class="filters">
+      <div class="chips" id="actionChips"></div>
+      <div class="toolbar">
+        <div class="search"><input id="q" placeholder="ابحث بالاسم (عربي أو إنجليزي) أو الموبايل أو رقم الطالب" data-en-ph="Search by name (Arabic or English), mobile, or student ID"></div>
+        <select id="fGroup"><option value="" data-en="All groups">كل الجروبات</option></select>
+        <select id="fStatus">
+          <option value="" data-en="All upload statuses">كل حالات الرفع</option>
+          <option value="Not submitted" data-en="Not submitted">لم يرفع</option><option value="Needs Correction" data-en="Needs correction">محتاج تعديل</option><option value="Pending QC" data-en="Pending QC">تحت المراجعة</option><option value="Complete" data-en="Complete">مكتمل</option>
+        </select>
+        <select id="fDone">
+          <option value="" data-en="All students">كل الطلبة</option>
+          <option value="todo" data-en="Not contacted yet">لسه متواصلتش معاه</option>
+          <option value="done" data-en="Contacted">تم التواصل</option>
+        </select>
+        <button class="btn wa" onclick="startQueue()" data-en="⚡ Send to this list in order">⚡ ابعت للقائمة دي بالترتيب</button>
+      </div>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr>
+          <th data-sort="done">✓</th>
+          <th data-sort="score" data-en="Priority">الأولوية</th>
+          <th data-sort="name" data-en="Student">الطالب</th>
+          <th data-sort="status" data-en="Upload status">حالة الرفع</th>
+          <th data-sort="links_submitted" id="thLinks" data-en="Links">اللينكات</th>
+          <th data-sort="att_pct" data-en="Attendance">الحضور</th>
+          <th data-en="Problem / required action">المشكلة / الأكشن المطلوب</th>
+          <th data-en="Contact">تواصل</th>
+        </tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="plan">
+    <div class="sec-h"><div><h2><span class="sn">🎯</span><span data-en="Plan to Improve the Numbers">خطة تحسين الأرقام</span></h2><p data-en="A 3-week plan built on the current numbers — main goal: every student uploads services that pass QC">خطة 3 أسابيع مبنية على الأرقام الحالية — الهدف الأساسي: كل طالب يرفع خدماته ويتقبل من الجودة</p></div></div>
+    <div class="card targets" style="margin-bottom:14px">
+      <h3 data-en="🎯 Suggested weekly targets (% of students who uploaded services)">🎯 الأهداف الأسبوعية المقترحة (نسبة الطلبة اللي رفعوا خدمات)</h3>
+      <p class="hint" data-en="Current value comes from the data · targets are suggested to reach 85% before the last session">الحالي محسوب من البيانات · الأهداف مقترحة عشان توصل لـ 85% قبل آخر سيشن</p>
+      <div class="steps" id="targetsTbl"></div>
+    </div>
+    <div class="plan" id="planCards"></div>
+  </section>
+
+  <section id="checklist">
+    <div class="sec-h"><div><h2><span class="sn">📣</span><span data-en="Ready Group Messages">رسايل جاهزة للجروبات</span></h2><p data-en="Copy the message and post it in each group's WhatsApp chat (messages are in Arabic for the students)">انسخ الرسالة وابعتها في جروب الواتساب بتاع كل جروب</p></div></div>
+    <div class="grid2" id="broadcasts"></div>
+  </section>
+
+  <footer class="page" data-en="Prepared for Ziad Mamdouh Bastawy · Program Coordinator · Freelance Yard — the “contacted” status is saved in this browser only">تم إعداد التقرير لـ زياد ممدوح بسطاوي · Program Coordinator · Freelance Yard — حالة "تم التواصل" بتتحفظ على المتصفح ده بس</footer>
+</main>
+
+<!-- modal -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <header>
+      <div class="who"><div class="av" id="mAv"></div><div><b id="mName"></b><div class="mono" id="mMeta"></div></div></div>
+      <button class="btn icon sm" onclick="closeModal()">✕</button>
+    </header>
+    <div class="tpls" id="mTpls"></div>
+    <div class="chat">
+      <div class="bubble" dir="rtl"><textarea id="mText" dir="rtl"></textarea><div class="tm" id="mTime"></div></div>
+      <div class="hint2" data-en="✏️ You can edit the message here before sending (it stays in Arabic for the student)">✏️ تقدر تعدّل الرسالة هنا قبل ما تبعتها</div>
+    </div>
+    <footer>
+      <div class="qbar" id="qbar" style="display:none"><span id="qTxt"></span><div class="meter"><i id="qMeter" style="background:var(--wa);width:0"></i></div></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-inline-start:auto">
+        <button class="btn" onclick="copyMsg()" data-en="📋 Copy">📋 نسخ</button>
+        <button class="btn" id="qSkip" style="display:none" onclick="queueNext(false)" data-en="Skip ⏭">تخطي ⏭</button>
+        <button class="btn wa" onclick="sendWA()">
+          <svg class="i" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .1-1.7-.1a15 15 0 0 1-1.5-.6 12 12 0 0 1-4.6-4c-.4-.5-1-1.5-1-2.8s.7-2 .9-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.6-.1 1.2Z"/></svg>
+          <span data-en="Open WhatsApp &amp; send">افتح واتساب وابعت</span>
+        </button>
+      </div>
+    </footer>
+  </div>
+</div>
+<div id="tip"></div>
+<div class="toast" id="toast"></div>
+<script>
+const DATA = {"generated": "2026-11-08T00:20:00+02:00", "groups": [{"id": "ONL5_DRT6_S3", "track": "Digital Arts", "coach_name": "Ahmed Walid Abd-alaziz", "start_date": "2026-10-18", "week": 3, "expected_milestone": 3, "average_milestone": 0, "trajectory": "Critical", "session_link": "https://teams.microsoft.com/meet/365343059101620?p=4MovKVPmprixuEhaD7", "whatsapp_link": "https://chat.whatsapp.com/DQxVuD7AkVtJO6uIa2luS6", "supervisor_name": "Esraa Hamada", "sessions_done": 4, "sessions_total": 8, "next_session": "2026-11-15T16:00:00.000Z", "next_session_no": 5, "fb_count": 15, "clarity": 4.6, "usefulness": 4.67, "satisfaction": 4.6, "searched_gig_pct": 87, "att_by_session": [{"n": 1, "pct": 53}, {"n": 2, "pct": 76}, {"n": 3, "pct": 71}]}, {"id": "ONL5_DRT7_S2", "track": "Digital Arts", "coach_name": "Ziad Moawad", "start_date": "2026-10-11", "week": 4, "expected_milestone": 4, "average_milestone": 0, "trajectory": "Critical", "session_link": "https://teams.microsoft.com/meet/339540786694366?p=ttDIKO0Ie8MB51ZaVZ", "whatsapp_link": "https://chat.whatsapp.com/HgiFpIxCXNSLvWj5YlnHG2", "supervisor_name": "Esraa Hamada", "sessions_done": 5, "sessions_total": 8, "next_session": "2026-11-15T17:00:00.000Z", "next_session_no": 6, "fb_count": 11, "clarity": 4.82, "usefulness": 4.73, "satisfaction": 4.64, "searched_gig_pct": 82, "att_by_session": [{"n": 1, "pct": 56}, {"n": 2, "pct": 56}, {"n": 3, "pct": 74}, {"n": 4, "pct": 63}]}, {"id": "CAI5_SWD2_S4", "track": "Software Development", "coach_name": "Seif Eldin Mohamed Ibrahim Yousef", "start_date": "2026-10-18", "week": 3, "expected_milestone": 3, "average_milestone": 0, "trajectory": "Critical", "session_link": "https://teams.microsoft.com/meet/35105650225777?p=ygf2bW8foTANHGzLJ2", "whatsapp_link": "https://chat.whatsapp.com/GUF3rz6rLiMItSVgU72bn5", "supervisor_name": "Esraa Hamada", "sessions_done": 4, "sessions_total": 8, "next_session": "2026-11-15T16:00:00.000Z", "next_session_no": 5, "fb_count": 16, "clarity": 4.94, "usefulness": 4.88, "satisfaction": 4.94, "searched_gig_pct": 94, "att_by_session": [{"n": 1, "pct": 68}, {"n": 2, "pct": 72}, {"n": 3, "pct": 60}]}, {"id": "GIZ5_DRT2_S2", "track": "Digital Arts", "coach_name": "Mohammed Ashraf Abdelmeneam", "start_date": "2026-10-14", "week": 4, "expected_milestone": 4, "average_milestone": 0, "trajectory": "Critical", "session_link": "https://teams.microsoft.com/meet/384073623078649?p=ZVqyLxIQztnX4HpiB9", "whatsapp_link": "https://chat.whatsapp.com/EvepTRk0D7BIg8xh8z0GxZ", "supervisor_name": "Esraa Hamada", "sessions_done": 4, "sessions_total": 8, "next_session": "2026-11-11T17:00:00.000Z", "next_session_no": 5, "fb_count": 40, "clarity": 3.65, "usefulness": 3.6, "satisfaction": 3.62, "searched_gig_pct": 68, "att_by_session": [{"n": 1, "pct": 75}, {"n": 2, "pct": 71}, {"n": 3, "pct": 54}, {"n": 4, "pct": 79}]}, {"id": "ONL5_DRT1_S1", "track": "Digital Arts", "coach_name": "Youssef Thabet", "start_date": "2026-10-22", "week": 3, "expected_milestone": 3, "average_milestone": 0, "trajectory": "Critical", "session_link": "https://teams.microsoft.com/meet/373837110806902?p=AejDpj7EfYd0i119SO", "whatsapp_link": "https://chat.whatsapp.com/Ez5xSYVFZo3E6eDsBNXVTt", "supervisor_name": "Esraa Hamada", "sessions_done": 3, "sessions_total": 8, "next_session": "2026-11-12T15:00:00.000Z", "next_session_no": 4, "fb_count": 9, "clarity": 3.44, "usefulness": 3.44, "satisfaction": 3.44, "searched_gig_pct": 67, "att_by_session": [{"n": 1, "pct": 77}, {"n": 2, "pct": 77}, {"n": 3, "pct": 68}]}], "students": [{"id": "21021589", "name": "Saja Said Ali Emam", "name_ar": "سجا سعيد علي امام", "phone": "01272387376", "group": "GIZ5_DRT2_S2", "profile": "UI & UX Web Designer", "track": "Digital Arts", "round": "Previous round", "week": 4, "att_pct": 75, "present": 3, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 4.0, "fb_count": 1, "searched_gig": 1, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21024109", "name": "sondos sheref abdalldaim siam", "name_ar": "سندس شريف عبدالدايم صيام", "phone": "01552988482", "group": "GIZ5_DRT2_S2", "profile": "UI & UX Web Designer", "track": "Digital Arts", "round": "Previous round", "week": 4, "att_pct": 25, "present": 1, "att_total": 4, "last_abs_streak": 3, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 25%", "No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 65}, {"id": "21032125", "name": "Youssef Ayman Mahmoud Abd El Mogheis", "name_ar": "يوسف ايمن محمود عبد المغيث", "phone": "01005791314", "group": "CAI5_SWD2_S4", "profile": "React Frontend Web Developer", "track": "Software Development", "round": "Previous round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 2, "gigs_approved": 0, "grad": 0, "portal_status": "Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 4.5, "fb_count": 2, "searched_gig": 2, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21033239", "name": "Marwa Ahmed Muhamed Abu El Fadl", "name_ar": "مروة أحمد محمد أبو الفضل", "phone": "01501061290", "group": "GIZ5_DRT2_S2", "profile": "UI & UX Web Designer", "track": "Digital Arts", "round": "Previous round", "week": 4, "att_pct": 25, "present": 1, "att_total": 4, "last_abs_streak": 0, "status": "Needs Correction", "links_submitted": 3, "links_done": 2, "links_corr": 1, "links_locked": 2, "khamsat": 0, "kafiil": 1, "nafezly": 2, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": ["inactive"], "overdue_corr": 1, "open_corr": 1, "followups": [], "days_since_contact": 7, "sat": 5.0, "fb_count": 1, "searched_gig": 1, "risk_reasons": ["Attendance 25%", "No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 85}, {"id": "21042183", "name": "Omar Khalid Ibrahim Ahmed", "name_ar": "عمر خالد ابراهيم احمد", "phone": "01005346583", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Previous round", "week": 4, "att_pct": 75, "present": 3, "att_total": 4, "last_abs_streak": 0, "status": "Needs Correction", "links_submitted": 5, "links_done": 1, "links_corr": 3, "links_locked": 2, "khamsat": 2, "kafiil": 1, "nafezly": 2, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": ["name", "price"], "overdue_corr": 3, "open_corr": 3, "followups": [], "days_since_contact": 7, "sat": 5.0, "fb_count": 1, "searched_gig": 1, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 65}, {"id": "21043451", "name": "Jaaiana Osama Isaac Shaker", "name_ar": "جايانا اسامة اسحق شاكر", "phone": "01555317456", "group": "GIZ5_DRT2_S2", "profile": "UI & UX Web Designer", "track": "Digital Arts", "round": "Previous round", "week": 4, "att_pct": 25, "present": 1, "att_total": 4, "last_abs_streak": 1, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 25%", "No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 50}, {"id": "21047383", "name": "Mohamed Taha abdelmonim Mohamed elgarph", "name_ar": "محمد طه عبد المنعم محمد الجرف", "phone": "01275828351", "group": "ONL5_DRT6_S3", "profile": "Media Production Influencer", "track": "Digital Arts", "round": "Previous round", "week": 3, "att_pct": 0, "present": 0, "att_total": 3, "last_abs_streak": 3, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 0%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 65}, {"id": "21058237", "name": "Jana Mahmod Abdalraheem Abdalbaset", "name_ar": "جنى محمود عبد الرحيم عبد الباسط", "phone": "01021373199", "group": "ONL5_DRT6_S3", "profile": "Media Production Influencer", "track": "Digital Arts", "round": "Previous round", "week": 3, "att_pct": 33, "present": 1, "att_total": 3, "last_abs_streak": 2, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 33%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 65}, {"id": "21058414", "name": "Eman Ayman Mahmoud Ahmed", "name_ar": "ايمان ايمن محمود احمد", "phone": "01154232694", "group": "CAI5_SWD2_S4", "profile": "React Frontend Web Developer", "track": "Software Development", "round": "Previous round", "week": 3, "att_pct": 67, "present": 2, "att_total": 3, "last_abs_streak": 1, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 5.0, "fb_count": 1, "searched_gig": 1, "risk_reasons": ["Attendance 67%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21066497", "name": "Mahmoud Ahmed Fahmy Mohamed", "name_ar": "محمود أحمد فهمي محمد", "phone": "01065756375", "group": "ONL5_DRT6_S3", "profile": "Media Production Influencer", "track": "Digital Arts", "round": "Previous round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Needs Correction", "links_submitted": 4, "links_done": 2, "links_corr": 2, "links_locked": 2, "khamsat": 0, "kafiil": 2, "nafezly": 2, "gigs": 2, "gigs_approved": 0, "grad": 0, "portal_status": "Started", "reasons": ["price"], "overdue_corr": 2, "open_corr": 2, "followups": [{"title": "هيقلل مميزات الخدمه بتاعته عشان يقلل السعر", "status": "Open"}], "days_since_contact": 7, "sat": 5.0, "fb_count": 2, "searched_gig": 2, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 65}, {"id": "21080625", "name": "Farah Mohamed Ayman Hassan Sliet", "name_ar": "فرح محمد ايمن حسن سليط", "phone": "01147383822", "group": "ONL5_DRT6_S3", "profile": "Media Production Influencer", "track": "Digital Arts", "round": "Previous round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21082010", "name": "sama ahmed Ali Ahmed", "name_ar": "سما احمد علي احمد", "phone": "01149662917", "group": "GIZ5_DRT2_S2", "profile": "UI & UX Web Designer", "track": "Digital Arts", "round": "Previous round", "week": 4, "att_pct": 75, "present": 3, "att_total": 4, "last_abs_streak": 0, "status": "Needs Correction", "links_submitted": 3, "links_done": 1, "links_corr": 2, "links_locked": 1, "khamsat": 0, "kafiil": 0, "nafezly": 3, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": ["inactive"], "overdue_corr": 0, "open_corr": 2, "followups": [], "days_since_contact": 7, "sat": 4.0, "fb_count": 1, "searched_gig": 1, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 50}, {"id": "21084816", "name": "Esraa Nehad Farouk Abdelghani", "name_ar": "اسراء نهاد فاروق عبدالغني", "phone": "01277064275", "group": "ONL5_DRT6_S3", "profile": "Media Production Influencer", "track": "Digital Arts", "round": "Previous round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 4.0, "fb_count": 1, "searched_gig": 1, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21095386", "name": "Mai Bahaaeldin Mahmoud Madkour", "name_ar": "مي بهاء الدين محمود مدكور", "phone": "01552299259", "group": "ONL5_DRT1_S1", "profile": "Digital Marketing Specialist", "track": "Digital Arts", "round": "Previous round", "week": 3, "att_pct": 33, "present": 1, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 33%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 50}, {"id": "21121446", "name": "Rodayna Mohamed Hussin Ahmed", "name_ar": "رودينا محمد حسين احمد", "phone": "01033945552", "group": "ONL5_DRT1_S1", "profile": "Digital Marketing Specialist", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 5.0, "fb_count": 2, "searched_gig": 2, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21123066", "name": "Nada Fathy Mohamed Goda", "name_ar": "ندى فتحى محمد جودة", "phone": "01280604932", "group": "GIZ5_DRT2_S2", "profile": "UI & UX Web Designer", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 100, "present": 4, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21123573", "name": "Malak Medhat Samir Mohamed", "name_ar": "ملك مدحت سمير محمد", "phone": "01120849510", "group": "CAI5_SWD2_S4", "profile": "React Frontend Web Developer", "track": "Software Development", "round": "Current Round", "week": 3, "att_pct": 67, "present": 2, "att_total": 3, "last_abs_streak": 1, "status": "Pending QC", "links_submitted": 4, "links_done": 4, "links_corr": 0, "links_locked": 4, "khamsat": 0, "kafiil": 2, "nafezly": 2, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 5.0, "fb_count": 1, "searched_gig": 1, "risk_reasons": ["Attendance 67%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 5}, {"id": "21123051", "name": "Mohamed Emad Mohamed Hamada", "name_ar": "محمد عماد محمد حمادة", "phone": "01207862066", "group": "ONL5_DRT1_S1", "profile": "Digital Marketing Specialist", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21124318", "name": "Rana Mohamed Ramadan Abdelhamid", "name_ar": "رنا محمد رمضان عبد الحميد", "phone": "01021016314", "group": "CAI5_SWD2_S4", "profile": "React Frontend Web Developer", "track": "Software Development", "round": "Current Round", "week": 3, "att_pct": 33, "present": 1, "att_total": 3, "last_abs_streak": 1, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 5.0, "fb_count": 1, "searched_gig": 1, "risk_reasons": ["Attendance 33%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 50}, {"id": "21124443", "name": "Enjy Alaa Ebrahim Elmiligy", "name_ar": "انجي علاء ابراهيم المليجي", "phone": "01272256974", "group": "ONL5_DRT1_S1", "profile": "Digital Marketing Specialist", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 33, "present": 1, "att_total": 3, "last_abs_streak": 2, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 33%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 65}, {"id": "21130803", "name": "Nourhan Nashat Samir Meglaa", "name_ar": "نورهان نشأت سمير مجلع", "phone": "01552263154", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 100, "present": 4, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 5.0, "fb_count": 2, "searched_gig": 2, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21133904", "name": "Magda Emad sayed ahmed alm eldine", "name_ar": "ماجدة عماد سيد احمد علم الدين", "phone": "01155434881", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 100, "present": 4, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 5.0, "fb_count": 1, "searched_gig": 1, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21134379", "name": "Vivian Magdy Fawzy Shabeb", "name_ar": "فيفيان مجدى فوزى شبيب", "phone": "01221822668", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 75, "present": 3, "att_total": 4, "last_abs_streak": 1, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21145004", "name": "Hanan Yahia Ibrahim Ahmed", "name_ar": "حنان يحيى ابراهيم احمد", "phone": "01143146238", "group": "GIZ5_DRT2_S2", "profile": "UI & UX Web Designer", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 75, "present": 3, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 3.8, "fb_count": 4, "searched_gig": 4, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21148718", "name": "thomas wael erian rezkalla", "name_ar": "توماس وائل عريان رزق الله", "phone": "01200029962", "group": "CAI5_SWD2_S4", "profile": "React Frontend Web Developer", "track": "Software Development", "round": "Current Round", "week": 3, "att_pct": 0, "present": 0, "att_total": 3, "last_abs_streak": 3, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 0%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 65}, {"id": "21150100", "name": "Omnia Shaker Abass Abdelhamed", "name_ar": "أمنية شاكر عباس عبدالحميد", "phone": "01050545199", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 100, "present": 4, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21150037", "name": "Khaled Hany Fawzy Mohamed", "name_ar": "خالد هاني فوزي محمد", "phone": "01006811451", "group": "CAI5_SWD2_S4", "profile": "React Frontend Web Developer", "track": "Software Development", "round": "Current Round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 5, "gigs_approved": 2, "grad": 2, "portal_status": "Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 5.0, "fb_count": 2, "searched_gig": 2, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21149937", "name": "Abdelrahman Gamal Ibrahim Abdelaziz", "name_ar": "عبدالرحمن جمال إبراهيم عبدالعزيز", "phone": "01023521246", "group": "ONL5_DRT1_S1", "profile": "Digital Marketing Specialist", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 1.0, "fb_count": 2, "searched_gig": 2, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21150026", "name": "Moaz Magdi Dardiri Hassan Owina", "name_ar": "معاذ مجدي درديري حسن عوينه", "phone": "01032845760", "group": "ONL5_DRT1_S1", "profile": "Digital Marketing Specialist", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21150714", "name": "Shahd Adel Salah Hussien", "name_ar": "شهد عادل صلاح حسين", "phone": "01159672635", "group": "GIZ5_DRT2_S2", "profile": "UI & UX Web Designer", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 25, "present": 1, "att_total": 4, "last_abs_streak": 2, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 3.0, "fb_count": 2, "searched_gig": 1, "risk_reasons": ["Attendance 25%", "No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 65}, {"id": "21150817", "name": "Salwa Sayed Shallan Abdelhalim", "name_ar": "سلوى سيد شعلان عبد الحليم", "phone": "01108520313", "group": "GIZ5_DRT2_S2", "profile": "UI & UX Web Designer", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 75, "present": 3, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 2.5, "fb_count": 2, "searched_gig": 2, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21150533", "name": "Dyaa Sobhey Hosney Ghorab", "name_ar": "ضياء صبحي حسني غراب", "phone": "01030843720", "group": "ONL5_DRT1_S1", "profile": "Digital Marketing Specialist", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21151053", "name": "Malak Khairy Ahmed Hassan", "name_ar": "ملك خيرى احمد حسن", "phone": "01123258794", "group": "ONL5_DRT1_S1", "profile": "Digital Marketing Specialist", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 33, "present": 1, "att_total": 3, "last_abs_streak": 2, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 33%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 65}, {"id": "21152082", "name": "Farah Ayman BadrAldin Marzouk", "name_ar": "فرح ايمن بدرالدين مرزوق", "phone": "01128683518", "group": "GIZ5_DRT2_S2", "profile": "UI & UX Web Designer", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 75, "present": 3, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 4.0, "fb_count": 3, "searched_gig": 1, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21153025", "name": "Sarah Salah Al Din Mujahid Abo Mosallam", "name_ar": "سارة صلاح الدين مجاهد ابو مسلم", "phone": "01229366548", "group": "GIZ5_DRT2_S2", "profile": "UI & UX Web Designer", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 100, "present": 4, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 3.0, "fb_count": 4, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21153963", "name": "mohamed osama mohamed abdelsalam", "name_ar": "محمد أسامة محمد عبدالسلام", "phone": "01280838102", "group": "ONL5_DRT6_S3", "profile": "Media Production Influencer", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 3.0, "fb_count": 2, "searched_gig": 1, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21154883", "name": "Basant Tarek Alsayed Basiony", "name_ar": "بسنت طارق السيد بسيوني", "phone": "01553693176", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 50, "present": 2, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 50%", "No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21155025", "name": "sylvia maged halim kalds", "name_ar": "سلفيا ماجد حليم قلدس", "phone": "01289986233", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 100, "present": 4, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21154868", "name": "Mariam Mohamed Abdelgelil Madian", "name_ar": "مريم محمد عبد الجليل مدين", "phone": "01144964552", "group": "ONL5_DRT1_S1", "profile": "Digital Marketing Specialist", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 67, "present": 2, "att_total": 3, "last_abs_streak": 0, "status": "Needs Correction", "links_submitted": 3, "links_done": 1, "links_corr": 2, "links_locked": 1, "khamsat": 0, "kafiil": 1, "nafezly": 2, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": ["price"], "overdue_corr": 2, "open_corr": 2, "followups": [], "days_since_contact": 7, "sat": 4.0, "fb_count": 2, "searched_gig": 2, "risk_reasons": ["Attendance 67%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 65}, {"id": "21156383", "name": "Sondos Ali Zayed Mohamed", "name_ar": "سندس علي زايد محمد", "phone": "01114359503", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 100, "present": 4, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 5.0, "fb_count": 1, "searched_gig": 1, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21158334", "name": "catherine ashraf zkhary yousef", "name_ar": "كاترين اشرف زخاري يوسف", "phone": "01272792719", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 0, "present": 0, "att_total": 4, "last_abs_streak": 4, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 0%", "No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 65}, {"id": "21159155", "name": "SOHAIL YASSER shaaban mohamed", "name_ar": "سهيل ياسر شعبان محمد", "phone": "01033716485", "group": "ONL5_DRT1_S1", "profile": "Digital Marketing Specialist", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21159923", "name": "Malak Osman Mohamed Osman", "name_ar": "ملك عثمان محمد عثمان", "phone": "01156685299", "group": "ONL5_DRT6_S3", "profile": "Media Production Influencer", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 67, "present": 2, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 5.0, "fb_count": 1, "searched_gig": 1, "risk_reasons": ["Attendance 67%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21161554", "name": "Osama Ayman Shaban Atwa", "name_ar": "اسامه ايمن شعبان عطوه", "phone": "01030758682", "group": "ONL5_DRT1_S1", "profile": "Digital Marketing Specialist", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21162084", "name": "Esraa Ahmed Abdelsamia Elghory", "name_ar": "اسراء احمد عبدالسميع الغوري", "phone": "01142417759", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 0, "present": 0, "att_total": 4, "last_abs_streak": 4, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 0%", "No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 65}, {"id": "21161789", "name": "Hazem Mohamed Farouk Ghorab", "name_ar": "حازم محمد فاورق غراب", "phone": "01025290664", "group": "GIZ5_DRT2_S2", "profile": "UI & UX Web Designer", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 100, "present": 4, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21161961", "name": "Mohamed Hassan Ahmed Sotohy", "name_ar": "محمد حسن أحمد سطوحي", "phone": "01023642020", "group": "CAI5_SWD2_S4", "profile": "React Frontend Web Developer", "track": "Software Development", "round": "Current Round", "week": 3, "att_pct": 67, "present": 2, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 67%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21163731", "name": "FatmaElzahraa Mohamed Mahmoud Abotaleb", "name_ar": "فاطمة الزهراء محمد محمود أبو طالب", "phone": "01110595285", "group": "CAI5_SWD2_S4", "profile": "React Frontend Web Developer", "track": "Software Development", "round": "Current Round", "week": 3, "att_pct": 67, "present": 2, "att_total": 3, "last_abs_streak": 1, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 67%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21163378", "name": "Moaaz Mohamed Khair Fahmy Mohamed", "name_ar": "معاذ محمدخير فهمي محمد", "phone": "01034547060", "group": "ONL5_DRT1_S1", "profile": "Digital Marketing Specialist", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21164506", "name": "Nermeen Adel ezz eldin abdel aziz elbatrawy", "name_ar": "نرمين عادل عز الدين عبد العزيز البطراوي", "phone": "01017333649", "group": "GIZ5_DRT2_S2", "profile": "UI & UX Web Designer", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 50, "present": 2, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 3.0, "fb_count": 2, "searched_gig": 2, "risk_reasons": ["Attendance 50%", "No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21164259", "name": "Youssef Sayed Helmy Qenawy", "name_ar": "يوسف سيد حلمي قناوي", "phone": "01094912415", "group": "CAI5_SWD2_S4", "profile": "React Frontend Web Developer", "track": "Software Development", "round": "Current Round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21164417", "name": "Ganna Tamer Mohmed Reda", "name_ar": "جنه تامر محمد رضا", "phone": "01117043014", "group": "CAI5_SWD2_S4", "profile": "React Frontend Web Developer", "track": "Software Development", "round": "Current Round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 5.0, "fb_count": 1, "searched_gig": 1, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21164714", "name": "Yara Mohamed Ibrahim Hassan", "name_ar": "يارا محمد ابراهيم حسن", "phone": "01287367540", "group": "ONL5_DRT6_S3", "profile": "Media Production Influencer", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 33, "present": 1, "att_total": 3, "last_abs_streak": 1, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 33%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 50}, {"id": "21166638", "name": "mohamed zakaria ibrahim eldosoky", "name_ar": "محمد زكريا ابراهيم الدسوقي", "phone": "01200667451", "group": "ONL5_DRT6_S3", "profile": "Media Production Influencer", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 5.0, "fb_count": 1, "searched_gig": 1, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21167158", "name": "Hager Nagih Abdelmageed Abdelrahman", "name_ar": "هاجر ناجح عبدالمجيد عبدالرحمن", "phone": "01115209581", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 50, "present": 2, "att_total": 4, "last_abs_streak": 1, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 50%", "No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21168219", "name": "Menna Abd Elmonged Abd Alrahman Mohammed", "name_ar": "منة عبد المنجد عبد الرحمن محمد", "phone": "01061098983", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 0, "present": 0, "att_total": 4, "last_abs_streak": 4, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 0%", "No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 65}, {"id": "21168019", "name": "Mohannad Ahmed Hassan Saleh", "name_ar": "مهند احمد حسن صالح", "phone": "01555882663", "group": "CAI5_SWD2_S4", "profile": "React Frontend Web Developer", "track": "Software Development", "round": "Current Round", "week": 3, "att_pct": 67, "present": 2, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 5.0, "fb_count": 1, "searched_gig": 1, "risk_reasons": ["Attendance 67%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21168726", "name": "Abdelrhman Talal Reda Awara", "name_ar": "عبدالرحمن طلال رضا عواره", "phone": "01007997467", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 75, "present": 3, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 4.0, "fb_count": 1, "searched_gig": 1, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21169776", "name": "Ebtehal Abelnasser Hanafi Saleh", "name_ar": "ابتهال عبدالناصر حنفي صالح", "phone": "01020944935", "group": "ONL5_DRT6_S3", "profile": "Media Production Influencer", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 67, "present": 2, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 67%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21169378", "name": "Mostafa Rady Ahmed Mohammed", "name_ar": "مصطفى راضى احمد محمد", "phone": "01158138738", "group": "CAI5_SWD2_S4", "profile": "React Frontend Web Developer", "track": "Software Development", "round": "Current Round", "week": 3, "att_pct": 67, "present": 2, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 67%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21170391", "name": "Ramy Khaled Mahmoud Mohamed", "name_ar": "رامى خالد محمود محمد", "phone": "01126868303", "group": "ONL5_DRT1_S1", "profile": "Digital Marketing Specialist", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 67, "present": 2, "att_total": 3, "last_abs_streak": 1, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 67%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21170560", "name": "Fatma Alaa Eldin Rabie Ibrahim", "name_ar": "فاطمه علاءالدين ربيع ابراهيم", "phone": "01098931644", "group": "ONL5_DRT1_S1", "profile": "Digital Marketing Specialist", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 67, "present": 2, "att_total": 3, "last_abs_streak": 1, "status": "Complete", "links_submitted": 5, "links_done": 4, "links_corr": 1, "links_locked": 4, "khamsat": 0, "kafiil": 2, "nafezly": 3, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": ["price"], "overdue_corr": 0, "open_corr": 1, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 67%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 5}, {"id": "21171263", "name": "Habiba Alsayed Mohamed Ebrahim", "name_ar": "حبيبه السيد محمد ابراهيم", "phone": "01288302666", "group": "CAI5_SWD2_S4", "profile": "React Frontend Web Developer", "track": "Software Development", "round": "Current Round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Needs Correction", "links_submitted": 5, "links_done": 1, "links_corr": 4, "links_locked": 1, "khamsat": 0, "kafiil": 2, "nafezly": 1, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": ["inactive", "mostaql", "price"], "overdue_corr": 4, "open_corr": 4, "followups": [{"title": "تواصلت معاها عشان اعرف ايه المشكله واتحلت", "status": "Completed"}], "days_since_contact": 7, "sat": 5.0, "fb_count": 2, "searched_gig": 1, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 65}, {"id": "21171439", "name": "Ahmed Mohamed Ahmed Elshamy", "name_ar": "أحمد محمد أحمد الشامي", "phone": "01550282774", "group": "CAI5_SWD2_S4", "profile": "React Frontend Web Developer", "track": "Software Development", "round": "Current Round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21171831", "name": "Fares Mohamed Abdelaziz Mohamed", "name_ar": "فارس محمد عبدالعزيز محمد", "phone": "01110945335", "group": "CAI5_SWD2_S4", "profile": "React Frontend Web Developer", "track": "Software Development", "round": "Current Round", "week": 3, "att_pct": 67, "present": 2, "att_total": 3, "last_abs_streak": 0, "status": "Needs Correction", "links_submitted": 3, "links_done": 2, "links_corr": 1, "links_locked": 2, "khamsat": 0, "kafiil": 1, "nafezly": 2, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": ["price"], "overdue_corr": 1, "open_corr": 1, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 67%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 65}, {"id": "21172458", "name": "Farah Khamis Basiony Mohammed", "name_ar": "فرح خميس بسيوني محمد", "phone": "01092522230", "group": "ONL5_DRT6_S3", "profile": "Media Production Influencer", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 1, "gigs_approved": 0, "grad": 0, "portal_status": "Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 4.7, "fb_count": 3, "searched_gig": 3, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21172627", "name": "Doaa Yasser Elsayed Elsabaky", "name_ar": "دعاء ياسر السيد السبقي", "phone": "01092407931", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 100, "present": 4, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21172537", "name": "Mohamed Elsamahy Mohamed Elsamahy", "name_ar": "محمد السماحي محمد السماحي", "phone": "01092205831", "group": "CAI5_SWD2_S4", "profile": "React Frontend Web Developer", "track": "Software Development", "round": "Current Round", "week": 3, "att_pct": 33, "present": 1, "att_total": 3, "last_abs_streak": 1, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 5.0, "fb_count": 1, "searched_gig": 1, "risk_reasons": ["Attendance 33%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 50}, {"id": "21173074", "name": "fatma Ebrahim abdel Aal Mahmoud", "name_ar": "فاطمه ابراهيم عبدالعال محمود", "phone": "01067003814", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 100, "present": 4, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 2.0, "fb_count": 1, "searched_gig": 1, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21173184", "name": "Fady Onsy Nan Beshay", "name_ar": "فادي انسي نان بشاي", "phone": "01551797986", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 0, "present": 0, "att_total": 4, "last_abs_streak": 4, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 0%", "No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 65}, {"id": "21173231", "name": "Gana Ahmed Ibraheem Khalil", "name_ar": "جنا أحمد ابراهيم خليل", "phone": "01023542110", "group": "ONL5_DRT1_S1", "profile": "Digital Marketing Specialist", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 3.0, "fb_count": 1, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21173726", "name": "Hana Ahmed Mostafa Sayed", "name_ar": "هنا احمد مصطفي سيد", "phone": "01020902313", "group": "GIZ5_DRT2_S2", "profile": "UI & UX Web Designer", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 75, "present": 3, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 2, "gigs_approved": 1, "grad": 1, "portal_status": "Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 1.0, "fb_count": 1, "searched_gig": 1, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21175318", "name": "Lojaina Ashraf Abdelsamad Ibrahim Khalil Brayb", "name_ar": "لوجينا أشرف عبد الصمد ابراهيم خليل برايب", "phone": "01271272241", "group": "ONL5_DRT6_S3", "profile": "Media Production Influencer", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 5.0, "fb_count": 2, "searched_gig": 1, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21175052", "name": "Ghadeer Ahmad Othman Elkafrawy", "name_ar": "غدير أحمد عثمان الكفراوي", "phone": "01010497419", "group": "GIZ5_DRT2_S2", "profile": "UI & UX Web Designer", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 75, "present": 3, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 2.5, "fb_count": 2, "searched_gig": 1, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21175908", "name": "Menna Ebrahim Shaaban Elkashef", "name_ar": "منة ابراهيم شعبان الكاشف", "phone": "01158024546", "group": "ONL5_DRT6_S3", "profile": "Media Production Influencer", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 67, "present": 2, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 67%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21176118", "name": "Mahmoud Ebrahim Hamed Elsayed", "name_ar": "محمود ابراهيم حامد السيد", "phone": "01111023458", "group": "GIZ5_DRT2_S2", "profile": "UI & UX Web Designer", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 100, "present": 4, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 4.3, "fb_count": 3, "searched_gig": 3, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21176086", "name": "Donia Mohamed Eed Gomaa", "name_ar": "دنيا محمد عيد جمعه", "phone": "01151166831", "group": "GIZ5_DRT2_S2", "profile": "UI & UX Web Designer", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 100, "present": 4, "att_total": 4, "last_abs_streak": 0, "status": "Complete", "links_submitted": 4, "links_done": 3, "links_corr": 1, "links_locked": 3, "khamsat": 0, "kafiil": 1, "nafezly": 2, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": ["price"], "overdue_corr": 0, "open_corr": 1, "followups": [], "days_since_contact": 7, "sat": 5.0, "fb_count": 2, "searched_gig": 2, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 5}, {"id": "21041846", "name": "Mohammed Hossam Mohammed Soliman", "name_ar": "محمد حسام محمد سليمان", "phone": "01116851072", "group": "CAI5_SWD2_S4", "profile": "React Frontend Web Developer", "track": "Software Development", "round": "Current Round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21046928", "name": "Jana Mohamed Mohamed Uthman", "name_ar": "جنى محمد محمد عثمان", "phone": "01110771972", "group": "GIZ5_DRT2_S2", "profile": "UI & UX Web Designer", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 75, "present": 3, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 3.5, "fb_count": 4, "searched_gig": 3, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21051939", "name": "Martin Mounir Fahem Moussa", "name_ar": "مارتن منير فهيم موسى", "phone": "01271759851", "group": "CAI5_SWD2_S4", "profile": "React Frontend Web Developer", "track": "Software Development", "round": "Current Round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 2, "gigs_approved": 0, "grad": 0, "portal_status": "Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21055662", "name": "mahmoud ibrahim mansour ibrahim", "name_ar": "محمود ابراهيم منصور ابراهيم", "phone": "01155686707", "group": "CAI5_SWD2_S4", "profile": "React Frontend Web Developer", "track": "Software Development", "round": "Current Round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21057321", "name": "Khadiga Hesham Youssef Abdelrahman", "name_ar": "خديجة هشام يوسف عبدالرحمن", "phone": "01129422088", "group": "GIZ5_DRT2_S2", "profile": "UI & UX Web Designer", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 25, "present": 1, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 3.0, "fb_count": 1, "searched_gig": 0, "risk_reasons": ["Attendance 25%", "No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 50}, {"id": "21063497", "name": "Youssef Mohamed Morsy Bayumi", "name_ar": "يوسف محمد مرسى بيومى", "phone": "01113384641", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 25, "present": 1, "att_total": 4, "last_abs_streak": 1, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 25%", "No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 50}, {"id": "21066412", "name": "Sara Nashat Makram Fahmy", "name_ar": "ساره نشأت مكرم فهمى", "phone": "01025269562", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 50, "present": 2, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 50%", "No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21068192", "name": "Abdelrahman Mohamed Abdelrahim Ali", "name_ar": "عبدالرحمن محمد عبدالرحيم علي", "phone": "01115941651", "group": "ONL5_DRT1_S1", "profile": "Digital Marketing Specialist", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 0, "present": 0, "att_total": 3, "last_abs_streak": 3, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 0%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 65}, {"id": "21071718", "name": "Aboelyzeed Khaled Aboelyzeed Omara", "name_ar": "أبواليزيد خالد أبواليزيد عمارة", "phone": "01554848572", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 0, "present": 0, "att_total": 4, "last_abs_streak": 4, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 0%", "No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 65}, {"id": "21089554", "name": "Rahma Shrief Fatouh Mahmoud", "name_ar": "رحمه شريف فتوح محمود", "phone": "01114653853", "group": "ONL5_DRT6_S3", "profile": "Media Production Influencer", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 0, "present": 0, "att_total": 3, "last_abs_streak": 3, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 0%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 65}, {"id": "21087006", "name": "youssef ehab ahmed mohamed", "name_ar": "يوسف ايهاب احمد محمد", "phone": "01119774118", "group": "CAI5_SWD2_S4", "profile": "React Frontend Web Developer", "track": "Software Development", "round": "Current Round", "week": 3, "att_pct": 33, "present": 1, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 33%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 50}, {"id": "21092564", "name": "Ibrahim Mohamed And elsatar Elkholy", "name_ar": "إبراهيم محمد عبد الستار الخولي", "phone": "01061494084", "group": "ONL5_DRT6_S3", "profile": "Media Production Influencer", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 5.0, "fb_count": 3, "searched_gig": 3, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21090444", "name": "mai sobhy Gomaa elkomey", "name_ar": "مي صبحي جمعه الكومي", "phone": "01063585699", "group": "GIZ5_DRT2_S2", "profile": "UI & UX Web Designer", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 50, "present": 2, "att_total": 4, "last_abs_streak": 2, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 3.7, "fb_count": 3, "searched_gig": 2, "risk_reasons": ["Attendance 50%", "No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 45}, {"id": "21092290", "name": "Mina William Abdelmalak Sawiris", "name_ar": "مينا وليم عبدالملاك ساويرس", "phone": "01061107969", "group": "ONL5_DRT1_S1", "profile": "Digital Marketing Specialist", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21098228", "name": "Samar Sayed Hafez Mohammed", "name_ar": "سمر سيد حافظ محمد", "phone": "01140434922", "group": "ONL5_DRT6_S3", "profile": "Media Production Influencer", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 0, "present": 0, "att_total": 3, "last_abs_streak": 3, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 0%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 65}, {"id": "21098654", "name": "Arwa Ahmed Helmy Abdel Hafeez", "name_ar": "اروي احمد حلمي عبدالحفيظ", "phone": "01028588009", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 0, "present": 0, "att_total": 4, "last_abs_streak": 4, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 0%", "No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 65}, {"id": "21127371", "name": "Karl Ramy Saad Nakhla", "name_ar": "كارل رامى سعد نخلة", "phone": "01228539352", "group": "CAI5_SWD2_S4", "profile": "React Frontend Web Developer", "track": "Software Development", "round": "Current Round", "week": 3, "att_pct": 67, "present": 2, "att_total": 3, "last_abs_streak": 1, "status": "Pending QC", "links_submitted": 9, "links_done": 6, "links_corr": 0, "links_locked": 9, "khamsat": 3, "kafiil": 3, "nafezly": 3, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 5.0, "fb_count": 1, "searched_gig": 1, "risk_reasons": ["Attendance 67%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 5}, {"id": "21083056", "name": "Shahd Ahmed Mohammad Wafa", "name_ar": "شهد احمد محمد وفا", "phone": "01023031067", "group": "ONL5_DRT6_S3", "profile": "Media Production Influencer", "track": "Digital Arts", "round": "Previous round", "week": 3, "att_pct": 67, "present": 2, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 67%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21180964", "name": "Sara Ashraf Mohamed Ismael", "name_ar": "سارة أشرف محمد إسماعيل", "phone": "01153090011", "group": "GIZ5_DRT2_S2", "profile": "UI & UX Web Designer", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 75, "present": 3, "att_total": 4, "last_abs_streak": 1, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21155436", "name": "Ragaa Mohamed Fathy Ibrahim", "name_ar": "رجاء محمد فتحي ابراهيم", "phone": "01092500688", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 100, "present": 4, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21173294", "name": "Shahd Walid Abdelmoniem Hussein", "name_ar": "شهد وليد عبدالمنعم حسين", "phone": "01093322627", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 100, "present": 4, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 5.0, "fb_count": 2, "searched_gig": 1, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21063781", "name": "Jana Ayman Hazem Mostafa", "name_ar": "جنى أيمن حازم مصطفى", "phone": "01006651308", "group": "CAI5_SWD2_S4", "profile": "React Frontend Web Developer", "track": "Software Development", "round": "Previous round", "week": 3, "att_pct": 0, "present": 0, "att_total": 3, "last_abs_streak": 3, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 5.0, "fb_count": 1, "searched_gig": 1, "risk_reasons": ["Attendance 0%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 65}, {"id": "21171992", "name": "omar fekry abdel shakour barakat", "name_ar": "عمر فكرى عبد الشكور بركات", "phone": "01120790251", "group": "CAI5_SWD2_S4", "profile": "React Frontend Web Developer", "track": "Software Development", "round": "Current Round", "week": 3, "att_pct": 67, "present": 2, "att_total": 3, "last_abs_streak": 1, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 5.0, "fb_count": 2, "searched_gig": 2, "risk_reasons": ["Attendance 67%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21178962", "name": "Ibrahim Ahmed Ibrahim Elhawy", "name_ar": "ابراهيم احمد ابراهيم الحاوي", "phone": "01038678048", "group": "ONL5_DRT1_S1", "profile": "Digital Marketing Specialist", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 67, "present": 2, "att_total": 3, "last_abs_streak": 1, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 67%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21179003", "name": "Maha Ahmed Fathy ELSayed", "name_ar": "مها احمد فتحى السيد", "phone": "01025468991", "group": "ONL5_DRT1_S1", "profile": "Digital Marketing Specialist", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21179018", "name": "Khaled Elwalid Ismail Sharafelden", "name_ar": "خالد الوليد اسماعيل شرف الدين", "phone": "01121245360", "group": "ONL5_DRT1_S1", "profile": "Digital Marketing Specialist", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 33, "present": 1, "att_total": 3, "last_abs_streak": 1, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 33%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 50}, {"id": "21149649", "name": "Maram Aiman Hassan Amin", "name_ar": "مرام ايمن حسن امين", "phone": "01017827162", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 75, "present": 3, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 5.0, "fb_count": 1, "searched_gig": 1, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21177289", "name": "Omar Mohamed Farouk Elemam", "name_ar": "عمر محمد فاروق الامام", "phone": "01208984464", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 0, "present": 0, "att_total": 4, "last_abs_streak": 4, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 0%", "No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 65}, {"id": "21177568", "name": "Mohammed Ahmed Shaaban Hashem", "name_ar": "محمد أحمد شعبان هاشم", "phone": "01092794535", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 100, "present": 4, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 5.0, "fb_count": 1, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21177492", "name": "mazen mohamed abdelmoniem morsy", "name_ar": "مازن محمد عبدالمنعم مرسي", "phone": "01130509985", "group": "ONL5_DRT1_S1", "profile": "Digital Marketing Specialist", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 100, "present": 3, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 4.0, "fb_count": 2, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21177854", "name": "Aya Ahmed Mohamed Abdallah", "name_ar": "اية احمد محمد عبدالله", "phone": "01154051833", "group": "GIZ5_DRT2_S2", "profile": "UI & UX Web Designer", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 100, "present": 4, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 5.0, "fb_count": 3, "searched_gig": 1, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21179006", "name": "Sama Diaa Eldeen Eid Gomaa", "name_ar": "سما ضياء الدين عيد جمعة", "phone": "01155251834", "group": "GIZ5_DRT2_S2", "profile": "UI & UX Web Designer", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 75, "present": 3, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": 4.0, "fb_count": 1, "searched_gig": 1, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21178913", "name": "Mohamed Mostafa El Sayed El Demery", "name_ar": "محمد مصطفي السيد الدميري", "phone": "01030707160", "group": "ONL5_DRT1_S1", "profile": "Digital Marketing Specialist", "track": "Digital Arts", "round": "Current Round", "week": 3, "att_pct": 33, "present": 1, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 33%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 50}, {"id": "21179867", "name": "Ahmed Mohamed Ibrahim Mohamed", "name_ar": "احمد محمد ابراهيم محمد", "phone": "01001193670", "group": "CAI5_SWD2_S4", "profile": "React Frontend Web Developer", "track": "Software Development", "round": "Current Round", "week": 3, "att_pct": 67, "present": 2, "att_total": 3, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 67%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21180569", "name": "RENAD muhammed salama soliman", "name_ar": "رناد محمد سلامه سليمان", "phone": "01098088338", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 100, "present": 4, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21181175", "name": "Ahmed Adel Omar Mostafa", "name_ar": "احمد عادل عمر مصطفي", "phone": "01065101267", "group": "ONL5_DRT7_S2", "profile": "AI in Digital Arts", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 100, "present": 4, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21180744", "name": "May Said Mohamed Arfa", "name_ar": "مي سعيد محمد عرفه", "phone": "01159419292", "group": "GIZ5_DRT2_S2", "profile": "UI & UX Web Designer", "track": "Digital Arts", "round": "Current Round", "week": 4, "att_pct": 100, "present": 4, "att_total": 4, "last_abs_streak": 0, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["No valid contact in 7 days", "4 milestones behind", "Two or more milestones behind"], "score": 30}, {"id": "21182024", "name": "sondos sameh ibrahim andeel", "name_ar": "سندس سامح ابراهيم قنديل", "phone": "01015541303", "group": "CAI5_SWD2_S4", "profile": "React Frontend Web Developer", "track": "Software Development", "round": "Current Round", "week": 3, "att_pct": 0, "present": 0, "att_total": 3, "last_abs_streak": 3, "status": "Not submitted", "links_submitted": 0, "links_done": 0, "links_corr": 0, "links_locked": 0, "khamsat": 0, "kafiil": 0, "nafezly": 0, "gigs": 0, "gigs_approved": 0, "grad": 0, "portal_status": "Not Started", "reasons": [], "overdue_corr": 0, "open_corr": 0, "followups": [], "days_since_contact": 7, "sat": null, "fb_count": 0, "searched_gig": 0, "risk_reasons": ["Attendance 0%", "No valid contact in 7 days", "3 milestones behind", "Two or more milestones behind"], "score": 65}], "reasons": {"price": ["سعر الخدمة خارج النطاق المسموح", "خلي سعر بداية الخدمة (الباقة الأساسية) بين 3$ و 7$. لو الخدمة كبيرة قلل مميزات الباقة الأساسية وحط الزيادات كباقات أعلى أو إضافات (Extras)"], "inactive": ["الخدمة مش متاحة أو متوقفة أو محذوفة", "تأكد إن الخدمة منشورة ومقبولة ونشطة على المنصة ومش متوقفة، وافتح اللينك من متصفح مش عامل فيه تسجيل دخول تتأكد إنه بيفتح لأي حد، وبعدين ابعت اللينك العام ده"], "name": ["اسم الحساب مش مطابق لاسمك في المنحة", "غيّر اسم الحساب على المنصة ليكون نفس اسمك المسجل في المنحة بالظبط، وبعدين ابعت اللينك تاني"], "mostaql": ["منصة مستقل مش مقبولة", "الخدمات المقبولة بس من خمسات أو كفيل أو نفذلي. انقل الخدمة لواحدة من المنصات دي وابعت اللينك الجديد"], "dup": ["الخدمة مكررة", "اعمل خدمة جديدة بفكرة مختلفة عن الخدمات اللي رفعتها قبل كده (عنوان ووصف وصور مختلفين) وابعت لينكها"]}, "policy": {"minGig": 5, "target": 85, "l1Hours": 24, "gigCount": 3, "largeGig": 300, "minTotal": 15, "coachHours": 24, "contactDays": 7, "qualityHours": 48, "correctionDays": 7, "failedAttempts": 5, "milestoneWeek1": 1, "milestoneWeek2": 2, "milestoneWeek3": 3, "milestoneWeek4": 4, "milestoneWeek5": 5, "milestoneWeek6": 6, "milestoneWeek7": 7, "milestoneWeek8": 8, "riskAttendance": 70, "sessionMinutes": 180, "failedWindowDays": 14, "journeyDelayedLag": 1, "criticalAttendance": 50, "journeyCriticalLag": 2, "regularSessionCount": 8, "industrySessionCount": 5}, "comments": ["نريد إعادة الإنستراكتور السابق البشمهندس أدهم، الإنستراكتور الجديد ليس بنفس الكفاءة والمحاضرة لا تؤدي الغرض والمعلومات بديهية وغير جديدة.", "بصراحه مش حاسه المحاضره ساعدتنى كفايه افهم او اقدم خدمه ازاى و اى البربوزيل الي اكته بصراحه يعني مجرد كتبت لل ai اكتب خدمه و حطيتها ذي و كل الي اتقال المعلومات مكانتش جديده يعني عارفينها و على عكس توقعاتي في تقديم الخدمه مش عارفه اكتبها ازاى و محتاجه المدرب يكون فاهم في التراك بتاعنا ال ui و ux", "المحاضرة اللي فاتت برضه أخدنا ازاي نرفع خدمات والمحاضرة دي خدنا نفس الموضوع بس على موقع تاني، الموضوع ثابت في أغلب المواقع مش محتاج محاضرتين بس أتمنى نتقدم بحيث نلحق نجيب gigs بجد", "محتاجين برومت يكون بروفيشنال عشان نكتب خدماتنا ذي ف المراحل الي قبل كده من المنحه ع عكس الكوتشينج و محتاجين فعلا نقدم خدماتنا ع اكتر من موقع كل المعلومات كانت معروفه قبل لا اجد معلومات جديده ..", "الموضوع محبط و مفيش اي نصايح او افكار او اي شئ"], "coach_onboarding": {"Pending": 10}, "coordinator": {"name": "زياد ممدوح بسطاوي", "phone": "01115210313"}};
+const S = DATA.students, G = DATA.groups, R = DATA.reasons;
+const GMAP = Object.fromEntries(G.map(g=>[g.id,g]));
+const pct = (a,b) => b? Math.round(100*a/b):0;
+const esc = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ---------- language ---------- */
+let LANG = 'ar';
+try{ LANG = localStorage.getItem('fy_lang') || 'ar'; }catch(e){}
+const T = (ar,en) => LANG==='en' ? en : ar;
+const LOC = () => LANG==='en' ? 'en-GB' : 'ar-EG';
+const fmtDate = d => new Date(d).toLocaleDateString(LOC(),{weekday:'long',day:'numeric',month:'long'});
+
+const STATUS = {
+  'Complete':{ar:'مكتمل',en:'Complete',cls:'t-good',c:'var(--good)',ic:'✔'},
+  'Pending QC':{ar:'تحت المراجعة',en:'Pending QC',cls:'t-warn',c:'var(--warn)',ic:'⏳'},
+  'Needs Correction':{ar:'محتاج تعديل',en:'Needs correction',cls:'t-crit',c:'var(--crit)',ic:'✖'},
+  'Not submitted':{ar:'لم يرفع',en:'Not submitted',cls:'t-neu',c:'var(--neutral)',ic:'○'}
+};
+const stName = st => T(STATUS[st].ar, STATUS[st].en);
+const REASON_EN = {
+  price:['Service price outside the allowed range','Set the starting (basic package) price between $3 and $7; move extra features into higher packages or extras'],
+  inactive:['Service unavailable, paused or deleted','Make sure the service is published, approved and active, then send the public link'],
+  name:['Account name does not match the scholarship name','Rename the platform account to exactly match the name registered in the scholarship'],
+  mostaql:['Mostaql platform is not accepted','Only Khamsat, Kafiil or Nafezly are accepted — move the service and send the new link'],
+  dup:['Duplicate service','Create a new service with a different idea (title, description and images)'],
+};
+const rName = r => T(R[r][0], REASON_EN[r][0]);
+const rFix = r => T(R[r][1], REASON_EN[r][1]);
+
+const GC = {}; G.forEach((g,i)=>GC[g.id]=`var(--g${i+1})`);
+const gLabel = id => `<span class="gdot mono" style="--gc:${GC[id]}">${id}</span>`;
+function initials(s){ const n=(LANG==='en'? (s.name||s.name_ar) : (s.name_ar||s.name)).trim().split(/\s+/); return ((n[0]?.[0]||'')+(n[1]?.[0]||'')).toUpperCase(); }
+const sName = s => LANG==='en' ? (s.name||s.name_ar) : (s.name_ar||s.name);
+const sAlt  = s => LANG==='en' ? (s.name_ar||'') : (s.name||'');
+const avatar = (s,sm) => `<div class="av ${sm?'sm':''}" style="--gc:${GC[s.group]}">${esc(initials(s))}</div>`;
+
+function applyTheme(m){ document.documentElement.dataset.theme=m; const ic=document.getElementById('themeIc'), tx=document.getElementById('themeTx'); if(ic){ ic.textContent=m==='dark'?'☀️':'🌙'; tx.textContent= m==='dark'? T('الوضع النهاري','Light mode') : T('الوضع الليلي','Dark mode'); } }
+function toggleTheme(){ const m=document.documentElement.dataset.theme==='dark'?'light':'dark'; applyTheme(m); try{localStorage.setItem('fy_theme',m);}catch(e){} }
+let THEME='light'; try{ THEME = localStorage.getItem('fy_theme')||'light'; }catch(e){}
+
+const PROFILE_AR = {
+  'UI & UX Web Designer':'تصميم UI/UX', 'React Frontend Web Developer':'برمجة React Frontend',
+  'AI in Digital Arts':'التصميم بالذكاء الاصطناعي', 'Media Production Influencer':'صناعة المحتوى والميديا',
+  'Digital Marketing Specialist':'التسويق الرقمي'
+};
+const SERVICE_IDEAS = {
+  'UI & UX Web Designer':'تصميم واجهة موقع/تطبيق، تصميم Landing Page على Figma، تحسين تجربة مستخدم لموقع',
+  'React Frontend Web Developer':'تحويل تصميم Figma لصفحة React، عمل Landing Page متجاوبة، تعديل وإصلاح مشاكل في موقع React',
+  'AI in Digital Arts':'تصميم بوستات سوشيال بالذكاء الاصطناعي، تصميم لوجو، صور منتجات بالـ AI',
+  'Media Production Influencer':'مونتاج ريلز وفيديوهات قصيرة، كتابة سكريبت فيديو، تصميم ثمنيل يوتيوب',
+  'Digital Marketing Specialist':'إدارة صفحة سوشيال ميديا، خطة محتوى شهرية، إعداد حملة إعلانية ممولة'
+};
+
+/* ---------- persistence (contacted log) ---------- */
+let LOG = {};
+try{ LOG = JSON.parse(localStorage.getItem('fy_contact_log')||'{}'); }catch(e){ LOG = {}; }
+function saveLog(){ try{ localStorage.setItem('fy_contact_log', JSON.stringify(LOG)); }catch(e){} }
+const isDone = s => !!LOG[s.id];
+
+/* ---------- action classification ---------- */
+function actionOf(s){
+  if (s.reasons.length && s.status!=='Pending QC') return 'fix';
+  if (s.status==='Needs Correction') return 'fix';
+  if (s.status==='Not submitted') return (s.att_pct!=null && s.att_pct<50) ? 'upload_att' : 'upload';
+  if (s.status==='Pending QC') return 'qc';
+  if (s.status==='Complete') return 'gigs';
+  return 'upload';
+}
+const ACTIONS = {
+  fix:{ar:'تعديل خدمة',en:'Fix service',btn:['🛠 عدّل الخدمة','🛠 Fix service'],cls:'fix'},
+  upload:{ar:'رفع خدمات',en:'Upload services',btn:['📤 ارفع خدماتك','📤 Upload services'],cls:'wa'},
+  upload_att:{ar:'رفع + حضور',en:'Upload + attendance',btn:['📤 رفع + حضور','📤 Upload + attend'],cls:'wa'},
+  qc:{ar:'متابعة مراجعة',en:'QC follow-up',btn:['⏳ متابعة','⏳ Follow up'],cls:'primary'},
+  gigs:{ar:'أول جيج',en:'First gig',btn:['🚀 أول جيج','🚀 First gig'],cls:'primary'},
+};
+const aName = k => T(ACTIONS[k].ar, ACTIONS[k].en);
+S.forEach(s=>{ s.action = actionOf(s); });
+
+/* ---------- message templates (always Arabic: sent to students) ---------- */
+function first(s){ return (s.name_ar||s.name||'').trim().split(/\s+/)[0]; }
+function sign(s){ return `\n\nزياد ممدوح\nكوردينيتور جروب ${s.group} – Freelance Yard`; }
+function nextSess(s){ const g=GMAP[s.group]; if(!g||!g.next_session) return ''; return new Date(g.next_session).toLocaleDateString('ar-EG',{weekday:'long',day:'numeric',month:'long'}); }
+const RULES = `✅ شروط القبول عند الجودة:
+1️⃣ المنصات المقبولة: خمسات – كفيل – نفذلي (مستقل مش مقبولة)
+2️⃣ سعر بداية الخدمة بين 3$ و 7$
+3️⃣ اسم الحساب على المنصة = اسمك المسجل في المنحة
+4️⃣ الخدمة منشورة ونشطة واللينك عام بيفتح لأي حد
+5️⃣ كل خدمة بفكرة مختلفة (مفيش خدمات مكررة)`;
+
+const TPL = {
+  upload: s => `أهلاً يا ${first(s)} 👋
+معاك زياد ممدوح، الكوردينيتور بتاع جروب ${s.group}.
+
+لاحظت إنك لسه مرفعتش لينكات خدماتك على موقع Freelance Yard، وده أهم خطوة دلوقتي في المنحة عشان تكمل في مسار التخرج 🎯
+
+المطلوب منك:
+📌 اعمل 3 خدمات على الأقل في مجال ${PROFILE_AR[s.profile]||s.profile}
+💡 أفكار سريعة: ${SERVICE_IDEAS[s.profile]||''}
+📌 بعد ما الخدمة تتنشر على المنصة، ارفع اللينك بتاعها على موقع Freelance Yard
+
+${RULES}
+
+ياريت تخلص الرفع قبل السيشن الجاية ${nextSess(s)?'('+nextSess(s)+')':''} 🙏
+ولو واقف في أي خطوة ابعتلي هنا وأنا أساعدك على طول.${sign(s)}`,
+
+  upload_att: s => `أهلاً يا ${first(s)} 👋
+معاك زياد ممدوح، الكوردينيتور بتاع جروب ${s.group}.
+
+حبيت أطمن عليك، لاحظت إنك حضرت ${s.present} من ${s.att_total} سيشنات بس، ولسه مرفعتش خدماتك على موقع Freelance Yard.
+
+الحضور ورفع الخدمات هما الاتنين اللي بيحددوا استمرارك في المنحة، فمحتاجك معانا:
+📅 السيشن الجاية ${nextSess(s)} – ياريت تأكدلي حضورك
+📤 ارفع 3 خدمات على الأقل في مجال ${PROFILE_AR[s.profile]||s.profile}
+
+${RULES}
+
+لو في أي ظرف أو مشكلة مانعاك قولي وهنلاقي حل سوا 🤝${sign(s)}`,
+
+  fix: s => {
+    const rs = s.reasons.length? s.reasons : ['generic'];
+    const lines = rs.map((r,i)=> r==='generic'
+      ? `${i+1}) ❌ المشكلة: في لينك أو أكتر رجع من الجودة محتاج تعديل\n   ✅ الحل: ادخل على حسابك في Freelance Yard وشوف ملاحظة الجودة على كل لينك وعدّل حسبها`
+      : `${i+1}) ❌ المشكلة: ${R[r][0]}\n   ✅ الحل: ${R[r][1]}`).join('\n\n');
+    return `أهلاً يا ${first(s)} 👋
+معاك زياد ممدوح، الكوردينيتور بتاع جروب ${s.group}.
+
+${s.links_corr? `في ${s.links_corr} لينك من خدماتك رجعوا من الجودة`:'في خدمات من بتوعك رجعت من الجودة'} ومحتاجين تعديل بسيط عشان يتقبلوا:
+
+${lines}
+
+بعد ما تعدّل، ارفع اللينك تاني على موقع Freelance Yard وابعتلي هنا "تم" عشان أتابع مع الجودة ✅
+ياريت يكون التعديل النهارده أو بكرة بالكتير${s.overdue_corr?' لأن معاد التعديل عدّى':''} ⏰${sign(s)}`;
+  },
+
+  qc: s => `أهلاً يا ${first(s)} 👋
+معاك زياد ممدوح، الكوردينيتور بتاع جروب ${s.group}.
+
+برافو عليك 👏 لينكات خدماتك (${s.links_submitted} لينك) وصلت وهي دلوقتي تحت مراجعة الجودة.
+وأنا متابع معاهم، ولو رجع أي لينك بتعديل هبلغك على طول.
+
+لحد ما المراجعة تخلص ابدأ:
+🔹 قدّم عروض (Proposals) على المشاريع المناسبة لمجالك كل يوم
+🔹 خلي البروفايل كامل: صورة واضحة + نبذة + معرض أعمال
+
+هدفنا أول 3 جيجز معتمدة عشان التخرج 🎓${sign(s)}`,
+
+  gigs: s => `أهلاً يا ${first(s)} 👋
+معاك زياد ممدوح، الكوردينيتور بتاع جروب ${s.group}.
+
+ألف مبروك 🎉 خدماتك اتقبلت من الجودة! كده خلصت أهم خطوة.
+${s.reasons.length? `\n⚠️ ملحوظة: في لينك محتاج تعديل بسيط:\n${s.reasons.map(r=>'❌ '+R[r][0]+'\n✅ '+R[r][1]).join('\n')}\n`:''}
+الخطوة الجاية: أول 3 جيجز معتمدة عشان التخرج (حاليًا ${s.grad}/3) 🎓
+🔹 قدّم 5 عروض على الأقل كل يوم على المشاريع المناسبة
+🔹 ابدأ بسعر منافس عشان تاخد أول تقييمات
+🔹 رد على أي رسالة عميل في أسرع وقت
+🔹 أول ما تاخد أي أوردر ابعتلي عشان أتابع تسجيله
+
+أنا معاك في أي خطوة 💪${sign(s)}`,
+
+  attend: s => `أهلاً يا ${first(s)} 👋
+معاك زياد ممدوح، الكوردينيتور بتاع جروب ${s.group}.
+
+افتقدناك في السيشنات الأخيرة 🙁 (حضورك ${s.present} من ${s.att_total}).
+السيشن الجاية ${nextSess(s)} مهمة جدًا لأننا هنشتغل فيها عملي على رفع الخدمات.
+
+ياريت تأكدلي حضورك بـ 👍 ولو في أي ظرف قولي.${sign(s)}`,
+
+  custom: s => `أهلاً يا ${first(s)} 👋
+معاك زياد ممدوح، الكوردينيتور بتاع جروب ${s.group}.
+
+${sign(s)}`
+};
+const TPL_NAMES = {
+  upload:['📤 رفع خدمات','📤 Upload services'], upload_att:['📤 رفع + حضور','📤 Upload + attendance'], fix:['🛠 تعديل خدمة','🛠 Fix service'],
+  qc:['⏳ متابعة مراجعة','⏳ QC follow-up'], gigs:['🚀 أول جيج','🚀 First gig'], attend:['📅 حضور','📅 Attendance'], custom:['✏️ رسالة فاضية','✏️ Blank message']
+};
+const tplName = k => T(TPL_NAMES[k][0], TPL_NAMES[k][1]);
+
+function waLink(phone, text){
+  let p = String(phone||'').replace(/\D/g,'');
+  if (p.startsWith('0')) p = '20'+p.slice(1);
+  else if (!p.startsWith('20')) p = '20'+p;
+  return `https://wa.me/${p}?text=${encodeURIComponent(text)}`;
+}
+
+/* ---------- helpers ---------- */
+const tip = document.getElementById('tip');
+document.addEventListener('mousemove', e=>{
+  const t = e.target.closest('[data-tip]');
+  if(!t){ tip.style.opacity=0; return; }
+  tip.innerHTML = t.dataset.tip; tip.style.opacity=1;
+  const x = Math.min(e.clientX+14, innerWidth - tip.offsetWidth - 8);
+  tip.style.left = Math.max(8,x)+'px'; tip.style.top = (e.clientY+14)+'px';
+});
+function toast(m){ const t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove('show'),2200); }
+function tag(status){ const x=STATUS[status]; return `<span class="tag ${x.cls}"><span class="d"></span>${x.ic} ${stName(status)}</span>`; }
+
+/* ---------- computed numbers ---------- */
+const N = S.length;
+const cnt = st => S.filter(s=>s.status===st).length;
+const submitted = N - cnt('Not submitted');
+const linksSub = S.reduce((a,s)=>a+s.links_submitted,0);
+const linksDone = S.reduce((a,s)=>a+s.links_done,0);
+const linksCorr = S.reduce((a,s)=>a+s.links_corr,0);
+const withAtt = S.filter(s=>s.att_pct!=null);
+const avgAtt = Math.round(withAtt.reduce((a,s)=>a+s.att_pct,0)/withAtt.length);
+const lowAtt = S.filter(s=>s.att_pct!=null && s.att_pct<50).length;
+const gigs = S.reduce((a,s)=>a+s.gigs_approved,0);
+const graduated = S.filter(s=>s.grad>=3).length;
+const studentsWithGig = S.filter(s=>s.grad>0).length;
+const overdueFixStudents = S.filter(s=>s.overdue_corr>0);
+const sessDone = G.reduce((a,g)=>a+g.sessions_done,0), sessTot = G.reduce((a,g)=>a+g.sessions_total,0);
+const fbCount = G.reduce((a,g)=>a+g.fb_count,0);
+const fbAll = G.reduce((a,g)=>a+g.satisfaction*g.fb_count,0)/fbCount;
+const contactDue = S.filter(s=>s.risk_reasons.some(r=>r.includes('No valid contact'))).length;
+const absList = S.filter(s=>s.last_abs_streak>=2 || (s.att_pct!=null && s.att_pct<50)).sort((a,b)=>(a.att_pct-b.att_pct));
+const lowSatGroups = G.filter(g=>g.satisfaction<4);
+
+function kpi(ic,lbl,val,foot,meterPct,meterColor,state){
+  const st = {crit:['t-crit',T('حرج','Critical')],ser:['t-ser',T('تحت الهدف','Below target')],good:['t-good',T('كويس','Good')],info:['t-blue',T('معلومة','Info')]}[state||'info'];
+  const icBg = {crit:'var(--crit-soft)',ser:'var(--serious-soft)',good:'var(--good-soft)',info:'var(--brand-soft)'}[state||'info'];
+  return `<div class="kpi"><div class="head"><div class="ic" style="background:${icBg}">${ic}</div><span class="tag ${st[0]}"><span class="d"></span>${st[1]}</span></div><div class="lbl">${lbl}</div><div class="val">${val}</div><div class="foot">${foot}</div>${meterPct!=null?`<div class="meter"><i style="width:${Math.max(meterPct,1)}%;background:${meterColor}"></i></div>`:''}</div>`;
+}
+function ring(v,label,color,sub){
+  const r=56, c=2*Math.PI*r, off=c*(1-Math.min(v,100)/100);
+  return `<div class="ring-wrap"><div class="ring"><svg viewBox="0 0 132 132"><circle cx="66" cy="66" r="${r}" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="11"/><circle cx="66" cy="66" r="${r}" fill="none" stroke="${color}" stroke-width="11" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${off}"/></svg><div><div class="rv">${v}%</div><div class="rl">${label}</div></div></div><span>${sub}</span></div>`;
+}
+function simpleBars(el, rows, max, color, fmtv, target){
+  document.getElementById(el).innerHTML = rows.map(r=>`
+    <div class="hbar"><div class="nm">${r.mono?gLabel(r.l):r.l}</div>
+    <div class="track"><div class="seg" style="width:${100*r.v/max}%;background:${r.c||color}" data-tip="${esc(r.tip||r.l+': <b>'+fmtv(r.v)+'</b>')}"></div>${target!=null?`<div class="target-line" style="inset-inline-start:${100*target/max}%"></div>`:''}</div>
+    <div class="num">${fmtv(r.v)}</div></div>`).join('');
+}
+
+/* ---------- render everything that depends on language ---------- */
+function renderStatic(){
+  const st = T('طالب','students');
+  document.getElementById('heroSub').textContent = T(
+    `5 جروبات · ${N} طالب · الهدف الأساسي دلوقتي إن كل طالب يرفع خدماته على Freelance Yard وتتقبل من الجودة.`,
+    `5 groups · ${N} students · The main goal now is for every student to upload services to Freelance Yard and pass QC.`);
+  const hr = new Date().getHours();
+  document.getElementById('hello').textContent = hr<12 ? T('صباح الخير يا زياد 👋','Good morning, Ziad 👋') : T('مساء الخير يا زياد 👋','Good evening, Ziad 👋');
+
+  document.getElementById('kpis').innerHTML = [
+    kpi('📤',T('نسبة رفع الخدمات','Service upload rate'), `${pct(submitted,N)}%`, T(`${submitted} من ${N} طالب رفعوا لينكات · الهدف 85%`,`${submitted} of ${N} students uploaded links · target 85%`), pct(submitted,N), 'var(--crit)','crit'),
+    kpi('✔',T('خدمات مكتملة عند الجودة','Completed at QC'), `${cnt('Complete')} <small>${st}</small>`, T(`${linksDone} لينك مقبول من ${linksSub} مرفوع`,`${linksDone} links approved of ${linksSub} submitted`), pct(linksDone,linksSub), 'var(--good)','ser'),
+    kpi('🛠',T('محتاجين تعديل','Need correction'), `${cnt('Needs Correction')} <small>${st}</small>`, T(`${linksCorr} لينك راجع · ${overdueFixStudents.length} طلبة معادهم عدّى`,`${linksCorr} links returned · ${overdueFixStudents.length} students overdue`), null,null,'crit'),
+    kpi('🎓',T('الجيجز والتخرج','Gigs & graduation'), `${gigs} <small>${T('جيج','gigs')}</small>`, T(`${studentsWithGig} طالب عندهم جيج معتمد · ${graduated} متخرج`,`${studentsWithGig} students with an approved gig · ${graduated} graduated`), pct(graduated,N), 'var(--good)','ser'),
+    kpi('🙋',T('متوسط الحضور','Average attendance'), `${avgAtt}%`, T(`${lowAtt} طالب حضورهم أقل من 50%`,`${lowAtt} students below 50% attendance`), avgAtt, avgAtt<70?'var(--serious)':'var(--good)', avgAtt<70?'ser':'good'),
+    kpi('📅',T('السيشنات','Sessions'), `${sessDone}<small>/${sessTot}</small>`, T('سيشنات اتعملت من إجمالي الخطة','Sessions delivered out of the plan'), pct(sessDone,sessTot), 'var(--seq-450)','info'),
+    kpi('⭐',T('رضا الطلبة','Student satisfaction'), `${fbAll.toFixed(1)}<small>/5</small>`, T(`${fbCount} تقييم من الطلبة`,`${fbCount} student ratings`), fbAll*20, 'var(--seq-450)', fbAll<4?'ser':'good'),
+    kpi('📞',T('تواصل متأخر','Overdue contact'), `${contactDue} <small>${st}</small>`, T('آخر تواصل مسجل من أكتر من 7 أيام (السياسة: كل 7 أيام)','No logged contact in 7+ days (policy: every 7 days)'), pct(contactDue,N), 'var(--crit)','crit'),
+  ].join('');
+
+  document.getElementById('rings').innerHTML =
+    ring(pct(submitted,N),T('رفعوا خدمات','Uploaded'),'#ff8a80',T(`${submitted} من ${N} · الهدف 85%`,`${submitted} of ${N} · target 85%`)) +
+    ring(avgAtt,T('متوسط الحضور','Avg attendance'),'#7fd3a6',T('حد الخطر 70%','Risk line 70%'));
+
+  const ns = cnt('Not submitted');
+  document.getElementById('alertTxt').innerHTML = T(
+    `كل الجروبات تصنيفها <b>Critical</b> ومتأخرة 3–4 مراحل (Milestones) عن المتوقع، و<b>${ns} طالب (${pct(ns,N)}%)</b> لسه مرفعوش ولا خدمة، و<b>${contactDue}</b> طالب معاد التواصل معاهم عدّى. أسرع طريقة لتحسين الأرقام: حملة رفع خدمات خلال الـ 72 ساعة الجاية + تسجيل كل تواصل على البورتال.`,
+    `Every group is rated <b>Critical</b> and is 3–4 milestones behind; <b>${ns} students (${pct(ns,N)}%)</b> haven't uploaded a single service, and <b>${contactDue}</b> students are overdue for contact. Fastest way to improve: a service-upload push over the next 72 hours + logging every contact on the portal.`);
+
+  /* charts */
+  const funnelSteps = [
+    [T('إجمالي الطلبة','Total students'), N],
+    [T('رفعوا لينكات','Uploaded links'), submitted],
+    [T('عندهم لينك مقبول','Have an approved link'), S.filter(s=>s.links_done>0).length],
+    [T('حالة الرفع مكتملة','Upload complete'), cnt('Complete')],
+    [T('عندهم جيج معتمد','Have an approved gig'), studentsWithGig],
+    [T('اتخرجوا (3/3)','Graduated (3/3)'), graduated],
+  ];
+  document.getElementById('funnel').innerHTML = funnelSteps.map(([l,v],i)=>`
+    <div class="step"><div class="lbl">${l}</div>
+    <div><div class="bar" style="width:${Math.max(pct(v,N),0.8)}%;background:${i==0?'var(--seq-600)':'var(--seq-450)'}" data-tip="${esc(l)}: <b>${v}</b> (${pct(v,N)}%)"></div></div>
+    <div class="v">${v} <small>${pct(v,N)}%</small></div></div>`).join('');
+
+  const ORDER = ['Complete','Pending QC','Needs Correction','Not submitted'];
+  document.getElementById('statusLegend').innerHTML = ORDER.map(k=>`<span><i style="background:${STATUS[k].c}"></i>${STATUS[k].ic} ${stName(k)}</span>`).join('');
+  document.getElementById('subByGroup').innerHTML = G.map(g=>{
+    const ss = S.filter(s=>s.group===g.id);
+    const segs = ORDER.map(k=>{ const c=ss.filter(s=>s.status===k).length; return c?`<div class="seg" style="width:${100*c/ss.length}%;background:${STATUS[k].c}" data-tip="${g.id}<br>${stName(k)}: <b>${c}</b> ${st}"></div>`:''; }).join('');
+    const sub = ss.filter(s=>s.status!=='Not submitted').length;
+    return `<div class="hbar"><div class="nm">${gLabel(g.id)}</div><div class="track">${segs}<div class="target-line" style="inset-inline-start:85%"></div></div><div class="num">${pct(sub,ss.length)}% <span>(${sub}/${ss.length})</span></div></div>`;
+  }).join('');
+
+  simpleBars('attByGroup', G.map(g=>{const ss=S.filter(s=>s.group===g.id&&s.att_pct!=null);const v=Math.round(ss.reduce((a,s)=>a+s.att_pct,0)/ss.length);return {l:g.id,mono:1,v,c:v<70?'var(--serious)':'var(--seq-450)',tip:`${g.id}<br>${T('متوسط الحضور','Avg attendance')}: <b>${v}%</b>`};}),100,'var(--seq-450)',v=>v+'%',70);
+  simpleBars('satByGroup', G.map(g=>({l:g.id,mono:1,v:g.satisfaction,c:g.satisfaction<4?'var(--serious)':'var(--seq-450)',tip:`${g.id}<br>${T('رضا','Satisfaction')}: <b>${g.satisfaction}</b> · ${T('وضوح','Clarity')}: ${g.clarity} · ${T('فايدة','Usefulness')}: ${g.usefulness}<br>${g.fb_count} ${T('تقييم','ratings')}`})),5,'var(--seq-450)',v=>v.toFixed(2),4);
+  const rc = {}; S.forEach(s=>s.reasons.forEach(r=>rc[r]=(rc[r]||0)+1));
+  simpleBars('reasons', Object.entries(rc).sort((a,b)=>b[1]-a[1]).map(([k,v])=>({l:rName(k),v,tip:`${rName(k)}<br><b>${v}</b> ${st}<br>${rFix(k)}`})), Math.max(...Object.values(rc)), 'var(--seq-450)', v=>v+' '+st);
+  const pf = [[T('نفذلي','Nafezly'),S.reduce((a,s)=>a+s.nafezly,0)],[T('كفيل','Kafiil'),S.reduce((a,s)=>a+s.kafiil,0)],[T('خمسات','Khamsat'),S.reduce((a,s)=>a+s.khamsat,0)]];
+  simpleBars('platforms', pf.map(([l,v])=>({l,v})), Math.max(...pf.map(x=>x[1])), 'var(--seq-450)', v=>v+' '+T('لينك','links'));
+
+  /* late items */
+  document.getElementById('lateFix').innerHTML = S.filter(s=>s.open_corr>0).sort((a,b)=>b.overdue_corr-a.overdue_corr).map(s=>`
+    <div class="row"><div class="l">${avatar(s,1)}<div><b>${esc(sName(s))}</b>${gLabel(s.group)}<div class="reason">${s.reasons.map(rName).join(' · ')}</div>
+    <div style="margin-top:4px">${s.overdue_corr?`<span class="tag t-crit"><span class="d"></span>${s.overdue_corr} ${T('تاسك متأخر','overdue task(s)')}</span>`:`<span class="tag t-warn"><span class="d"></span>${T('في المعاد','On time')}</span>`}</div></div></div>
+    <button class="btn sm fix" onclick="openMsg('${s.id}','fix')">${T('🛠 ابعت التعديل','🛠 Send fix')}</button></div>`).join('');
+
+  const progItems = [
+    ['crit',T(`${cnt('Not submitted')} طالب لم يرفعوا أي خدمة`,`${cnt('Not submitted')} students haven't uploaded any service`),T('الجروبات في الأسبوع 3–5 من 8 · المفروض الرفع يكون خلص','Groups are in week 3–5 of 8 · uploads should be done by now')],
+    ['crit',T('الـ 5 جروبات متأخرة 3–4 Milestones','All 5 groups are 3–4 milestones behind'),T(`متوسط الـ Milestone = 0 مقابل المتوقع ${G.map(g=>g.expected_milestone).join('/')}`,`Average milestone = 0 vs expected ${G.map(g=>g.expected_milestone).join('/')}`)],
+    ['crit',T(`${contactDue} طالب بدون تواصل مسجل من 7+ أيام`,`${contactDue} students with no logged contact in 7+ days`),T('آخر تواصل مسجل 31 أكتوبر · السياسة تواصل كل 7 أيام · ده سبب ظهور كل الطلبة Critical','Last logged contact 31 Oct · policy is every 7 days · this is why every student shows as Critical')],
+    ['ser',T(`${overdueFixStudents.length} طلبة عندهم تعديلات خدمات معادها عدّى`,`${overdueFixStudents.length} students with overdue service corrections`),T('سياسة التعديل: خلال 7 أيام من رجوع اللينك','Correction policy: within 7 days of the link being returned')],
+    ['ser',T(`${lowAtt} طالب حضورهم أقل من 50% (منهم ${S.filter(s=>s.att_pct===0).length} حضورهم 0%)`,`${lowAtt} students below 50% attendance (${S.filter(s=>s.att_pct===0).length} at 0%)`),T('حد الخطر في السياسة 70% والحرج 50%','Policy risk line 70%, critical 50%')],
+    ['warn',T(`${(DATA.coach_onboarding.Pending||0)} كوتشز Onboarding بتاعهم لسه Pending`,`${(DATA.coach_onboarding.Pending||0)} coaches still have onboarding Pending`),T('محتاج متابعة مع السوبرفايزر','Needs follow-up with the supervisor')],
+    ['warn',T('جروبين رضا الطلبة فيهم أقل من 4/5','Two groups have satisfaction below 4/5'),lowSatGroups.map(g=>`${g.id} (${g.satisfaction})`).join(' · ')],
+    ['warn',T(`${cnt('Pending QC')} طلبة لينكاتهم مستنية مراجعة الجودة`,`${cnt('Pending QC')} students waiting for QC review`),T('سياسة الجودة: 48 ساعة · تابع مع فريق الـ QC','QC policy: 48 hours · follow up with the QC team')],
+  ];
+  const lvl = {crit:'t-crit',ser:'t-ser',warn:'t-warn'}, lvlN={crit:T('حرج','Critical'),ser:T('عالي','High'),warn:T('متوسط','Medium')};
+  document.getElementById('lateProgram').innerHTML = progItems.map(([l,t,d])=>`
+    <div class="row"><div class="l"><div><b>${t}</b><span>${d}</span></div></div><span class="tag ${lvl[l]}"><span class="d"></span>${lvlN[l]}</span></div>`).join('');
+
+  document.getElementById('lateAtt').innerHTML = `<div class="hint" style="margin:0 0 4px">${absList.length} ${st}</div>` + absList.map(s=>`
+    <div class="row"><div class="l">${avatar(s,1)}<div><b>${esc(sName(s))}</b><span>${gLabel(s.group)} · ${T('حضر','attended')} ${s.present}/${s.att_total} · ${T('غاب آخر','missed last')} ${s.last_abs_streak}</span></div></div>
+    <button class="btn sm wa" onclick="openMsg('${s.id}','${s.status==='Not submitted'?'upload_att':'attend'}')">${T('📅 كلّمه','📅 Message')}</button></div>`).join('');
+
+  document.getElementById('comments').innerHTML = DATA.comments.map(c=>`<div class="quote">${esc(c)}</div>`).join('');
+  document.getElementById('commentsNote').innerHTML = T(
+    '💡 الملاحظة المتكررة: الطلبة عايزين محتوى عملي أكتر وبرومبتات جاهزة لكتابة الخدمات، ومش عايزين تكرار نفس شرح الرفع على أكتر من منصة.',
+    '💡 Recurring theme: students want more hands-on content and ready prompts for writing services, and no repeated "how to upload" lectures for each platform.');
+
+  /* group cards */
+  document.getElementById('groupCards').innerHTML = G.map(g=>{
+    const ss = S.filter(s=>s.group===g.id);
+    const sub = ss.filter(s=>s.status!=='Not submitted').length;
+    const wa = ss.filter(s=>s.att_pct!=null);
+    const att = Math.round(wa.reduce((a,s)=>a+s.att_pct,0)/wa.length);
+    const fix = ss.filter(s=>s.status==='Needs Correction').length;
+    const prof = ss[0]?.profile||'';
+    const ns = g.next_session? fmtDate(g.next_session):'—';
+    const segs = ['Complete','Pending QC','Needs Correction'].map(k=>{const c=ss.filter(s=>s.status===k).length;return c?`<i style="width:${100*c/ss.length}%;background:${STATUS[k].c}" data-tip="${stName(k)}: <b>${c}</b>"></i>`:'';}).join('');
+    return `<div class="card gcard" style="--gc:${GC[g.id]}">
+      <div class="top"><div><div class="code">${g.id}</div><div class="prof">${prof}</div></div><span class="tag t-crit"><span class="d"></span>✖ ${g.trajectory}</span></div>
+      <div class="gprog"><div class="row1"><span>${T('رفع الخدمات','Service uploads')}</span><span>${sub}/${ss.length} · ${T('الهدف','target')} ${Math.ceil(ss.length*.85)}</span></div><div class="bar">${segs}<div class="target-line" style="inset-inline-start:85%"></div></div></div>
+      <div class="gstats">
+        <div class="gstat"><b>${ss.length}</b><span>${T('طالب','students')}</span></div>
+        <div class="gstat"><b style="color:${pct(sub,ss.length)<30?'var(--crit)':'inherit'}">${pct(sub,ss.length)}%</b><span>${T('رفعوا','uploaded')}</span></div>
+        <div class="gstat"><b>${fix}</b><span>${T('تعديل','to fix')}</span></div>
+        <div class="gstat"><b>${att}%</b><span>${T('حضور','attend.')}</span></div>
+      </div>
+      <div class="kv"><span>${T('الكوتش','Coach')}</span><span>${esc(g.coach_name)}</span></div>
+      <div class="kv"><span>${T('الأسبوع / السيشنات','Week / sessions')}</span><span>W${g.week} · ${g.sessions_done}/${g.sessions_total}</span></div>
+      <div class="kv"><span>${T('الـ Milestone','Milestone')}</span><span>${g.average_milestone} / ${g.expected_milestone} ${T('المتوقع','expected')}</span></div>
+      <div class="kv"><span>${T('السيشن الجاية','Next session')}</span><span>${ns}</span></div>
+      <div class="kv"><span>${T('رضا الطلبة · دوروا على جيجز','Satisfaction · searched gigs')}</span><span>${g.satisfaction}/5 · ${g.searched_gig_pct}%</span></div>
+      <div class="mini-t">${T('الحضور لكل سيشن','Attendance per session')}</div><div class="mini">${g.att_by_session.map(a=>`<div class="c"><em>${a.pct}%</em><i style="height:${a.pct*0.45}px" data-tip="${T('سيشن','Session')} ${a.n}: <b>${a.pct}%</b>"></i><span>S${a.n}</span></div>`).join('')}</div>
+      <div class="gactions">
+        <a class="btn sm wa" href="${g.whatsapp_link}" target="_blank" rel="noopener">${T('💬 جروب الواتساب','💬 WhatsApp group')}</a>
+        <a class="btn sm" href="${g.session_link}" target="_blank" rel="noopener">${T('🎥 رابط السيشن','🎥 Session link')}</a>
+        <button class="btn sm" onclick="filterGroup('${g.id}')">${T('👥 طلبة الجروب','👥 Group students')}</button>
+        <button class="btn sm" onclick="copyBroadcast('${g.id}')">${T('📋 رسالة للجروب','📋 Group message')}</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  /* broadcasts */
+  document.getElementById('broadcasts').innerHTML = G.map(g=>`
+    <div class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><h3>${gLabel(g.id)}</h3>
+    <div style="display:flex;gap:6px"><button class="btn sm" onclick="copyBroadcast('${g.id}')">${T('📋 نسخ','📋 Copy')}</button><a class="btn sm wa" href="${g.whatsapp_link}" target="_blank" rel="noopener">${T('💬 افتح الجروب','💬 Open group')}</a></div></div>
+    <div class="bc-body" dir="rtl"><div class="bub">${esc(broadcastText(g))}</div></div></div>`).join('');
+
+  /* plan */
+  const TARGETS = [[T('الحالي (8 نوفمبر)','Now (8 Nov)'),pct(submitted,N)],[T('بعد 72 ساعة (11 نوفمبر)','In 72 hours (11 Nov)'),35],[T('قبل سيشنات 15 نوفمبر','Before 15 Nov sessions'),60],[T('22 نوفمبر','22 Nov'),80],[T('قبل آخر سيشن (29 نوفمبر)','Before last session (29 Nov)'),90]];
+  document.getElementById('targetsTbl').innerHTML = TARGETS.map((x,i)=>`<div class="stp ${i==0?'cur':''}"><div class="w">${x[0]}</div><div class="p" style="color:${i==0?'var(--crit)':'var(--ink)'}">${x[1]}%</div><div class="n">${Math.round(x[1]*N/100)} ${T('من','of')} ${N} ${st}</div><div class="meter"><i style="width:${x[1]}%;background:${i==0?'var(--crit)':'var(--seq-450)'}"></i></div></div>`).join('');
+
+  const openCorr = S.filter(s=>s.open_corr>0).length;
+  const lowSat = lowSatGroups.map(g=>g.id).join(T(' و ',' and '));
+  const PLAN = [
+    {when:T('النهارده وبكرة · 0–48 ساعة','Today & tomorrow · 0–48 h'), title:T('🔥 إطفاء الحرايق','🔥 Put out the fires'), c:'#d03b3b', items: LANG==='en' ? [
+      `<b>Send correction messages to ${openCorr} students</b> from the Overdue section (🛠 button) — the quickest win, since they already uploaded and only need a small fix (mostly price between $3–$7).`,
+      `<b>Send "upload your services" to the ${cnt('Not submitted')} students</b> using ⚡ sequential sending — start with GIZ5_DRT2_S2 (session 11 Nov) then ONL5_DRT1_S1 (12 Nov).`,
+      `<b>Log every contact on the portal</b> — all ${contactDue} students show Critical because of "No valid contact in 7 days"; logging alone removes that flag.`,
+      `<b>Post the group message</b> (from Ready Group Messages) in all 5 groups so everyone sees the rules at once.`,
+      `<b>Follow up with QC</b> on the ${cnt('Pending QC')} Pending QC students so they close within 48 hours.`
+    ] : [
+      `<b>ابعت رسايل التعديل لـ ${openCorr} طلبة</b> من قسم المتأخرات (زرار 🛠) — دي أسرع مكسب لأنهم رفعوا خلاص ومحتاجين تعديل بسيط (أغلبه السعر بين 3$–7$).`,
+      `<b>ابعت رسالة "ارفع خدماتك" للـ ${cnt('Not submitted')} طالب</b> باستخدام ⚡ وضع الإرسال المتتالي — ابدأ بجروب GIZ5_DRT2_S2 (السيشن 11 نوفمبر) وبعدين ONL5_DRT1_S1 (12 نوفمبر).`,
+      `<b>سجّل كل تواصل على البورتال</b> — كل الـ ${contactDue} طالب ظاهرين Critical بسبب "No valid contact in 7 days"، والتسجيل لوحده هيشيل السبب ده.`,
+      `<b>ابعت رسالة الجروب</b> (من قسم الرسايل الجاهزة) في الـ 5 جروبات عشان الكل يشوف الشروط مرة واحدة.`,
+      `<b>تابع مع الجودة</b> على ${cnt('Pending QC')} طلبة Pending QC عشان يتقفلوا خلال 48 ساعة.`
+    ]},
+    {when:T('الأسبوع ده · لحد 15 نوفمبر','This week · until 15 Nov'), title:T('⚙️ ورشة رفع الخدمات','⚙️ Service-upload workshop'), c:'#e0703f', items: LANG==='en' ? [
+      `<b>Agree with every coach</b> that the first 45 minutes of the next session become a "live upload workshop": each student opens the platform and uploads a service in front of the coach.`,
+      `<b>Prepare a ready prompt and service-description template for each track</b> — a recurring request in student comments; it cuts writing time and corrections.`,
+      `<b>Pre-submit checklist</b>: price $3–$7, only Khamsat/Kafiil/Nafezly, account name = scholarship name, service active with a public link, no duplicates. This reduces QC returns.`,
+      `<b>Message the ${absList.length} absent students</b> 24 hours before each session (📅 button) and ask them to confirm attendance.`,
+      `<b>Daily follow-up at 9 PM</b>: open the report, filter "Not contacted yet", and message the rest.`
+    ] : [
+      `<b>اتفق مع كل كوتش</b> إن أول 45 دقيقة من السيشن الجاية تبقى "ورشة رفع لايف": كل طالب يفتح المنصة ويرفع خدمة قدام الكوتش.`,
+      `<b>جهّز برومبت ونموذج وصف خدمة جاهز لكل تراك</b> — ده طلب متكرر في تعليقات الطلبة وهيقلل وقت الكتابة والتعديلات.`,
+      `<b>Checklist قبل الإرسال</b>: السعر 3$–7$، خمسات/كفيل/نفذلي بس، اسم الحساب = اسم المنحة، الخدمة نشطة واللينك عام، مفيش تكرار. ده هيقلل نسبة الرجوع من الجودة.`,
+      `<b>كلّم الـ ${absList.length} طالب الغايبين</b> قبل كل سيشن بـ 24 ساعة (زرار 📅) واطلب تأكيد حضور.`,
+      `<b>متابعة يومية الساعة 9 مساءً</b>: افتح التقرير، فلتر "لسه متواصلتش معاه"، وابعت للباقي.`
+    ]},
+    {when:T('من 15 لـ 29 نوفمبر','15 – 29 Nov'), title:T('📈 تثبيت الأرقام والتخرج','📈 Lock in the numbers & graduate'), c:'#0c930c', items: LANG==='en' ? [
+      `<b>Students whose services were approved</b> get the 🚀 "First gig" message: 5 proposals a day and log any order immediately — goal 3/3 approved gigs.`,
+      `<b>Run a weekly leaderboard</b> in each group for the most uploads and gigs — it motivates the rest.`,
+      `<b>Meet supervisor Esraa Hamada</b> about the groups below 4/5 satisfaction (${lowSat}) and the student comments on the coach and content.`,
+      `<b>Finish coach onboarding</b> (${DATA.coach_onboarding.Pending||0} Pending) so milestones update correctly.`,
+      `<b>Escalate</b> any student who doesn't reply after two messages + a call within 7 days.`
+    ] : [
+      `<b>اللي اتقبلت خدماتهم</b> ابعتلهم رسالة 🚀 "أول جيج": 5 عروض يوميًا وتسجيل أي أوردر فورًا — الهدف 3/3 جيجز معتمدة.`,
+      `<b>اعمل ترتيب أسبوعي (Leaderboard)</b> في كل جروب لأكتر الطلبة رفعًا وجيجز — بيحفّز الباقي.`,
+      `<b>اجتماع مع السوبرفايزر Esraa Hamada</b> بخصوص الجروبات اللي رضاها أقل من 4/5 (${lowSat}) وتعليقات الطلبة عن الكوتش والمحتوى.`,
+      `<b>خلّص الـ Onboarding بتاع الكوتشز</b> (${DATA.coach_onboarding.Pending||0} Pending) عشان الـ Milestones تتحدث صح.`,
+      `<b>Escalation</b> لأي طالب ما ردش بعد رسالتين + مكالمة خلال 7 أيام.`
+    ]}
+  ];
+  document.getElementById('planCards').innerHTML = PLAN.map((p,i)=>`<div class="card phase" style="--pc:${p.c}"><div class="num">0${i+1}</div><div class="when">${p.when}</div><h3>${p.title}</h3><ol>${p.items.map(x=>`<li>${x}</li>`).join('')}</ol></div>`).join('');
+
+  document.getElementById('thLinks').dataset.tip = T('✓ مقبول · ✖ تعديل · الرقم = إجمالي المرفوع','✓ approved · ✖ needs fix · number = total submitted');
+}
+
+function filterGroup(id){ document.getElementById('fGroup').value=id; render(); location.hash='#students'; }
+
+/* ---------- table ---------- */
+const fGroup = document.getElementById('fGroup');
+G.forEach(g=>fGroup.insertAdjacentHTML('beforeend',`<option value="${g.id}">${g.id}</option>`));
+let ACT = '', sortKey='score', sortDir=-1;
+const actCounts = ()=>{ const c={}; S.forEach(s=>c[s.action]=(c[s.action]||0)+1); return c; };
+function renderChips(){
+  const c = actCounts();
+  document.getElementById('actionChips').innerHTML = `<button class="chip ${ACT===''?'on':''}" onclick="setAct('')">${T('الكل','All')} <b>${N}</b></button>` +
+    Object.keys(ACTIONS).filter(k=>c[k]).map(k=>`<button class="chip ${ACT===k?'on':''}" onclick="setAct('${k}')">${aName(k)} <b>${c[k]}</b></button>`).join('');
+}
+function setAct(a){ ACT=a; renderChips(); render(); }
+function filtered(){
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  const st = document.getElementById('fStatus').value, gr = fGroup.value, dn = document.getElementById('fDone').value;
+  let L = S.filter(s=>(!gr||s.group===gr)&&(!st||s.status===st)&&(!ACT||s.action===ACT)
+    &&(!dn||(dn==='done'?isDone(s):!isDone(s)))
+    &&(!q||[s.name,s.name_ar,s.phone,s.id].join(' ').toLowerCase().includes(q)));
+  L.sort((a,b)=>{
+    let x = sortKey==='done'? +isDone(a) : sortKey==='name'? sName(a) : a[sortKey];
+    let y = sortKey==='done'? +isDone(b) : sortKey==='name'? sName(b) : b[sortKey];
+    if (x==null) x=-1; if (y==null) y=-1;
+    if (typeof x==='string') return sortDir*x.localeCompare(y);
+    return sortDir*(x-y) || (b.score-a.score);
+  });
+  return L;
+}
+function prioTag(sc){ const c = sc>=65?'t-crit':sc>=45?'t-ser':sc>=30?'t-warn':'t-blue'; return `<div class="prio tag ${c}" data-tip="${T('درجة الأولوية = حالة الرفع + الحضور + الغياب المتكرر + تأخر التواصل + تعديلات متأخرة','Priority score = upload status + attendance + repeated absence + overdue contact + overdue fixes')}">${sc}</div>`; }
+function problem(s){
+  if (s.reasons.length) return `<div class="reason">${s.reasons.map(r=>'❌ '+rName(r)).join('<br>')}</div>${s.overdue_corr?`<span class="tag t-crit" style="margin-top:3px"><span class="d"></span>${s.overdue_corr} ${T('متأخر','overdue')}</span>`:''}`;
+  if (s.status==='Needs Correction') return `<div class="reason">❌ ${T('لينك راجع من الجودة','Link returned by QC')}</div>`;
+  if (s.status==='Not submitted') return `<span style="color:var(--ink-2)">${T('لازم يرفع 3 خدمات على الأقل','Must upload at least 3 services')}</span>${s.att_pct!=null&&s.att_pct<50?`<br><span class="reason">+ ${T('حضور ضعيف','low attendance')} ${s.att_pct}%</span>`:''}`;
+  if (s.status==='Pending QC') return `<span style="color:var(--ink-2)">${T('متابعة مع الجودة','Follow up with QC')} (${s.links_submitted} ${T('لينك','links')})</span>`;
+  if (s.status==='Complete') return `<span style="color:var(--ink-2)">${T('يبدأ يجيب جيجز','Start landing gigs')} (${s.grad}/3)</span>`;
+  return '';
+}
+function logType(s){ const k=LOG[s.id].k; return k&&TPL_NAMES[k]? tplName(k).replace(/^\S+\s/,'') : (LOG[s.id].type==='يدوي'||!LOG[s.id].type? T('يدوي','manual') : LOG[s.id].type); }
+function render(){
+  const L = filtered();
+  document.getElementById('tbody').innerHTML = L.map(s=>{
+    const a = ACTIONS[s.action];
+    const attc = s.att_pct==null?'var(--neutral)': s.att_pct<50?'var(--crit)': s.att_pct<70?'var(--serious)':'var(--good)';
+    return `<tr class="${isDone(s)?'done':''}" id="r${s.id}">
+      <td class="c-chk"><input type="checkbox" class="chk" ${isDone(s)?'checked':''} onchange="toggleDone('${s.id}',this.checked)" title="${T('تم التواصل','Contacted')}"></td>
+      <td class="c-prio">${prioTag(s.score)}</td>
+      <td class="c-name"><div class="sname">${avatar(s)}<div><b>${esc(sName(s))}</b><span>${gLabel(s.group)} · <span class="mono">${s.phone}</span></span>${isDone(s)?`<span class="ok">✓ ${esc(LOG[s.id].t)} · ${esc(logType(s))}</span>`:''}</div></div></td>
+      <td class="c-st">${tag(s.status)}</td>
+      <td class="c-lk"><div class="links" data-tip="${T('مرفوع','Submitted')}: ${s.links_submitted} · ${T('مقبول','Approved')}: ${s.links_done} · ${T('تعديل','Fix')}: ${s.links_corr}<br>${T('نفذلي','Nafezly')} ${s.nafezly} · ${T('كفيل','Kafiil')} ${s.kafiil} · ${T('خمسات','Khamsat')} ${s.khamsat}">${s.links_submitted? `<span class="lk ok">✓${s.links_done}</span>${s.links_corr?`<span class="lk bad">✖${s.links_corr}</span>`:''}<span class="lk">${s.links_submitted}</span>`:'<span class="lk">0</span>'}</div></td>
+      <td class="c-att"><div class="attcell"><span class="mono" style="min-width:34px">${s.att_pct??'—'}%</span><div class="meter"><i style="width:${s.att_pct||0}%;background:${attc}"></i></div></div></td>
+      <td class="c-prob">${problem(s)}</td>
+      <td class="c-act"><div class="acts">
+        <button class="btn sm ${a.cls}" onclick="openMsg('${s.id}','${s.action}')">${T(a.btn[0],a.btn[1])}</button>
+        <button class="btn sm icon" title="${T('رسالة تانية','Other message')}" onclick="openMsg('${s.id}','custom')">✏️</button>
+        <a class="btn sm icon" title="${T('اتصال','Call')}" href="tel:${s.phone}">📞</a>
+      </div></td></tr>`;
+  }).join('') || `<tr><td colspan="8" style="text-align:center;padding:30px;color:var(--ink-3)">${T('مفيش طلبة بالفلتر ده','No students match this filter')}</td></tr>`;
+  const done = S.filter(isDone).length;
+  document.getElementById('tblCounter').innerHTML = T(`معروض <b>${L.length}</b> طالب · تم التواصل مع <b>${done}</b> من ${N}`,`Showing <b>${L.length}</b> students · contacted <b>${done}</b> of ${N}`);
+  document.getElementById('hContacted').textContent = T(`✅ تم التواصل: ${done} / ${N}`,`✅ Contacted: ${done} / ${N}`);
+  document.getElementById('sideDone').textContent = `${done} / ${N}`;
+  document.getElementById('sideBar').style.width = pct(done,N)+'%';
+  document.getElementById('nStud').textContent = N-done;
+}
+['q','fStatus','fDone'].forEach(id=>document.getElementById(id).addEventListener('input',render));
+fGroup.addEventListener('input',render);
+document.querySelectorAll('th[data-sort]').forEach(th=>th.addEventListener('click',()=>{
+  const k=th.dataset.sort; if(sortKey===k) sortDir*=-1; else {sortKey=k; sortDir=(k==='name'||k==='status')?1:-1;} render();
+}));
+function toggleDone(id, v, k){
+  if (v) LOG[id] = {t:new Date().toLocaleString(LOC(),{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}), k: k||null, type: k? TPL_NAMES[k][0].replace(/^\S+\s/,'') : 'يدوي'};
+  else delete LOG[id];
+  saveLog(); render();
+}
+
+/* ---------- modal ---------- */
+let CUR = null, CURTPL = null, QUEUE = null, QI = 0;
+function openMsg(id, tpl){
+  const s = S.find(x=>x.id===id); CUR = s; CURTPL = tpl;
+  document.getElementById('mName').textContent = sName(s);
+  const av=document.getElementById('mAv'); av.style.setProperty('--gc',GC[s.group]); av.textContent=initials(s);
+  document.getElementById('mTime').textContent = new Date().toLocaleTimeString(LOC(),{hour:'2-digit',minute:'2-digit'})+' ✓✓';
+  document.getElementById('mMeta').textContent = `${s.group} · ${s.phone} · ${stName(s.status)}`;
+  const avail = ['upload','upload_att','fix','qc','gigs','attend','custom'];
+  document.getElementById('mTpls').innerHTML = avail.map(k=>`<button class="chip ${k===tpl?'on':''}" onclick="switchTpl('${k}')">${tplName(k)}</button>`).join('');
+  document.getElementById('mText').value = TPL[tpl](s);
+  document.getElementById('modalBg').classList.add('show');
+  const q = !!QUEUE;
+  document.getElementById('qbar').style.display = q?'flex':'none';
+  document.getElementById('qSkip').style.display = q?'inline-flex':'none';
+  if (q){ document.getElementById('qTxt').textContent = T(`الطالب ${QI+1} من ${QUEUE.length}`,`Student ${QI+1} of ${QUEUE.length}`); document.getElementById('qMeter').style.width = (100*QI/QUEUE.length)+'%'; }
+}
+function switchTpl(k){ openMsg(CUR.id, k); }
+function closeModal(){ const was=document.getElementById('modalBg').classList.contains('show'); document.getElementById('modalBg').classList.remove('show'); if(QUEUE && was){ QUEUE=null; toast(T('تم إيقاف وضع الإرسال المتتالي','Sequential sending stopped')); } }
+function sendWA(){
+  const text = document.getElementById('mText').value;
+  window.open(waLink(CUR.phone, text), '_blank');
+  toggleDone(CUR.id, true, CURTPL);
+  toast(T('✅ اتفتح واتساب واتسجل التواصل','✅ WhatsApp opened and contact logged'));
+  if (QUEUE) queueNext(true); else closeModal();
+}
+async function copyMsg(){
+  const t = document.getElementById('mText').value;
+  try{ await navigator.clipboard.writeText(t); }
+  catch(e){ const ta=document.getElementById('mText'); ta.select(); document.execCommand('copy'); }
+  toast(T('📋 الرسالة اتنسخت','📋 Message copied'));
+}
+function startQueue(){
+  const L = filtered().filter(s=>!isDone(s));
+  if (!L.length){ toast(T('مفيش طلبة متبقيين في القائمة دي','No remaining students in this list')); return; }
+  QUEUE = L; QI = 0; openMsg(L[0].id, L[0].action);
+}
+function queueNext(){
+  QI++;
+  if (!QUEUE || QI>=QUEUE.length){ QUEUE=null; document.getElementById('modalBg').classList.remove('show'); toast(T('🎉 خلصت القائمة كلها','🎉 You finished the whole list')); return; }
+  const s = QUEUE[QI]; openMsg(s.id, s.action);
+}
+document.getElementById('modalBg').addEventListener('click',e=>{ if(e.target.id==='modalBg') closeModal(); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+
+/* ---------- export ---------- */
+function exportCSV(){
+  const L = filtered();
+  const head = ['ID','Name','Name AR','Phone','Group','Profile','Submission','Links submitted','Links approved','Links need correction','Attendance %','Problem','Action','Priority','Contacted','Contact time'];
+  const rows = L.map(s=>[s.id,s.name,s.name_ar,s.phone,s.group,s.profile,s.status,s.links_submitted,s.links_done,s.links_corr,s.att_pct,s.reasons.map(rName).join(' | '),aName(s.action),s.score,isDone(s)?'Yes':'No',isDone(s)?LOG[s.id].t:'']);
+  const csv = '﻿'+[head,...rows].map(r=>r.map(v=>`"${String(v??'').replace(/"/g,'""')}"`).join(',')).join('\n');
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
+  a.download = 'freelance-yard-students-'+new Date().toISOString().slice(0,10)+'.csv'; a.click();
+}
+
+/* ---------- broadcast (Arabic: sent to students) ---------- */
+function broadcastText(g){
+  const ss = S.filter(s=>s.group===g.id), sub = ss.filter(s=>s.status!=='Not submitted').length;
+  const ns = g.next_session? new Date(g.next_session).toLocaleDateString('ar-EG',{weekday:'long',day:'numeric',month:'long'}):'';
+  return `السلام عليكم يا شباب 👋
+تحديث سريع لجروب ${g.id}:
+📊 لحد النهارده ${sub} من ${ss.length} بس رفعوا لينكات خدماتهم على Freelance Yard
+
+🎯 المطلوب من كل واحد قبل السيشن الجاية (${ns}):
+ارفع 3 خدمات على الأقل وابعت لينكاتها على موقع Freelance Yard
+
+${RULES}
+
+اللي واقف في أي خطوة يكلمني خاص وأنا معاه لحد ما يخلص 💪
+زياد ممدوح – الكوردينيتور`;
+}
+function copyBroadcast(id){
+  const t = broadcastText(GMAP[id]);
+  (navigator.clipboard? navigator.clipboard.writeText(t): Promise.reject()).then(()=>toast(T('📋 رسالة الجروب اتنسخت — افتح الجروب والصقها','📋 Group message copied — open the group and paste'))).catch(()=>{ prompt(T('انسخ الرسالة:','Copy the message:'), t); });
+}
+
+/* ---------- language switch ---------- */
+function applyLang(){
+  const html = document.documentElement;
+  html.lang = LANG; html.dir = LANG==='en' ? 'ltr' : 'rtl';
+  document.title = T('تقرير الكوردينيتور · زياد ممدوح · Freelance Yard','Coordinator Report · Ziad Mamdouh · Freelance Yard');
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    if (el.dataset.ar === undefined) el.dataset.ar = el.innerHTML;
+    el.innerHTML = LANG==='en' ? el.dataset.en : el.dataset.ar;
+  });
+  document.querySelectorAll('[data-en-ph]').forEach(el=>{
+    if (el.dataset.arPh === undefined) el.dataset.arPh = el.placeholder;
+    el.placeholder = LANG==='en' ? el.dataset.enPh : el.dataset.arPh;
+  });
+  document.querySelectorAll('.langTx').forEach(el=> el.textContent = LANG==='en' ? 'عربي' : 'English');
+  applyTheme(document.documentElement.dataset.theme || THEME);
+  renderStatic(); renderChips(); render();
+  if (document.getElementById('modalBg').classList.contains('show') && CUR) openMsg(CUR.id, CURTPL);
+  hl();
+}
+function toggleLang(){
+  LANG = LANG==='en' ? 'ar' : 'en';
+  try{ localStorage.setItem('fy_lang', LANG); }catch(e){}
+  applyLang();
+  toast(T('🌐 اللغة: عربي','🌐 Language: English'));
+}
+
+/* ---------- nav highlight ---------- */
+document.getElementById('nLate').textContent = overdueFixStudents.length + absList.length;
+const secs=['home',...[...document.querySelectorAll('section')].map(s=>s.id)].map(id=>document.getElementById(id));
+const links=[...document.querySelectorAll('#sideNav a, #mNav a')];
+function hl(){ let cur='home'; secs.forEach(s=>{ if(s && s.getBoundingClientRect().top<120) cur=s.id; }); links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur)); }
+addEventListener('scroll',hl,{passive:true});
+
+applyTheme(THEME);
+applyLang();
+</script>
+
+</body>
+</html>
