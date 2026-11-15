@@ -3,135 +3,333 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>رسايل الطلبة — واتساب</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<title>Gigs Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f4f6f3;--card:#fff;--card2:#f0f3ef;--tx:#14231b;--mu:#64746b;--bd:#e2e8e2;--wa:#1faa59;--waD:#128c4a;--gold:#c98a00;--goldBg:#fff7e0;--red:#d93838;--redBg:#fdecec;--ac:#075e54;--sh:0 1px 2px rgba(16,40,28,.06),0 4px 16px rgba(16,40,28,.05)}
-[data-theme=dark]{--bg:#0d1512;--card:#14201b;--card2:#1b2a23;--tx:#e8f2ec;--mu:#8fa69a;--bd:#24352d;--goldBg:#2c2410;--redBg:#2e1616;--ac:#25d366;--sh:none}
+:root{--bg:#eef2ef;--card:#fff;--card2:#f3f6f3;--tx:#11211a;--mu:#5f7168;--bd:#e0e7e1;--wa:#1faa59;--waD:#128c4a;--gold:#c48300;--goldBg:#fff6dc;--red:#d63a3a;--redBg:#fdecec;--blue:#1c6ed6;--blueBg:#e7f0ff;--org:#e8590c;--orgBg:#fff0e6;--ac:#075e54;--ink:#0b2e25;--sh:0 1px 2px rgba(16,40,28,.05),0 8px 28px rgba(16,40,28,.07);--r:20px}
+[data-theme=dark]{--bg:#0a110e;--card:#121c18;--card2:#18251f;--tx:#e6f1eb;--mu:#8ea79b;--bd:#22332b;--goldBg:#2b2310;--redBg:#2d1616;--blueBg:#11203a;--orgBg:#2d1c10;--ac:#25d366;--ink:#06120e;--sh:none}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Cairo,Tahoma,sans-serif;background:var(--bg);color:var(--tx);line-height:1.7;padding-bottom:60px;transition:background .3s}
-button,input,textarea{font:inherit;color:inherit}
-.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
-.top{background:linear-gradient(135deg,#075e54,#128c7e 60%,#25d366);color:#fff;padding:26px 0 70px;border-radius:0 0 28px 28px}
-.top .hd{display:flex;align-items:center;gap:14px}
-.logo{width:52px;height:52px;border-radius:16px;background:rgba(255,255,255,.18);display:grid;place-items:center;flex:none}
+body{font-family:Cairo,Tahoma,sans-serif;background:var(--bg);color:var(--tx);line-height:1.7;padding-bottom:70px;transition:background .3s}
+button,input,textarea,select{font:inherit;color:inherit}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+/* hero */
+.hero{position:relative;overflow:hidden;color:#fff;padding:28px 0 30px;background:#062e27}
+.hero::before{content:"";position:absolute;inset:-40%;background:radial-gradient(40% 40% at 20% 30%,#25d36655,transparent 70%),radial-gradient(35% 35% at 80% 20%,#128c7e88,transparent 70%),radial-gradient(30% 30% at 60% 90%,#c4830044,transparent 70%);filter:blur(10px)}
+.hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:32px 32px;mask-image:linear-gradient(#000,transparent)}
+.hero .wrap{position:relative;z-index:1}
+.hd{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.logo{width:54px;height:54px;border-radius:17px;background:linear-gradient(135deg,#25d366,#128c7e);display:grid;place-items:center;flex:none;box-shadow:0 8px 24px #25d36655}
 .logo svg{width:30px;height:30px;fill:#fff}
-h1{font-size:25px;font-weight:800;line-height:1.3}
-.sub{opacity:.85;font-size:14.5px}
-.thm{flex:none;margin-inline-start:auto;width:42px;height:42px;border-radius:12px;border:0;background:rgba(255,255,255,.18);cursor:pointer;font-size:18px;color:#fff}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:-48px;position:relative}
-.stat{background:var(--card);border-radius:18px;padding:14px 16px;box-shadow:var(--sh);border:1px solid var(--bd);display:flex;align-items:center;gap:12px}
-.stat .si{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;font-size:20px;flex:none;background:var(--card2)}
-.stat b{font-size:22px;font-weight:800;display:block;line-height:1.2}
-.stat span{color:var(--mu);font-size:12.5px}
-.ring{--p:0;width:44px;height:44px;border-radius:50%;background:conic-gradient(var(--wa) calc(var(--p)*1%),var(--card2) 0);display:grid;place-items:center;flex:none}
-.ring::after{content:"";width:32px;height:32px;border-radius:50%;background:var(--card)}
-@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
-.panel{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:14px;margin-top:14px;box-shadow:var(--sh);position:sticky;top:8px;z-index:20}
-.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.row+.row{margin-top:10px}
-.lbl{font-size:12.5px;font-weight:800;color:var(--mu);min-width:52px}
+h1{font-size:27px;font-weight:900;line-height:1.25;letter-spacing:-.3px}
+.sub{opacity:.8;font-size:14.5px}
+.hbtns{margin-inline-start:auto;display:flex;gap:8px}
+.thm{width:44px;height:44px;border-radius:13px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.1);cursor:pointer;font-size:18px;color:#fff;backdrop-filter:blur(6px)}
+.count{margin-top:22px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:14px 18px;backdrop-filter:blur(8px)}
+.count .big{font-size:46px;font-weight:900;line-height:1;background:linear-gradient(180deg,#fff,#b8f5d0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.count .lab{font-size:13.5px;opacity:.85;line-height:1.4}
+.count .lab b{display:block;font-size:16px;opacity:1}
+.tbar{flex:1;min-width:220px}
+.tbar .tr{height:10px;border-radius:99px;background:rgba(255,255,255,.14);overflow:hidden}
+.tbar .tr i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#25d366,#ffd43b)}
+.tbar .tl{display:flex;justify-content:space-between;font-size:12px;opacity:.75;margin-top:5px}
+/* kpis */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:-58px;position:relative;z-index:2}
+.kpi{background:var(--card);border-radius:var(--r);padding:15px 16px;box-shadow:var(--sh);border:1px solid var(--bd);display:flex;align-items:center;gap:13px}
+.kpi .si{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:21px;flex:none;background:var(--card2)}
+.kpi b{font-size:23px;font-weight:900;display:block;line-height:1.15}
+.kpi span{color:var(--mu);font-size:12.5px}
+.ring{--p:0;--c:var(--wa);width:46px;height:46px;border-radius:50%;background:conic-gradient(var(--c) calc(var(--p)*1%),var(--card2) 0);display:grid;place-items:center;flex:none;position:relative}
+.ring::after{content:"";width:34px;height:34px;border-radius:50%;background:var(--card)}
+.ring.lg{width:64px;height:64px}.ring.lg::after{width:48px;height:48px}
+.ring em{position:absolute;font-style:normal;font-size:12px;font-weight:900}
+/* tabs */
+.tabs{display:flex;gap:6px;margin-top:16px;background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:6px;box-shadow:var(--sh);position:sticky;top:8px;z-index:30;overflow-x:auto;scrollbar-width:none}
+.tab{flex:1;white-space:nowrap;padding:10px 14px;border-radius:13px;border:0;background:transparent;cursor:pointer;font-weight:800;font-size:14px;color:var(--mu);transition:.18s}
+.tab:hover{color:var(--tx);background:var(--card2)}
+.tab.on{background:var(--ac);color:#fff;box-shadow:0 6px 16px #075e5440}
+[data-theme=dark] .tab.on{color:#06281a}
+.tab small{font-weight:700;opacity:.8}
+.view{display:none;animation:fade .25s}
+.view.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+/* generic */
+.sec{margin-top:20px}
+.sh{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.sh h2{font-size:19px;font-weight:900}
+.sh p{color:var(--mu);font-size:13.5px}
+.sh .sp{margin-inline-start:auto}
+.box{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:16px;box-shadow:var(--sh)}
+.grid2{display:grid;grid-template-columns:1.3fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px}
+@media(max-width:900px){.grid2{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}}
+.btn{padding:8px 14px;border-radius:12px;border:1px solid var(--bd);background:var(--card);cursor:pointer;font-weight:800;font-size:13px;white-space:nowrap;transition:.15s;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{border-color:var(--wa)}
+.btn.pri{background:var(--wa);border-color:var(--wa);color:#fff}
+.btn.pri:hover{background:var(--waD)}
+.btn.dark{background:var(--ink);border-color:var(--ink);color:#fff}
+[data-theme=dark] .btn.dark{background:#25d366;color:#06281a;border-color:#25d366}
+.btn.sm{padding:5px 10px;font-size:12px;border-radius:10px}
 .chip{padding:5px 12px;border-radius:10px;border:1px solid var(--bd);background:var(--card);cursor:pointer;font-weight:700;font-size:13px;white-space:nowrap;transition:.15s}
 .chip:hover{border-color:var(--wa)}
 .chip.on{background:var(--ac);border-color:var(--ac);color:#fff}
 [data-theme=dark] .chip.on{color:#06281a}
 .chip small{opacity:.7}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.row+.row{margin-top:10px}
+.lbl{font-size:12.5px;font-weight:800;color:var(--mu);min-width:56px}
+.tag{font-size:11.5px;padding:1px 9px;border-radius:7px;background:var(--card2);color:var(--mu);font-weight:700;white-space:nowrap}
+.tag.g{background:var(--goldBg);color:var(--gold)}
+.tag.today,.tag.low{background:var(--redBg);color:var(--red)}
+.tag.ok{background:color-mix(in srgb,var(--wa) 14%,transparent);color:var(--wa)}
+.tag.bl{background:var(--blueBg);color:var(--blue)}
+.tag.or{background:var(--orgBg);color:var(--org)}
+.hint{color:var(--mu);font-size:13px;background:var(--card2);border-radius:12px;padding:10px 12px}
+.empty{text-align:center;color:var(--mu);padding:50px}
+/* plan */
+.goal{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.goal h3{font-size:18px;font-weight:900;line-height:1.4}
+.goal p{color:var(--mu);font-size:13.5px}
+.ms{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.m{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:center}
+.m .n{width:28px;height:28px;border-radius:9px;background:var(--card2);display:grid;place-items:center;font-weight:900;font-size:13px}
+.m.done .n{background:var(--wa);color:#fff}
+.m .t{font-weight:800;font-size:14px;line-height:1.35}
+.m .t small{display:block;color:var(--mu);font-weight:700;font-size:12px}
+.m .pr{height:7px;border-radius:99px;background:var(--card2);overflow:hidden;margin-top:5px}
+.m .pr i{display:block;height:100%;background:var(--wa);border-radius:99px}
+.m .v{font-weight:900;font-size:13px;color:var(--mu);white-space:nowrap}
+.phases{display:flex;flex-direction:column;gap:14px;position:relative}
+.ph{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden}
+.ph.cur{border-color:var(--wa);box-shadow:0 0 0 3px color-mix(in srgb,var(--wa) 18%,transparent),var(--sh)}
+.ph.past{opacity:.72}
+.phh{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer}
+.phh .num{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;font-weight:900;font-size:17px;color:#fff;flex:none}
+.phh h3{font-size:16px;font-weight:900;line-height:1.3}
+.phh p{color:var(--mu);font-size:12.5px}
+.phh .st{margin-inline-start:auto;text-align:left}
+.phb{padding:0 16px 14px;display:flex;flex-direction:column;gap:6px}
+.it{display:flex;gap:10px;align-items:flex-start;padding:9px 10px;border-radius:13px;background:var(--card2)}
+.it input{margin-top:5px;width:18px;height:18px;accent-color:var(--wa);flex:none;cursor:pointer}
+.it .tx{flex:1;font-size:14px;font-weight:600;line-height:1.55}
+.it.dn .tx{text-decoration:line-through;color:var(--mu)}
+.it .tx .w{display:inline-block;font-size:11px;font-weight:800;padding:0 8px;border-radius:6px;margin-inline-end:6px;vertical-align:1px}
+.w.j{background:var(--blueBg);color:var(--blue)}.w.k{background:var(--orgBg);color:var(--org)}.w.p{background:color-mix(in srgb,var(--wa) 14%,transparent);color:var(--wa)}.w.q{background:var(--goldBg);color:var(--gold)}
+.it .dt{font-size:11.5px;color:var(--mu);font-weight:800;white-space:nowrap;margin-top:3px}
+.ins{display:flex;flex-direction:column;gap:8px}
+.in{display:flex;gap:10px;padding:10px 12px;border-radius:13px;background:var(--card2);font-size:13.5px;line-height:1.6}
+.in b{font-weight:800}
+.in .e{font-size:18px;flex:none}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:9px 8px;text-align:right;border-bottom:1px solid var(--bd);vertical-align:top}
+th{color:var(--mu);font-weight:800;font-size:12px}
+td .g{direction:ltr;display:inline-block;font-weight:800}
+.tw{overflow-x:auto}
+/* funnel */
+.fun{display:flex;flex-direction:column;gap:8px}
+.fr{display:grid;grid-template-columns:170px 1fr 44px;gap:10px;align-items:center;font-size:13.5px;font-weight:700;cursor:pointer;border-radius:10px;padding:2px 4px}
+.fr:hover{background:var(--card2)}
+.fr .bar{height:24px;border-radius:8px;background:var(--card2);overflow:hidden}
+.fr .bar i{display:block;height:100%;border-radius:8px;min-width:4px}
+.fr b{font-weight:900;text-align:left}
+.stk{display:flex;height:12px;border-radius:99px;overflow:hidden;background:var(--card2);margin:10px 0}
+.stk i{display:block;height:100%}
+.gcard{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:16px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:6px}
+.gcard .top{display:flex;gap:12px;align-items:center}
+.gcard h3{font-size:16px;font-weight:900;direction:ltr;text-align:right}
+.gcard .cm{color:var(--mu);font-size:12.5px}
+.leg{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:11.5px;color:var(--mu);font-weight:700}
+.leg span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:3px;background:var(--c);margin-inline-end:4px}
+/* students */
+.panel{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:14px;margin-top:14px;box-shadow:var(--sh)}
+.camp{display:flex;gap:6px;background:var(--card2);border-radius:14px;padding:4px}
+.camp button{flex:1;border:0;background:transparent;padding:8px 12px;border-radius:11px;font-weight:800;font-size:13px;cursor:pointer;color:var(--mu)}
+.camp button.on{background:var(--card);color:var(--tx);box-shadow:var(--sh)}
 .srch{flex:1;min-width:200px;position:relative}
 .srch input{width:100%;padding:9px 38px 9px 12px;border-radius:12px;border:1px solid var(--bd);background:var(--card2);outline:0}
 .srch input:focus{border-color:var(--wa);background:var(--card)}
 .srch::before{content:"🔍";position:absolute;right:12px;top:8px;font-size:14px;opacity:.6}
-.btn{padding:8px 14px;border-radius:12px;border:1px solid var(--bd);background:var(--card);cursor:pointer;font-weight:700;font-size:13px;white-space:nowrap}
-.btn:hover{border-color:var(--wa)}
 label.tg{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--mu);cursor:pointer}
 label.tg input{accent-color:var(--wa)}
 .gsec{margin-top:22px}
 .ghd{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
-.ghd h2{font-size:17px;font-weight:800;direction:ltr}
-.ghd .when{font-size:13px;font-weight:800;padding:3px 12px;border-radius:99px;background:var(--card2);color:var(--mu)}
+.ghd h2{font-size:17px;font-weight:900;direction:ltr}
+.ghd .when{font-size:12.5px;font-weight:800;padding:3px 12px;border-radius:99px;background:var(--card2);color:var(--mu)}
 .ghd .when.today{background:var(--redBg);color:var(--red)}
 .ghd .cnt{color:var(--mu);font-size:13px;margin-inline-start:auto}
-.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:10px}
-.st{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--sh);transition:.2s;position:relative}
-.st:hover{transform:translateY(-2px)}
-.st.sent{opacity:.6}
-.st.grad{background:linear-gradient(160deg,var(--goldBg),var(--card) 55%);border-color:color-mix(in srgb,var(--gold) 40%,var(--bd))}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:10px}
+.stc{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:13px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--sh);transition:.2s;position:relative;border-inline-start:4px solid var(--sc,var(--bd))}
+.stc:hover{transform:translateY(-2px)}
+.stc.sent{opacity:.58}
+.stc.grad{background:linear-gradient(160deg,var(--goldBg),var(--card) 55%)}
 .who{display:flex;gap:11px;align-items:center}
 .av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:17px;color:#fff;flex:none;position:relative}
-.av i{position:absolute;bottom:-3px;left:-3px;font-style:normal;font-size:14px;background:var(--card);border-radius:50%;width:20px;height:20px;display:grid;place-items:center;box-shadow:var(--sh)}
+.av i{position:absolute;bottom:-3px;left:-3px;font-style:normal;font-size:13px;background:var(--card);border-radius:50%;width:20px;height:20px;display:grid;place-items:center;box-shadow:0 1px 4px rgba(0,0,0,.15)}
 .nm{font-weight:800;font-size:15px;line-height:1.4}
-.ph{color:var(--mu);font-size:12.5px;direction:ltr;text-align:right}
+.ph2{color:var(--mu);font-size:12.5px;direction:ltr;text-align:right}
+.gb{display:flex;gap:3px;margin-inline-start:auto;align-self:flex-start;flex-direction:column;align-items:flex-end}
+.gb .s{display:flex;gap:3px}
+.gb .s i{width:16px;height:7px;border-radius:4px;background:var(--card2)}
+.gb .s i.f{background:var(--org)}
+.gb small{font-size:10.5px;color:var(--mu);font-weight:800}
+.stc.grad .gb .s i{background:var(--gold)}
 .meta{display:flex;gap:5px;flex-wrap:wrap}
-.tag{font-size:11.5px;padding:1px 9px;border-radius:7px;background:var(--card2);color:var(--mu);font-weight:700}
-.tag.g{background:color-mix(in srgb,var(--gold) 18%,transparent);color:var(--gold)}
-.tag.today{background:var(--redBg);color:var(--red)}
-.tag.low{color:var(--red)}
-.tag.ok{color:var(--wa)}
+.note{font-size:12.5px;color:var(--mu);background:var(--card2);border-radius:10px;padding:5px 9px;line-height:1.5}
 .acts{display:flex;gap:6px;align-items:center}
-.wa{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:9px 14px;border-radius:12px;background:var(--wa);color:#fff;font-weight:800;text-decoration:none;font-size:14px;white-space:nowrap;transition:.15s}
+.wa{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:9px 14px;border-radius:12px;background:var(--wa);color:#fff;font-weight:800;text-decoration:none;font-size:14px;white-space:nowrap;transition:.15s;border:0;cursor:pointer}
 .wa:hover{background:var(--waD)}
-.st.sent .wa{background:var(--card2);color:var(--mu)}
+.stc.sent .wa{background:var(--card2);color:var(--mu)}
 .wa svg{width:18px;height:18px;fill:currentColor}
-.ic{width:40px;height:40px;border-radius:12px;border:1px solid var(--bd);background:var(--card);cursor:pointer;display:grid;place-items:center;font-size:15px;flex:none}
+.ic{width:40px;height:40px;border-radius:12px;border:1px solid var(--bd);background:var(--card);cursor:pointer;display:grid;place-items:center;font-size:15px;flex:none;text-decoration:none}
 .ic:hover{border-color:var(--wa)}
-.empty{text-align:center;color:var(--mu);padding:50px}
-.md{position:fixed;inset:0;background:rgba(5,20,12,.5);backdrop-filter:blur(4px);display:none;align-items:flex-start;justify-content:center;padding:4vh 14px;z-index:50;overflow:auto}
+/* compose cards */
+.cc{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;display:flex;flex-direction:column}
+.cch{padding:14px 16px;display:flex;gap:12px;align-items:center;border-bottom:1px solid var(--bd)}
+.cch h3{font-size:15.5px;font-weight:900;line-height:1.3}
+.cch p{color:var(--mu);font-size:12.5px}
+.ccb{padding:12px 16px;display:flex;flex-direction:column;gap:10px;flex:1}
+.ccb textarea{width:100%;min-height:230px;padding:12px;border-radius:14px;border:1px solid var(--bd);background:#e9f7ee;color:#111;outline:0;resize:vertical;line-height:1.75;font-size:13.5px}
+[data-theme=dark] .ccb textarea{background:#0f2a22;color:#e9edef}
+.ccf{padding:0 16px 14px;display:flex;gap:8px;flex-wrap:wrap}
+/* modals */
+.md{position:fixed;inset:0;background:rgba(5,20,12,.55);backdrop-filter:blur(5px);display:none;align-items:flex-start;justify-content:center;padding:4vh 14px;z-index:50;overflow:auto}
 .md.on{display:flex}
-.box{background:var(--card);border-radius:22px;width:min(560px,100%);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.3)}
-.box.wide{width:min(760px,100%)}
-.box h3{display:flex;align-items:center;gap:8px;font-size:17px;padding:14px 18px;background:var(--ac);color:#fff}
-[data-theme=dark] .box h3{color:#06281a}
-.box h3 .x{margin-inline-start:auto;background:rgba(255,255,255,.2);border:0;color:inherit}
+.mb{background:var(--card);border-radius:22px;width:min(560px,100%);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.mb.wide{width:min(780px,100%)}
+.mb h3{display:flex;align-items:center;gap:8px;font-size:17px;padding:14px 18px;background:var(--ac);color:#fff}
+[data-theme=dark] .mb h3{color:#06281a}
+.mb h3 .x{margin-inline-start:auto;background:rgba(255,255,255,.2);border:0;color:inherit}
 .chatbg{background:#e5ddd5;padding:18px;background-image:radial-gradient(rgba(0,0,0,.04) 1px,transparent 1px);background-size:14px 14px}
 [data-theme=dark] .chatbg{background-color:#0b141a}
 .pv{white-space:pre-wrap;background:#dcf8c6;color:#111;border-radius:12px 0 12px 12px;padding:10px 12px;font-size:14px;max-height:55vh;overflow:auto;box-shadow:0 1px 1px rgba(0,0,0,.1);margin-inline-start:auto;max-width:92%;word-break:break-word}
 [data-theme=dark] .pv{background:#005c4b;color:#e9edef}
-.box .foot{padding:12px 18px;display:flex;gap:8px;flex-wrap:wrap}
-.box .bd{padding:14px 18px}
-.box label{display:block;font-weight:800;margin:12px 0 4px;font-size:14px}
-.box label small{color:var(--mu);font-weight:600}
-.box textarea{width:100%;min-height:90px;padding:10px;border-radius:12px;border:1px solid var(--bd);background:var(--card2);outline:0;resize:vertical;line-height:1.7}
-.hint{color:var(--mu);font-size:13px;background:var(--card2);border-radius:12px;padding:10px 12px}
-@media(max-width:760px){.panel{position:static}#gChips,#fChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}.row:has(#gChips),.row:has(#fChips){flex-wrap:nowrap}h1{font-size:21px}.list{grid-template-columns:1fr}}
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#075e54;color:#fff;padding:9px 20px;border-radius:99px;font-weight:800;opacity:0;transition:.3s;pointer-events:none;z-index:99}
+.mb .foot{padding:12px 18px;display:flex;gap:8px;flex-wrap:wrap}
+.mb .bd{padding:14px 18px}
+.mb label{display:block;font-weight:800;margin:12px 0 4px;font-size:14px}
+.mb label small{color:var(--mu);font-weight:600}
+.mb textarea{width:100%;min-height:90px;padding:10px;border-radius:12px;border:1px solid var(--bd);background:var(--card2);outline:0;resize:vertical;line-height:1.7}
+.mb h4{margin:18px 0 2px;font-size:14px;font-weight:900;color:var(--ac);border-top:1px dashed var(--bd);padding-top:12px}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{padding:7px 14px;border-radius:11px;border:1px solid var(--bd);background:var(--card);font-weight:800;cursor:pointer}
+.seg button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13.5px}
+.kv span{color:var(--mu);font-weight:700}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#075e54;color:#fff;padding:10px 22px;border-radius:99px;font-weight:800;opacity:0;transition:.3s;pointer-events:none;z-index:99;box-shadow:0 10px 30px rgba(0,0,0,.25)}
 .toast.on{opacity:1}
+@media(max-width:760px){h1{font-size:21px}.count .big{font-size:36px}.list,.grid3{grid-template-columns:1fr}.fr{grid-template-columns:120px 1fr 36px}.tab{flex:none}#gChips,#fChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}}
+@media print{.tabs,.hero .hbtns,.btn,.panel{display:none!important}.view{display:block!important}}
+
+.lng{width:auto;padding:0 14px;font-weight:900;font-size:14px}
+[dir=ltr] .srch input{padding:9px 12px 9px 38px}[dir=ltr] .srch::before{right:auto;left:12px}
+[dir=ltr] .ph2{text-align:left}[dir=ltr] .phh .st{text-align:right}[dir=ltr] .fr b{text-align:right}
+[dir=ltr] th,[dir=ltr] td{text-align:left}[dir=ltr] .gcard h3{text-align:left}
+.it .go{flex:none}
 </style>
 </head>
 <body>
-<div class="top"><div class="wrap"><div class="hd">
-  <div class="logo"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.3z"/></svg></div>
-  <div><h1>رسايل الطلبة</h1><p class="sub">دوس «ابعت» جنب الطالب ← واتساب يفتح والرسالة جاهزة باسمه وميعاد سيشنه</p></div>
-  <button class="thm" id="thm" title="الوضع الغامق/الفاتح">🌙</button>
-</div></div></div>
-<div class="wrap">
-  <div class="stats" id="stats"></div>
-  <div class="panel">
-    <div class="row"><span class="lbl">الجروب</span><div class="row" id="gChips" style="margin:0"></div></div>
-    <div class="row"><span class="lbl">الحالة</span><div class="row" id="fChips" style="margin:0"></div></div>
-    <div class="row">
-      <div class="srch"><input id="q" placeholder="دوّر باسم الطالب أو رقمه…"></div>
-      <label class="tg"><input type="checkbox" id="hideSent"> اخفي اللي اتبعتلهم</label>
-      <button class="btn" id="tplBtn">✏️ عدّل الرسايل</button>
-      <button class="btn" id="resetSent">↺ صفّر الإرسال</button>
-    </div>
+<div class="hero"><div class="wrap">
+  <div class="hd">
+    <div class="logo"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.3z"/></svg></div>
+    <div><h1>Gigs Plan</h1><p class="sub" data-t="sub"></p></div>
+    <div class="hbtns"><button class="thm lng" id="lng"></button><button class="thm" id="thm">🌙</button></div>
   </div>
-  <div id="list"></div>
+  <div class="count" id="count"></div>
+</div></div>
+
+<div class="wrap">
+  <nav class="tabs" id="tabs">
+    <button class="tab" data-tab="plan" data-t="tPlan"></button>
+    <button class="tab" data-tab="dash" data-t="tDash"></button>
+    <button class="tab" data-tab="students" data-t="tStu"></button>
+    <button class="tab" data-tab="groups" data-t="tGrp"></button>
+    <button class="tab" data-tab="coaches" data-t="tCoa"></button>
+  </nav>
+
+  <section class="view" id="v-plan">
+    <div class="sec"><div class="sh"><h2 data-t="phT"></h2><p data-t="phP"></p></div><div class="phases" id="phases"></div></div>
+    <div class="sec grid2">
+      <div class="box"><div class="sh"><h2 data-t="gT"></h2></div><div class="tw" id="gtable"></div></div>
+      <div class="box"><div class="sh"><h2 data-t="insT"></h2></div><div class="ins" id="ins"></div></div>
+    </div>
+  </section>
+
+  <section class="view" id="v-dash">
+    <div class="sec grid2">
+      <div class="box"><div class="sh"><h2 data-t="funT"></h2><p data-t="funP"></p></div><div class="fun" id="fun"></div></div>
+      <div class="box"><div class="sh"><h2 data-t="focT"></h2><p data-t="focP"></p><button class="btn sm sp" data-go="students" data-stage="focus" data-t="openAll"></button></div><div id="focus" class="ins"></div></div>
+    </div>
+    <div class="sec"><div class="sh"><h2 data-t="grps"></h2></div><div class="grid3" id="gcards"></div></div>
+  </section>
+
+  <section class="view" id="v-students">
+    <div class="panel">
+      <div class="row"><span class="lbl" data-t="lMsg"></span><div class="camp" id="camp" style="flex:1;max-width:520px"><button data-c="status" data-t="cSt"></button><button data-c="deadline" data-t="cDl"></button></div>
+        <button class="btn dark" id="nextBtn" data-t="next"></button></div>
+      <div class="row"><span class="lbl" data-t="lGrp"></span><div class="row" id="gChips" style="margin:0"></div></div>
+      <div class="row"><span class="lbl" data-t="lStage"></span><div class="row" id="fChips" style="margin:0"></div></div>
+      <div class="row">
+        <div class="srch"><input id="q"></div>
+        <label class="tg"><input type="checkbox" id="hideSent"> <span data-t="hide"></span></label>
+        <button class="btn" id="tplBtn" data-t="editMsg"></button>
+        <button class="btn" id="csvBtn" data-t="csv"></button>
+        <button class="btn" id="resetSent" data-t="reset"></button>
+      </div>
+    </div>
+    <div id="list"></div>
+  </section>
+
+  <section class="view" id="v-groups">
+    <div class="sec"><div class="sh"><h2 data-t="gmT"></h2><p data-t="gmP"></p><button class="btn sm sp" data-edit="g" data-t="editBase"></button></div>
+    <div class="grid3" id="gmsgs"></div></div>
+  </section>
+
+  <section class="view" id="v-coaches">
+    <div class="sec"><div class="sh"><h2 data-t="cmT"></h2><p data-t="cmP"></p><button class="btn sm sp" data-edit="c" data-t="editBase"></button></div>
+    <div class="grid3" id="cmsgs"></div></div>
+    <div class="sec"><div class="sh"><h2 data-t="ctT"></h2></div><div class="grid3" id="contacts"></div></div>
+  </section>
 </div>
 
-<div class="md" id="pvM"><div class="box"><h3><span id="pvT"></span><button class="ic x" data-close>✕</button></h3>
-  <div class="chatbg"><div class="pv" id="pvB"></div></div>
-  <div class="foot"><a class="wa" id="pvWa" target="_blank" rel="noopener">ابعت على واتساب</a><button class="btn" id="pvCp">📋 انسخ</button></div></div></div>
+<div class="md" id="pvM"><div class="mb"><h3><span id="pvT"></span><button class="ic x" data-close>✕</button></h3>
+  <div class="chatbg"><div class="pv" id="pvB" dir="rtl"></div></div>
+  <div class="foot"><a class="wa" id="pvWa" target="_blank" rel="noopener" data-t="sendWa"></a><button class="btn" id="pvCp" data-t="copy"></button></div></div></div>
 
-<div class="md" id="tplM"><div class="box wide"><h3>✏️ نصوص الرسايل<button class="ic x" data-close>✕</button></h3><div class="bd">
-  <p class="hint">تقدر تستخدم: <b>{name}</b> اسم الطالب الأول · <b>{day}</b> يوم السيشن · <b>{time}</b> الساعة · <b>{link}</b> لينك السيشن · <b>{group}</b> كود الجروب · <b>{gigs}</b> عدد الـ Gigs · <b>{left}</b> الفاضل · <b>{links}</b> اللينكات المرفوعة · <b>{done}</b> المقبولة · <b>{nc}</b> المحتاجة تعديل · <b>{fix}</b> ملاحظات الجودة · <b>{att}</b> الحضور · <b>{outlier}</b> لينك Outlier · <b>{guide}</b> لينك الدليل · <b>{profile}</b> مسار التخرج · <b>{ga}</b> الـ Gigs المقبولة · <b>{svc}</b> سطر الخدمات المقبولة (للمتخرج). جروب <b>CAI5_SWD2_S4</b> بياخد الرسالة الأصلية زي ما هي. التعديلات بتتحفظ على المتصفح ده.</p>
+<div class="md" id="fuM"><div class="mb"><h3><span id="fuT"></span><button class="ic x" data-close>✕</button></h3><div class="bd" id="fuB"></div>
+  <div class="foot"><button class="btn pri" id="fuSave" data-t="fuSave"></button><button class="btn" id="fuClr" data-t="fuClr"></button></div></div></div>
+
+<div class="md" id="tplM"><div class="mb wide"><h3><span id="tplT"></span><button class="ic x" data-close>✕</button></h3><div class="bd">
+  <p class="hint" id="tplH"></p>
   <div id="tplF"></div>
-  <div class="row" style="margin-top:14px"><button class="btn" id="tplSave" style="background:var(--wa);color:#fff;border:0">💾 احفظ</button><button class="btn" id="tplReset">↺ رجّع النصوص الأصلية</button></div></div></div></div>
+  <div class="row" style="margin-top:14px"><button class="btn pri" id="tplSave" data-t="save"></button><button class="btn" id="tplReset" data-t="restore"></button></div></div></div></div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-const DATA={"st": [{"id": "21021589", "ar": "سجا سعيد علي امام", "en": "Saja Said Ali Emam", "ph": "01272387376", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 60, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21024109", "ar": "سندس شريف عبدالدايم صيام", "en": "sondos sheref abdalldaim siam", "ph": "01552988482", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 40, "risk": "Critical", "sv": "pend", "lk": 3, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21032125", "ar": "يوسف ايمن محمود عبد المغيث", "en": "Youssef Ayman Mahmoud Abd El Mogheis", "ph": "01005791314", "g": "CAI5_SWD2_S4", "grad": true, "gr": "Graduated", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 3, "jp": "React Frontend Web Developer"}, {"id": "21033239", "ar": "مروة أحمد محمد أبو الفضل", "en": "Marwa Ahmed Muhamed Abu El Fadl", "ph": "01501061290", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 40, "risk": "Critical", "sv": "done", "lk": 4, "dn": 3, "nc": 1, "fx": ["الخدمة مش ظاهرة (متوقفة أو محذوفة) — لازم تكون خدمة عامة ونشطة"], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21043451", "ar": "جايانا اسامة اسحق شاكر", "en": "Jaaiana Osama Isaac Shaker", "ph": "01555317456", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 20, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21042183", "ar": "عمر خالد ابراهيم احمد", "en": "Omar Khalid Ibrahim Ahmed", "ph": "01005346583", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 80, "risk": "Critical", "sv": "fix", "lk": 5, "dn": 1, "nc": 3, "fx": ["اسم الحساب لازم يكون نفس اسمك المسجل في المنحة", "سعر البداية لازم يكون بين 3$ و7$"], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21047383", "ar": "محمد طه عبد المنعم محمد الجرف", "en": "Mohamed Taha abdelmonim Mohamed elgarph", "ph": "01275828351", "g": "ONL5_DRT6_S3", "grad": true, "gr": "Graduated", "att": 25, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 3, "jp": "Media Production Influencer"}, {"id": "21058414", "ar": "ايمان ايمن محمود احمد", "en": "Eman Ayman Mahmoud Ahmed", "ph": "01154232694", "g": "CAI5_SWD2_S4", "grad": false, "gr": "1/3", "att": 75, "risk": "Critical", "sv": "fix", "lk": 3, "dn": 1, "nc": 2, "fx": ["الخدمة مش ظاهرة (متوقفة أو محذوفة) — لازم تكون خدمة عامة ونشطة", "سعر البداية لازم يكون بين 3$ و7$"], "ga": 1, "jp": "React Frontend Web Developer"}, {"id": "21058237", "ar": "جنى محمود عبد الرحيم عبد الباسط", "en": "Jana Mahmod Abdalraheem Abdalbaset", "ph": "01021373199", "g": "ONL5_DRT6_S3", "grad": true, "gr": "Graduated", "att": 50, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 3, "jp": "Media Production Influencer"}, {"id": "21066497", "ar": "محمود أحمد فهمي محمد", "en": "Mahmoud Ahmed Fahmy Mohamed", "ph": "01065756375", "g": "ONL5_DRT6_S3", "grad": false, "gr": "2/3", "att": 100, "risk": "Critical", "sv": "fix", "lk": 4, "dn": 2, "nc": 2, "fx": ["سعر البداية لازم يكون بين 3$ و7$"], "ga": 2, "jp": "Media Production Influencer"}, {"id": "21082010", "ar": "سما احمد علي احمد", "en": "sama ahmed Ali Ahmed", "ph": "01149662917", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 60, "risk": "Critical", "sv": "fix", "lk": 3, "dn": 1, "nc": 2, "fx": ["الخدمة مش ظاهرة (متوقفة أو محذوفة) — لازم تكون خدمة عامة ونشطة"], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21080625", "ar": "فرح محمد ايمن حسن سليط", "en": "Farah Mohamed Ayman Hassan Sliet", "ph": "01147383822", "g": "ONL5_DRT6_S3", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Media Production Influencer"}, {"id": "21084816", "ar": "اسراء نهاد فاروق عبدالغني", "en": "Esraa Nehad Farouk Abdelghani", "ph": "01277064275", "g": "ONL5_DRT6_S3", "grad": true, "gr": "Graduated", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 3, "jp": "Media Production Influencer"}, {"id": "21095386", "ar": "مي بهاء الدين محمود مدكور", "en": "Mai Bahaaeldin Mahmoud Madkour", "ph": "01552299259", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 50, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21121446", "ar": "رودينا محمد حسين احمد", "en": "Rodayna Mohamed Hussin Ahmed", "ph": "01033945552", "g": "ONL5_DRT1_S1", "grad": false, "gr": "1/3", "att": 100, "risk": "Critical", "sv": "pend", "lk": 3, "dn": 0, "nc": 0, "fx": [], "ga": 1, "jp": "Digital Marketing Specialist"}, {"id": "21123573", "ar": "ملك مدحت سمير محمد", "en": "Malak Medhat Samir Mohamed", "ph": "01120849510", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "pend", "lk": 4, "dn": 4, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21123051", "ar": "محمد عماد محمد حمادة", "en": "Mohamed Emad Mohamed Hamada", "ph": "01207862066", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21123066", "ar": "ندى فتحى محمد جودة", "en": "Nada Fathy Mohamed Goda", "ph": "01280604932", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21124443", "ar": "انجي علاء ابراهيم المليجي", "en": "Enjy Alaa Ebrahim Elmiligy", "ph": "01272256974", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 25, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21124318", "ar": "رنا محمد رمضان عبد الحميد", "en": "Rana Mohamed Ramadan Abdelhamid", "ph": "01021016314", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 50, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21130803", "ar": "نورهان نشأت سمير مجلع", "en": "Nourhan Nashat Samir Meglaa", "ph": "01552263154", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "fix", "lk": 3, "dn": 0, "nc": 3, "fx": ["سعر البداية لازم يكون بين 3$ و7$", "الخدمة مش ظاهرة (متوقفة أو محذوفة) — لازم تكون خدمة عامة ونشطة"], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21133904", "ar": "ماجدة عماد سيد احمد علم الدين", "en": "Magda Emad sayed ahmed alm eldine", "ph": "01155434881", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21134379", "ar": "فيفيان مجدى فوزى شبيب", "en": "Vivian Magdy Fawzy Shabeb", "ph": "01221822668", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 80, "risk": "Critical", "sv": "done", "lk": 4, "dn": 3, "nc": 1, "fx": ["المنصة دي مش مقبولة لأن الخدمة مفيهاش سعر محدد"], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21145004", "ar": "حنان يحيى ابراهيم احمد", "en": "Hanan Yahia Ibrahim Ahmed", "ph": "01143146238", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 80, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21148718", "ar": "توماس وائل عريان رزق الله", "en": "thomas wael erian rezkalla", "ph": "01200029962", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 0, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21150037", "ar": "خالد هاني فوزي محمد", "en": "Khaled Hany Fawzy Mohamed", "ph": "01006811451", "g": "CAI5_SWD2_S4", "grad": true, "gr": "Graduated", "att": 100, "risk": "Critical", "sv": "pend", "lk": 3, "dn": 0, "nc": 0, "fx": [], "ga": 5, "jp": "React Frontend Web Developer"}, {"id": "21149937", "ar": "عبدالرحمن جمال إبراهيم عبدالعزيز", "en": "Abdelrahman Gamal Ibrahim Abdelaziz", "ph": "01023521246", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21150100", "ar": "أمنية شاكر عباس عبدالحميد", "en": "Omnia Shaker Abass Abdelhamed", "ph": "01050545199", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21150026", "ar": "معاذ مجدي درديري حسن عوينه", "en": "Moaz Magdi Dardiri Hassan Owina", "ph": "01032845760", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21150533", "ar": "ضياء صبحي حسني غراب", "en": "Dyaa Sobhey Hosney Ghorab", "ph": "01030843720", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21150714", "ar": "شهد عادل صلاح حسين", "en": "Shahd Adel Salah Hussien", "ph": "01159672635", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 20, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21150817", "ar": "سلوى سيد شعلان عبد الحليم", "en": "Salwa Sayed Shallan Abdelhalim", "ph": "01108520313", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 80, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21151053", "ar": "ملك خيرى احمد حسن", "en": "Malak Khairy Ahmed Hassan", "ph": "01123258794", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 50, "risk": "Critical", "sv": "pend", "lk": 3, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21152082", "ar": "فرح ايمن بدرالدين مرزوق", "en": "Farah Ayman BadrAldin Marzouk", "ph": "01128683518", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 80, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21153025", "ar": "سارة صلاح الدين مجاهد ابو مسلم", "en": "Sarah Salah Al Din Mujahid Abo Mosallam", "ph": "01229366548", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "done", "lk": 3, "dn": 3, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21153963", "ar": "محمد أسامة محمد عبدالسلام", "en": "mohamed osama mohamed abdelsalam", "ph": "01280838102", "g": "ONL5_DRT6_S3", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "done", "lk": 6, "dn": 5, "nc": 1, "fx": ["سعر البداية لازم يكون بين 3$ و7$"], "ga": 0, "jp": "Media Production Influencer"}, {"id": "21154883", "ar": "بسنت طارق السيد بسيوني", "en": "Basant Tarek Alsayed Basiony", "ph": "01553693176", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 60, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21154868", "ar": "مريم محمد عبد الجليل مدين", "en": "Mariam Mohamed Abdelgelil Madian", "ph": "01144964552", "g": "ONL5_DRT1_S1", "grad": true, "gr": "Graduated", "att": 75, "risk": "Critical", "sv": "done", "lk": 4, "dn": 3, "nc": 1, "fx": ["سعر البداية لازم يكون بين 3$ و7$"], "ga": 3, "jp": "Digital Marketing Specialist"}, {"id": "21155025", "ar": "سلفيا ماجد حليم قلدس", "en": "sylvia maged halim kalds", "ph": "01289986233", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21156383", "ar": "سندس علي زايد محمد", "en": "Sondos Ali Zayed Mohamed", "ph": "01114359503", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "done", "lk": 4, "dn": 3, "nc": 1, "fx": ["سعر البداية لازم يكون بين 3$ و7$"], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21158334", "ar": "كاترين اشرف زخاري يوسف", "en": "catherine ashraf zkhary yousef", "ph": "01272792719", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 20, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21159155", "ar": "سهيل ياسر شعبان محمد", "en": "SOHAIL YASSER shaaban mohamed", "ph": "01033716485", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21159923", "ar": "ملك عثمان محمد عثمان", "en": "Malak Osman Mohamed Osman", "ph": "01156685299", "g": "ONL5_DRT6_S3", "grad": true, "gr": "Graduated", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 3, "jp": "Media Production Influencer"}, {"id": "21161554", "ar": "اسامه ايمن شعبان عطوه", "en": "Osama Ayman Shaban Atwa", "ph": "01030758682", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21161961", "ar": "محمد حسن أحمد سطوحي", "en": "Mohamed Hassan Ahmed Sotohy", "ph": "01023642020", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 50, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21161789", "ar": "حازم محمد فاورق غراب", "en": "Hazem Mohamed Farouk Ghorab", "ph": "01025290664", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21162084", "ar": "اسراء احمد عبدالسميع الغوري", "en": "Esraa Ahmed Abdelsamia Elghory", "ph": "01142417759", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 0, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21163378", "ar": "معاذ محمدخير فهمي محمد", "en": "Moaaz Mohamed Khair Fahmy Mohamed", "ph": "01034547060", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21163731", "ar": "فاطمة الزهراء محمد محمود أبو طالب", "en": "FatmaElzahraa Mohamed Mahmoud Abotaleb", "ph": "01110595285", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21164506", "ar": "نرمين عادل عز الدين عبد العزيز البطراوي", "en": "Nermeen Adel ezz eldin abdel aziz elbatrawy", "ph": "01017333649", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 60, "risk": "Critical", "sv": "fix", "lk": 3, "dn": 1, "nc": 2, "fx": ["الخدمة مش ظاهرة (متوقفة أو محذوفة) — لازم تكون خدمة عامة ونشطة"], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21164259", "ar": "يوسف سيد حلمي قناوي", "en": "Youssef Sayed Helmy Qenawy", "ph": "01094912415", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "done", "lk": 3, "dn": 3, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21164417", "ar": "جنه تامر محمد رضا", "en": "Ganna Tamer Mohmed Reda", "ph": "01117043014", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "pend", "lk": 3, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21164714", "ar": "يارا محمد ابراهيم حسن", "en": "Yara Mohamed Ibrahim Hassan", "ph": "01287367540", "g": "ONL5_DRT6_S3", "grad": false, "gr": "0/3", "att": 50, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Media Production Influencer"}, {"id": "21166638", "ar": "محمد زكريا ابراهيم الدسوقي", "en": "mohamed zakaria ibrahim eldosoky", "ph": "01200667451", "g": "ONL5_DRT6_S3", "grad": true, "gr": "Graduated", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 3, "jp": "Media Production Influencer"}, {"id": "21167158", "ar": "هاجر ناجح عبدالمجيد عبدالرحمن", "en": "Hager Nagih Abdelmageed Abdelrahman", "ph": "01115209581", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 40, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21168019", "ar": "مهند احمد حسن صالح", "en": "Mohannad Ahmed Hassan Saleh", "ph": "01555882663", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21168219", "ar": "منة عبد المنجد عبد الرحمن محمد", "en": "Menna Abd Elmonged Abd Alrahman Mohammed", "ph": "01061098983", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 20, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21168726", "ar": "عبدالرحمن طلال رضا عواره", "en": "Abdelrhman Talal Reda Awara", "ph": "01007997467", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 60, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21169378", "ar": "مصطفى راضى احمد محمد", "en": "Mostafa Rady Ahmed Mohammed", "ph": "01158138738", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21169776", "ar": "ابتهال عبدالناصر حنفي صالح", "en": "Ebtehal Abelnasser Hanafi Saleh", "ph": "01020944935", "g": "ONL5_DRT6_S3", "grad": false, "gr": "0/3", "att": 50, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Media Production Influencer"}, {"id": "21170391", "ar": "رامى خالد محمود محمد", "en": "Ramy Khaled Mahmoud Mohamed", "ph": "01126868303", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 50, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21170560", "ar": "فاطمه علاءالدين ربيع ابراهيم", "en": "Fatma Alaa Eldin Rabie Ibrahim", "ph": "01098931644", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 50, "risk": "Critical", "sv": "done", "lk": 5, "dn": 4, "nc": 1, "fx": ["سعر البداية لازم يكون بين 3$ و7$"], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21171263", "ar": "حبيبه السيد محمد ابراهيم", "en": "Habiba Alsayed Mohamed Ebrahim", "ph": "01288302666", "g": "CAI5_SWD2_S4", "grad": true, "gr": "Graduated", "att": 100, "risk": "Critical", "sv": "fix", "lk": 5, "dn": 1, "nc": 4, "fx": ["الخدمة مش ظاهرة (متوقفة أو محذوفة) — لازم تكون خدمة عامة ونشطة", "سعر البداية لازم يكون بين 3$ و7$", "منصة مستقل مش مقبولة — استخدم خمسات أو كافيل أو نفذلي"], "ga": 3, "jp": "React Frontend Web Developer"}, {"id": "21171439", "ar": "أحمد محمد أحمد الشامي", "en": "Ahmed Mohamed Ahmed Elshamy", "ph": "01550282774", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21171831", "ar": "فارس محمد عبدالعزيز محمد", "en": "Fares Mohamed Abdelaziz Mohamed", "ph": "01110945335", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "fix", "lk": 3, "dn": 2, "nc": 1, "fx": ["سعر البداية لازم يكون بين 3$ و7$"], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21172458", "ar": "فرح خميس بسيوني محمد", "en": "Farah Khamis Basiony Mohammed", "ph": "01092522230", "g": "ONL5_DRT6_S3", "grad": true, "gr": "Graduated", "att": 100, "risk": "Critical", "sv": "fix", "lk": 6, "dn": 1, "nc": 3, "fx": ["سعر البداية لازم يكون بين 3$ و7$"], "ga": 3, "jp": "Media Production Influencer"}, {"id": "21172627", "ar": "دعاء ياسر السيد السبقي", "en": "Doaa Yasser Elsayed Elsabaky", "ph": "01092407931", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21172537", "ar": "محمد السماحي محمد السماحي", "en": "Mohamed Elsamahy Mohamed Elsamahy", "ph": "01092205831", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 25, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21173074", "ar": "فاطمه ابراهيم عبدالعال محمود", "en": "fatma Ebrahim abdel Aal Mahmoud", "ph": "01067003814", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21173231", "ar": "جنا أحمد ابراهيم خليل", "en": "Gana Ahmed Ibraheem Khalil", "ph": "01023542110", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21173184", "ar": "فادي انسي نان بشاي", "en": "Fady Onsy Nan Beshay", "ph": "01551797986", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 0, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21173726", "ar": "هنا احمد مصطفي سيد", "en": "Hana Ahmed Mostafa Sayed", "ph": "01020902313", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "2/3", "att": 80, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 2, "jp": "UI & UX Web Designer"}, {"id": "21175318", "ar": "لوجينا أشرف عبد الصمد ابراهيم خليل برايب", "en": "Lojaina Ashraf Abdelsamad Ibrahim Khalil Brayb", "ph": "01271272241", "g": "ONL5_DRT6_S3", "grad": true, "gr": "Graduated", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 3, "jp": "Media Production Influencer"}, {"id": "21175052", "ar": "غدير أحمد عثمان الكفراوي", "en": "Ghadeer Ahmad Othman Elkafrawy", "ph": "01010497419", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 80, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21175908", "ar": "منة ابراهيم شعبان الكاشف", "en": "Menna Ebrahim Shaaban Elkashef", "ph": "01158024546", "g": "ONL5_DRT6_S3", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Media Production Influencer"}, {"id": "21176086", "ar": "دنيا محمد عيد جمعه", "en": "Donia Mohamed Eed Gomaa", "ph": "01151166831", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "done", "lk": 4, "dn": 3, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21176118", "ar": "محمود ابراهيم حامد السيد", "en": "Mahmoud Ebrahim Hamed Elsayed", "ph": "01111023458", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21041846", "ar": "محمد حسام محمد سليمان", "en": "Mohammed Hossam Mohammed Soliman", "ph": "01116851072", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21046928", "ar": "جنى محمد محمد عثمان", "en": "Jana Mohamed Mohamed Uthman", "ph": "01110771972", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 80, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21051939", "ar": "مارتن منير فهيم موسى", "en": "Martin Mounir Fahem Moussa", "ph": "01271759851", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21055662", "ar": "محمود ابراهيم منصور ابراهيم", "en": "mahmoud ibrahim mansour ibrahim", "ph": "01155686707", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21057321", "ar": "خديجة هشام يوسف عبدالرحمن", "en": "Khadiga Hesham Youssef Abdelrahman", "ph": "01129422088", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 40, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21063497", "ar": "يوسف محمد مرسى بيومى", "en": "Youssef Mohamed Morsy Bayumi", "ph": "01113384641", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 20, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21066412", "ar": "ساره نشأت مكرم فهمى", "en": "Sara Nashat Makram Fahmy", "ph": "01025269562", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 60, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21068192", "ar": "عبدالرحمن محمد عبدالرحيم علي", "en": "Abdelrahman Mohamed Abdelrahim Ali", "ph": "01115941651", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 0, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21071718", "ar": "أبواليزيد خالد أبواليزيد عمارة", "en": "Aboelyzeed Khaled Aboelyzeed Omara", "ph": "01554848572", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 0, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21089554", "ar": "رحمه شريف فتوح محمود", "en": "Rahma Shrief Fatouh Mahmoud", "ph": "01114653853", "g": "ONL5_DRT6_S3", "grad": true, "gr": "Graduated", "att": 0, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 3, "jp": "Media Production Influencer"}, {"id": "21087006", "ar": "يوسف ايهاب احمد محمد", "en": "youssef ehab ahmed mohamed", "ph": "01119774118", "g": "CAI5_SWD2_S4", "grad": true, "gr": "Graduated", "att": 25, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 4, "jp": "React Frontend Web Developer"}, {"id": "21092564", "ar": "إبراهيم محمد عبد الستار الخولي", "en": "Ibrahim Mohamed And elsatar Elkholy", "ph": "01061494084", "g": "ONL5_DRT6_S3", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Media Production Influencer"}, {"id": "21090444", "ar": "مي صبحي جمعه الكومي", "en": "mai sobhy Gomaa elkomey", "ph": "01063585699", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 60, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21092290", "ar": "مينا وليم عبدالملاك ساويرس", "en": "Mina William Abdelmalak Sawiris", "ph": "01061107969", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21098228", "ar": "سمر سيد حافظ محمد", "en": "Samar Sayed Hafez Mohammed", "ph": "01140434922", "g": "ONL5_DRT6_S3", "grad": true, "gr": "Graduated", "att": 0, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 3, "jp": "Media Production Influencer"}, {"id": "21098654", "ar": "اروي احمد حلمي عبدالحفيظ", "en": "Arwa Ahmed Helmy Abdel Hafeez", "ph": "01028588009", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 20, "risk": "Critical", "sv": "done", "lk": 3, "dn": 3, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21127371", "ar": "كارل رامى سعد نخلة", "en": "Karl Ramy Saad Nakhla", "ph": "01228539352", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "pend", "lk": 9, "dn": 6, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21083056", "ar": "شهد احمد محمد وفا", "en": "Shahd Ahmed Mohammad Wafa", "ph": "01023031067", "g": "ONL5_DRT6_S3", "grad": true, "gr": "Graduated", "att": 75, "risk": "Critical", "sv": "done", "lk": 3, "dn": 3, "nc": 0, "fx": [], "ga": 3, "jp": "Media Production Influencer"}, {"id": "21180964", "ar": "سارة أشرف محمد إسماعيل", "en": "Sara Ashraf Mohamed Ismael", "ph": "01153090011", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 80, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21155436", "ar": "رجاء محمد فتحي ابراهيم", "en": "Ragaa Mohamed Fathy Ibrahim", "ph": "01092500688", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21173294", "ar": "شهد وليد عبدالمنعم حسين", "en": "Shahd Walid Abdelmoniem Hussein", "ph": "01093322627", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21063781", "ar": "جنى أيمن حازم مصطفى", "en": "Jana Ayman Hazem Mostafa", "ph": "01006651308", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 0, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21171992", "ar": "عمر فكرى عبد الشكور بركات", "en": "omar fekry abdel shakour barakat", "ph": "01120790251", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "done", "lk": 5, "dn": 4, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21178962", "ar": "ابراهيم احمد ابراهيم الحاوي", "en": "Ibrahim Ahmed Ibrahim Elhawy", "ph": "01038678048", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21179003", "ar": "مها احمد فتحى السيد", "en": "Maha Ahmed Fathy ELSayed", "ph": "01025468991", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21179018", "ar": "خالد الوليد اسماعيل شرف الدين", "en": "Khaled Elwalid Ismail Sharafelden", "ph": "01121245360", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 50, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21149649", "ar": "مرام ايمن حسن امين", "en": "Maram Aiman Hassan Amin", "ph": "01017827162", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 80, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21177289", "ar": "عمر محمد فاروق الامام", "en": "Omar Mohamed Farouk Elemam", "ph": "01208984464", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 0, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21177568", "ar": "محمد أحمد شعبان هاشم", "en": "Mohammed Ahmed Shaaban Hashem", "ph": "01092794535", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21177492", "ar": "مازن محمد عبدالمنعم مرسي", "en": "mazen mohamed abdelmoniem morsy", "ph": "01130509985", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21177854", "ar": "اية احمد محمد عبدالله", "en": "Aya Ahmed Mohamed Abdallah", "ph": "01154051833", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21179006", "ar": "سما ضياء الدين عيد جمعة", "en": "Sama Diaa Eldeen Eid Gomaa", "ph": "01155251834", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 80, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21178913", "ar": "محمد مصطفي السيد الدميري", "en": "Mohamed Mostafa El Sayed El Demery", "ph": "01030707160", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 50, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21179867", "ar": "احمد محمد ابراهيم محمد", "en": "Ahmed Mohamed Ibrahim Mohamed", "ph": "01001193670", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21180569", "ar": "رناد محمد سلامه سليمان", "en": "RENAD muhammed salama soliman", "ph": "01098088338", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "fix", "lk": 4, "dn": 2, "nc": 2, "fx": ["الخدمة مش ظاهرة (متوقفة أو محذوفة) — لازم تكون خدمة عامة ونشطة"], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21181175", "ar": "احمد عادل عمر مصطفي", "en": "Ahmed Adel Omar Mostafa", "ph": "01065101267", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 80, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21180744", "ar": "مي سعيد محمد عرفه", "en": "May Said Mohamed Arfa", "ph": "01159419292", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21182024", "ar": "سندس سامح ابراهيم قنديل", "en": "sondos sameh ibrahim andeel", "ph": "01015541303", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 25, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}], "groups": {"ONL5_DRT6_S3": {"coach": "Ahmed Walid Abd-alaziz", "link": "https://teams.microsoft.com/meet/365343059101620?p=4MovKVPmprixuEhaD7", "track": "Digital Arts"}, "ONL5_DRT7_S2": {"coach": "Ziad Moawad", "link": "https://teams.microsoft.com/meet/339540786694366?p=ttDIKO0Ie8MB51ZaVZ", "track": "Digital Arts"}, "CAI5_SWD2_S4": {"coach": "Seif Eldin Mohamed Ibrahim Yousef", "link": "https://teams.microsoft.com/meet/35105650225777?p=ygf2bW8foTANHGzLJ2", "track": "Software Development"}, "GIZ5_DRT2_S2": {"coach": "Mohammed Ashraf Abdelmeneam", "link": "https://teams.microsoft.com/meet/384073623078649?p=ZVqyLxIQztnX4HpiB9", "track": "Digital Arts"}, "ONL5_DRT1_S1": {"coach": "Youssef Thabet", "link": "https://teams.microsoft.com/meet/373837110806902?p=AejDpj7EfYd0i119SO", "track": "Digital Arts"}}, "ses": [{"g": "ONL5_DRT6_S3", "t": "2026-10-18T15:00:00.000Z", "m": 180, "title": "Session 1 of 8"}, {"g": "ONL5_DRT6_S3", "t": "2026-10-25T15:00:00.000Z", "m": 180, "title": "Session 2 of 8"}, {"g": "ONL5_DRT6_S3", "t": "2026-11-01T16:00:00.000Z", "m": 180, "title": "Session 3 of 8"}, {"g": "GIZ5_DRT2_S2", "t": "2026-11-04T17:00:00.000Z", "m": 180, "title": "Session 4 of 8"}, {"g": "GIZ5_DRT2_S2", "t": "2026-10-28T16:00:00.000Z", "m": 180, "title": "Session 3 of 8"}, {"g": "ONL5_DRT1_S1", "t": "2026-11-05T15:00:00.000Z", "m": 180, "title": "Session 3 of 8"}, {"g": "ONL5_DRT1_S1", "t": "2026-12-03T15:00:00.000Z", "m": 180, "title": "Session 7 of 8"}, {"g": "GIZ5_DRT2_S2", "t": "2026-10-21T16:00:00.000Z", "m": 180, "title": "Session 2 of 8"}, {"g": "GIZ5_DRT2_S2", "t": "2026-10-14T16:00:00.000Z", "m": 180, "title": "Session 1 of 8"}, {"g": "ONL5_DRT1_S1", "t": "2026-11-19T15:00:00.000Z", "m": 180, "title": "Session 5 of 8"}, {"g": "ONL5_DRT1_S1", "t": "2026-11-12T15:00:00.000Z", "m": 180, "title": "Session 4 of 8"}, {"g": "ONL5_DRT7_S2", "t": "2026-10-25T16:00:00.000Z", "m": 180, "title": "Session 3 of 8"}, {"g": "ONL5_DRT7_S2", "t": "2026-10-18T16:00:00.000Z", "m": 180, "title": "Session 2 of 8"}, {"g": "ONL5_DRT7_S2", "t": "2026-11-01T17:00:00.000Z", "m": 180, "title": "Session 4 of 8"}, {"g": "ONL5_DRT7_S2", "t": "2026-11-08T17:00:00.000Z", "m": 180, "title": "Session 5 of 8"}, {"g": "ONL5_DRT7_S2", "t": "2026-11-22T17:00:00.000Z", "m": 180, "title": "Session 7 of 8"}, {"g": "ONL5_DRT7_S2", "t": "2026-11-29T17:00:00.000Z", "m": 180, "title": "Session 8 of 8"}, {"g": "ONL5_DRT7_S2", "t": "2026-11-15T17:00:00.000Z", "m": 180, "title": "Session 6 of 8"}, {"g": "ONL5_DRT7_S2", "t": "2026-10-11T16:00:00.000Z", "m": 180, "title": "Session 1 of 8"}, {"g": "GIZ5_DRT2_S2", "t": "2026-11-18T17:00:00.000Z", "m": 180, "title": "Session 6 of 8"}, {"g": "GIZ5_DRT2_S2", "t": "2026-11-25T17:00:00.000Z", "m": 180, "title": "Session 7 of 8"}, {"g": "GIZ5_DRT2_S2", "t": "2026-12-02T17:00:00.000Z", "m": 180, "title": "Session 8 of 8"}, {"g": "GIZ5_DRT2_S2", "t": "2026-11-11T17:00:00.000Z", "m": 180, "title": "Session 5 of 8"}, {"g": "ONL5_DRT1_S1", "t": "2026-11-26T15:00:00.000Z", "m": 180, "title": "Session 6 of 8"}, {"g": "ONL5_DRT1_S1", "t": "2026-12-10T15:00:00.000Z", "m": 180, "title": "Session 8 of 8"}, {"g": "ONL5_DRT6_S3", "t": "2026-11-08T16:00:00.000Z", "m": 180, "title": "Session 4 of 8"}, {"g": "CAI5_SWD2_S4", "t": "2026-11-08T16:00:00.000Z", "m": 180, "title": "Session 4 of 8"}, {"g": "CAI5_SWD2_S4", "t": "2026-10-18T15:00:00.000Z", "m": 180, "title": "Session 1 of 8"}, {"g": "CAI5_SWD2_S4", "t": "2026-11-01T16:00:00.000Z", "m": 180, "title": "Session 3 of 8"}, {"g": "CAI5_SWD2_S4", "t": "2026-10-25T15:00:00.000Z", "m": 180, "title": "Session 2 of 8"}, {"g": "ONL5_DRT6_S3", "t": "2026-11-15T16:00:00.000Z", "m": 180, "title": "Session 5 of 8"}, {"g": "CAI5_SWD2_S4", "t": "2026-11-15T16:00:00.000Z", "m": 180, "title": "Session 5 of 8"}, {"g": "ONL5_DRT6_S3", "t": "2026-11-22T16:00:00.000Z", "m": 180, "title": "Session 6 of 8"}, {"g": "ONL5_DRT6_S3", "t": "2026-12-06T16:00:00.000Z", "m": 180, "title": "Session 8 of 8"}, {"g": "ONL5_DRT6_S3", "t": "2026-11-29T16:00:00.000Z", "m": 180, "title": "Session 7 of 8"}, {"g": "CAI5_SWD2_S4", "t": "2026-11-22T16:00:00.000Z", "m": 180, "title": "Session 6 of 8"}, {"g": "CAI5_SWD2_S4", "t": "2026-11-29T16:00:00.000Z", "m": 180, "title": "Session 7 of 8"}, {"g": "CAI5_SWD2_S4", "t": "2026-12-06T16:00:00.000Z", "m": 180, "title": "Session 8 of 8"}, {"g": "ONL5_DRT1_S1", "t": "2026-10-22T14:00:00.000Z", "m": 180, "title": "Session 1 of 8"}, {"g": "ONL5_DRT1_S1", "t": "2026-10-29T14:00:00.000Z", "m": 180, "title": "Session 2 of 8"}]};
+const DATA={"st": [{"id": "21021589", "ar": "سجا سعيد علي امام", "en": "Saja Said Ali Emam", "ph": "01272387376", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 60, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21024109", "ar": "سندس شريف عبدالدايم صيام", "en": "sondos sheref abdalldaim siam", "ph": "01552988482", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 40, "risk": "Critical", "sv": "pend", "lk": 3, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21032125", "ar": "يوسف ايمن محمود عبد المغيث", "en": "Youssef Ayman Mahmoud Abd El Mogheis", "ph": "01005791314", "g": "CAI5_SWD2_S4", "grad": true, "gr": "Graduated", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 3, "jp": "React Frontend Web Developer"}, {"id": "21033239", "ar": "مروة أحمد محمد أبو الفضل", "en": "Marwa Ahmed Muhamed Abu El Fadl", "ph": "01501061290", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 40, "risk": "Critical", "sv": "done", "lk": 4, "dn": 3, "nc": 1, "fx": ["الخدمة مش ظاهرة (متوقفة أو محذوفة) — لازم تكون خدمة عامة ونشطة"], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21043451", "ar": "جايانا اسامة اسحق شاكر", "en": "Jaaiana Osama Isaac Shaker", "ph": "01555317456", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 20, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21042183", "ar": "عمر خالد ابراهيم احمد", "en": "Omar Khalid Ibrahim Ahmed", "ph": "01005346583", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 80, "risk": "Critical", "sv": "fix", "lk": 5, "dn": 1, "nc": 3, "fx": ["اسم الحساب لازم يكون نفس اسمك المسجل في المنحة", "سعر البداية لازم يكون بين 3$ و7$"], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21047383", "ar": "محمد طه عبد المنعم محمد الجرف", "en": "Mohamed Taha abdelmonim Mohamed elgarph", "ph": "01275828351", "g": "ONL5_DRT6_S3", "grad": true, "gr": "Graduated", "att": 25, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 3, "jp": "Media Production Influencer"}, {"id": "21058414", "ar": "ايمان ايمن محمود احمد", "en": "Eman Ayman Mahmoud Ahmed", "ph": "01154232694", "g": "CAI5_SWD2_S4", "grad": false, "gr": "1/3", "att": 75, "risk": "Critical", "sv": "fix", "lk": 3, "dn": 1, "nc": 2, "fx": ["الخدمة مش ظاهرة (متوقفة أو محذوفة) — لازم تكون خدمة عامة ونشطة", "سعر البداية لازم يكون بين 3$ و7$"], "ga": 1, "jp": "React Frontend Web Developer"}, {"id": "21058237", "ar": "جنى محمود عبد الرحيم عبد الباسط", "en": "Jana Mahmod Abdalraheem Abdalbaset", "ph": "01021373199", "g": "ONL5_DRT6_S3", "grad": true, "gr": "Graduated", "att": 50, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 3, "jp": "Media Production Influencer"}, {"id": "21066497", "ar": "محمود أحمد فهمي محمد", "en": "Mahmoud Ahmed Fahmy Mohamed", "ph": "01065756375", "g": "ONL5_DRT6_S3", "grad": false, "gr": "2/3", "att": 100, "risk": "Critical", "sv": "fix", "lk": 4, "dn": 2, "nc": 2, "fx": ["سعر البداية لازم يكون بين 3$ و7$"], "ga": 2, "jp": "Media Production Influencer"}, {"id": "21082010", "ar": "سما احمد علي احمد", "en": "sama ahmed Ali Ahmed", "ph": "01149662917", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 60, "risk": "Critical", "sv": "fix", "lk": 3, "dn": 1, "nc": 2, "fx": ["الخدمة مش ظاهرة (متوقفة أو محذوفة) — لازم تكون خدمة عامة ونشطة"], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21080625", "ar": "فرح محمد ايمن حسن سليط", "en": "Farah Mohamed Ayman Hassan Sliet", "ph": "01147383822", "g": "ONL5_DRT6_S3", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Media Production Influencer"}, {"id": "21084816", "ar": "اسراء نهاد فاروق عبدالغني", "en": "Esraa Nehad Farouk Abdelghani", "ph": "01277064275", "g": "ONL5_DRT6_S3", "grad": true, "gr": "Graduated", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 3, "jp": "Media Production Influencer"}, {"id": "21095386", "ar": "مي بهاء الدين محمود مدكور", "en": "Mai Bahaaeldin Mahmoud Madkour", "ph": "01552299259", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 50, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21121446", "ar": "رودينا محمد حسين احمد", "en": "Rodayna Mohamed Hussin Ahmed", "ph": "01033945552", "g": "ONL5_DRT1_S1", "grad": false, "gr": "1/3", "att": 100, "risk": "Critical", "sv": "pend", "lk": 3, "dn": 0, "nc": 0, "fx": [], "ga": 1, "jp": "Digital Marketing Specialist"}, {"id": "21123573", "ar": "ملك مدحت سمير محمد", "en": "Malak Medhat Samir Mohamed", "ph": "01120849510", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "pend", "lk": 4, "dn": 4, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21123051", "ar": "محمد عماد محمد حمادة", "en": "Mohamed Emad Mohamed Hamada", "ph": "01207862066", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21123066", "ar": "ندى فتحى محمد جودة", "en": "Nada Fathy Mohamed Goda", "ph": "01280604932", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21124443", "ar": "انجي علاء ابراهيم المليجي", "en": "Enjy Alaa Ebrahim Elmiligy", "ph": "01272256974", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 25, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21124318", "ar": "رنا محمد رمضان عبد الحميد", "en": "Rana Mohamed Ramadan Abdelhamid", "ph": "01021016314", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 50, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21130803", "ar": "نورهان نشأت سمير مجلع", "en": "Nourhan Nashat Samir Meglaa", "ph": "01552263154", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "fix", "lk": 3, "dn": 0, "nc": 3, "fx": ["سعر البداية لازم يكون بين 3$ و7$", "الخدمة مش ظاهرة (متوقفة أو محذوفة) — لازم تكون خدمة عامة ونشطة"], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21133904", "ar": "ماجدة عماد سيد احمد علم الدين", "en": "Magda Emad sayed ahmed alm eldine", "ph": "01155434881", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21134379", "ar": "فيفيان مجدى فوزى شبيب", "en": "Vivian Magdy Fawzy Shabeb", "ph": "01221822668", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 80, "risk": "Critical", "sv": "done", "lk": 4, "dn": 3, "nc": 1, "fx": ["المنصة دي مش مقبولة لأن الخدمة مفيهاش سعر محدد"], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21145004", "ar": "حنان يحيى ابراهيم احمد", "en": "Hanan Yahia Ibrahim Ahmed", "ph": "01143146238", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 80, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21148718", "ar": "توماس وائل عريان رزق الله", "en": "thomas wael erian rezkalla", "ph": "01200029962", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 0, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21150037", "ar": "خالد هاني فوزي محمد", "en": "Khaled Hany Fawzy Mohamed", "ph": "01006811451", "g": "CAI5_SWD2_S4", "grad": true, "gr": "Graduated", "att": 100, "risk": "Critical", "sv": "pend", "lk": 3, "dn": 0, "nc": 0, "fx": [], "ga": 5, "jp": "React Frontend Web Developer"}, {"id": "21149937", "ar": "عبدالرحمن جمال إبراهيم عبدالعزيز", "en": "Abdelrahman Gamal Ibrahim Abdelaziz", "ph": "01023521246", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21150100", "ar": "أمنية شاكر عباس عبدالحميد", "en": "Omnia Shaker Abass Abdelhamed", "ph": "01050545199", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21150026", "ar": "معاذ مجدي درديري حسن عوينه", "en": "Moaz Magdi Dardiri Hassan Owina", "ph": "01032845760", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21150533", "ar": "ضياء صبحي حسني غراب", "en": "Dyaa Sobhey Hosney Ghorab", "ph": "01030843720", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21150714", "ar": "شهد عادل صلاح حسين", "en": "Shahd Adel Salah Hussien", "ph": "01159672635", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 20, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21150817", "ar": "سلوى سيد شعلان عبد الحليم", "en": "Salwa Sayed Shallan Abdelhalim", "ph": "01108520313", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 80, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21151053", "ar": "ملك خيرى احمد حسن", "en": "Malak Khairy Ahmed Hassan", "ph": "01123258794", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 50, "risk": "Critical", "sv": "pend", "lk": 3, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21152082", "ar": "فرح ايمن بدرالدين مرزوق", "en": "Farah Ayman BadrAldin Marzouk", "ph": "01128683518", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 80, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21153025", "ar": "سارة صلاح الدين مجاهد ابو مسلم", "en": "Sarah Salah Al Din Mujahid Abo Mosallam", "ph": "01229366548", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "done", "lk": 3, "dn": 3, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21153963", "ar": "محمد أسامة محمد عبدالسلام", "en": "mohamed osama mohamed abdelsalam", "ph": "01280838102", "g": "ONL5_DRT6_S3", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "done", "lk": 6, "dn": 5, "nc": 1, "fx": ["سعر البداية لازم يكون بين 3$ و7$"], "ga": 0, "jp": "Media Production Influencer"}, {"id": "21154883", "ar": "بسنت طارق السيد بسيوني", "en": "Basant Tarek Alsayed Basiony", "ph": "01553693176", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 60, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21154868", "ar": "مريم محمد عبد الجليل مدين", "en": "Mariam Mohamed Abdelgelil Madian", "ph": "01144964552", "g": "ONL5_DRT1_S1", "grad": true, "gr": "Graduated", "att": 75, "risk": "Critical", "sv": "done", "lk": 4, "dn": 3, "nc": 1, "fx": ["سعر البداية لازم يكون بين 3$ و7$"], "ga": 3, "jp": "Digital Marketing Specialist"}, {"id": "21155025", "ar": "سلفيا ماجد حليم قلدس", "en": "sylvia maged halim kalds", "ph": "01289986233", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21156383", "ar": "سندس علي زايد محمد", "en": "Sondos Ali Zayed Mohamed", "ph": "01114359503", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "done", "lk": 4, "dn": 3, "nc": 1, "fx": ["سعر البداية لازم يكون بين 3$ و7$"], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21158334", "ar": "كاترين اشرف زخاري يوسف", "en": "catherine ashraf zkhary yousef", "ph": "01272792719", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 20, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21159155", "ar": "سهيل ياسر شعبان محمد", "en": "SOHAIL YASSER shaaban mohamed", "ph": "01033716485", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21159923", "ar": "ملك عثمان محمد عثمان", "en": "Malak Osman Mohamed Osman", "ph": "01156685299", "g": "ONL5_DRT6_S3", "grad": true, "gr": "Graduated", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 3, "jp": "Media Production Influencer"}, {"id": "21161554", "ar": "اسامه ايمن شعبان عطوه", "en": "Osama Ayman Shaban Atwa", "ph": "01030758682", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21161961", "ar": "محمد حسن أحمد سطوحي", "en": "Mohamed Hassan Ahmed Sotohy", "ph": "01023642020", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 50, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21161789", "ar": "حازم محمد فاورق غراب", "en": "Hazem Mohamed Farouk Ghorab", "ph": "01025290664", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21162084", "ar": "اسراء احمد عبدالسميع الغوري", "en": "Esraa Ahmed Abdelsamia Elghory", "ph": "01142417759", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 0, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21163378", "ar": "معاذ محمدخير فهمي محمد", "en": "Moaaz Mohamed Khair Fahmy Mohamed", "ph": "01034547060", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21163731", "ar": "فاطمة الزهراء محمد محمود أبو طالب", "en": "FatmaElzahraa Mohamed Mahmoud Abotaleb", "ph": "01110595285", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21164506", "ar": "نرمين عادل عز الدين عبد العزيز البطراوي", "en": "Nermeen Adel ezz eldin abdel aziz elbatrawy", "ph": "01017333649", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 60, "risk": "Critical", "sv": "fix", "lk": 3, "dn": 1, "nc": 2, "fx": ["الخدمة مش ظاهرة (متوقفة أو محذوفة) — لازم تكون خدمة عامة ونشطة"], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21164259", "ar": "يوسف سيد حلمي قناوي", "en": "Youssef Sayed Helmy Qenawy", "ph": "01094912415", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "done", "lk": 3, "dn": 3, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21164417", "ar": "جنه تامر محمد رضا", "en": "Ganna Tamer Mohmed Reda", "ph": "01117043014", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "pend", "lk": 3, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21164714", "ar": "يارا محمد ابراهيم حسن", "en": "Yara Mohamed Ibrahim Hassan", "ph": "01287367540", "g": "ONL5_DRT6_S3", "grad": false, "gr": "0/3", "att": 50, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Media Production Influencer"}, {"id": "21166638", "ar": "محمد زكريا ابراهيم الدسوقي", "en": "mohamed zakaria ibrahim eldosoky", "ph": "01200667451", "g": "ONL5_DRT6_S3", "grad": true, "gr": "Graduated", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 3, "jp": "Media Production Influencer"}, {"id": "21167158", "ar": "هاجر ناجح عبدالمجيد عبدالرحمن", "en": "Hager Nagih Abdelmageed Abdelrahman", "ph": "01115209581", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 40, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21168019", "ar": "مهند احمد حسن صالح", "en": "Mohannad Ahmed Hassan Saleh", "ph": "01555882663", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21168219", "ar": "منة عبد المنجد عبد الرحمن محمد", "en": "Menna Abd Elmonged Abd Alrahman Mohammed", "ph": "01061098983", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 20, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21168726", "ar": "عبدالرحمن طلال رضا عواره", "en": "Abdelrhman Talal Reda Awara", "ph": "01007997467", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 60, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21169378", "ar": "مصطفى راضى احمد محمد", "en": "Mostafa Rady Ahmed Mohammed", "ph": "01158138738", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21169776", "ar": "ابتهال عبدالناصر حنفي صالح", "en": "Ebtehal Abelnasser Hanafi Saleh", "ph": "01020944935", "g": "ONL5_DRT6_S3", "grad": false, "gr": "0/3", "att": 50, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Media Production Influencer"}, {"id": "21170391", "ar": "رامى خالد محمود محمد", "en": "Ramy Khaled Mahmoud Mohamed", "ph": "01126868303", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 50, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21170560", "ar": "فاطمه علاءالدين ربيع ابراهيم", "en": "Fatma Alaa Eldin Rabie Ibrahim", "ph": "01098931644", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 50, "risk": "Critical", "sv": "done", "lk": 5, "dn": 4, "nc": 1, "fx": ["سعر البداية لازم يكون بين 3$ و7$"], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21171263", "ar": "حبيبه السيد محمد ابراهيم", "en": "Habiba Alsayed Mohamed Ebrahim", "ph": "01288302666", "g": "CAI5_SWD2_S4", "grad": true, "gr": "Graduated", "att": 100, "risk": "Critical", "sv": "fix", "lk": 5, "dn": 1, "nc": 4, "fx": ["الخدمة مش ظاهرة (متوقفة أو محذوفة) — لازم تكون خدمة عامة ونشطة", "سعر البداية لازم يكون بين 3$ و7$", "منصة مستقل مش مقبولة — استخدم خمسات أو كافيل أو نفذلي"], "ga": 3, "jp": "React Frontend Web Developer"}, {"id": "21171439", "ar": "أحمد محمد أحمد الشامي", "en": "Ahmed Mohamed Ahmed Elshamy", "ph": "01550282774", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21171831", "ar": "فارس محمد عبدالعزيز محمد", "en": "Fares Mohamed Abdelaziz Mohamed", "ph": "01110945335", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "fix", "lk": 3, "dn": 2, "nc": 1, "fx": ["سعر البداية لازم يكون بين 3$ و7$"], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21172458", "ar": "فرح خميس بسيوني محمد", "en": "Farah Khamis Basiony Mohammed", "ph": "01092522230", "g": "ONL5_DRT6_S3", "grad": true, "gr": "Graduated", "att": 100, "risk": "Critical", "sv": "fix", "lk": 6, "dn": 1, "nc": 3, "fx": ["سعر البداية لازم يكون بين 3$ و7$"], "ga": 3, "jp": "Media Production Influencer"}, {"id": "21172627", "ar": "دعاء ياسر السيد السبقي", "en": "Doaa Yasser Elsayed Elsabaky", "ph": "01092407931", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21172537", "ar": "محمد السماحي محمد السماحي", "en": "Mohamed Elsamahy Mohamed Elsamahy", "ph": "01092205831", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 25, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21173074", "ar": "فاطمه ابراهيم عبدالعال محمود", "en": "fatma Ebrahim abdel Aal Mahmoud", "ph": "01067003814", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21173231", "ar": "جنا أحمد ابراهيم خليل", "en": "Gana Ahmed Ibraheem Khalil", "ph": "01023542110", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21173184", "ar": "فادي انسي نان بشاي", "en": "Fady Onsy Nan Beshay", "ph": "01551797986", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 0, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21173726", "ar": "هنا احمد مصطفي سيد", "en": "Hana Ahmed Mostafa Sayed", "ph": "01020902313", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "2/3", "att": 80, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 2, "jp": "UI & UX Web Designer"}, {"id": "21175318", "ar": "لوجينا أشرف عبد الصمد ابراهيم خليل برايب", "en": "Lojaina Ashraf Abdelsamad Ibrahim Khalil Brayb", "ph": "01271272241", "g": "ONL5_DRT6_S3", "grad": true, "gr": "Graduated", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 3, "jp": "Media Production Influencer"}, {"id": "21175052", "ar": "غدير أحمد عثمان الكفراوي", "en": "Ghadeer Ahmad Othman Elkafrawy", "ph": "01010497419", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 80, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21175908", "ar": "منة ابراهيم شعبان الكاشف", "en": "Menna Ebrahim Shaaban Elkashef", "ph": "01158024546", "g": "ONL5_DRT6_S3", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Media Production Influencer"}, {"id": "21176086", "ar": "دنيا محمد عيد جمعه", "en": "Donia Mohamed Eed Gomaa", "ph": "01151166831", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "done", "lk": 4, "dn": 3, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21176118", "ar": "محمود ابراهيم حامد السيد", "en": "Mahmoud Ebrahim Hamed Elsayed", "ph": "01111023458", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21041846", "ar": "محمد حسام محمد سليمان", "en": "Mohammed Hossam Mohammed Soliman", "ph": "01116851072", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21046928", "ar": "جنى محمد محمد عثمان", "en": "Jana Mohamed Mohamed Uthman", "ph": "01110771972", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 80, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21051939", "ar": "مارتن منير فهيم موسى", "en": "Martin Mounir Fahem Moussa", "ph": "01271759851", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21055662", "ar": "محمود ابراهيم منصور ابراهيم", "en": "mahmoud ibrahim mansour ibrahim", "ph": "01155686707", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21057321", "ar": "خديجة هشام يوسف عبدالرحمن", "en": "Khadiga Hesham Youssef Abdelrahman", "ph": "01129422088", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 40, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21063497", "ar": "يوسف محمد مرسى بيومى", "en": "Youssef Mohamed Morsy Bayumi", "ph": "01113384641", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 20, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21066412", "ar": "ساره نشأت مكرم فهمى", "en": "Sara Nashat Makram Fahmy", "ph": "01025269562", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 60, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21068192", "ar": "عبدالرحمن محمد عبدالرحيم علي", "en": "Abdelrahman Mohamed Abdelrahim Ali", "ph": "01115941651", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 0, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21071718", "ar": "أبواليزيد خالد أبواليزيد عمارة", "en": "Aboelyzeed Khaled Aboelyzeed Omara", "ph": "01554848572", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 0, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21089554", "ar": "رحمه شريف فتوح محمود", "en": "Rahma Shrief Fatouh Mahmoud", "ph": "01114653853", "g": "ONL5_DRT6_S3", "grad": true, "gr": "Graduated", "att": 0, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 3, "jp": "Media Production Influencer"}, {"id": "21087006", "ar": "يوسف ايهاب احمد محمد", "en": "youssef ehab ahmed mohamed", "ph": "01119774118", "g": "CAI5_SWD2_S4", "grad": true, "gr": "Graduated", "att": 25, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 4, "jp": "React Frontend Web Developer"}, {"id": "21092564", "ar": "إبراهيم محمد عبد الستار الخولي", "en": "Ibrahim Mohamed And elsatar Elkholy", "ph": "01061494084", "g": "ONL5_DRT6_S3", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Media Production Influencer"}, {"id": "21090444", "ar": "مي صبحي جمعه الكومي", "en": "mai sobhy Gomaa elkomey", "ph": "01063585699", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 60, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21092290", "ar": "مينا وليم عبدالملاك ساويرس", "en": "Mina William Abdelmalak Sawiris", "ph": "01061107969", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21098228", "ar": "سمر سيد حافظ محمد", "en": "Samar Sayed Hafez Mohammed", "ph": "01140434922", "g": "ONL5_DRT6_S3", "grad": true, "gr": "Graduated", "att": 0, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 3, "jp": "Media Production Influencer"}, {"id": "21098654", "ar": "اروي احمد حلمي عبدالحفيظ", "en": "Arwa Ahmed Helmy Abdel Hafeez", "ph": "01028588009", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 20, "risk": "Critical", "sv": "done", "lk": 3, "dn": 3, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21127371", "ar": "كارل رامى سعد نخلة", "en": "Karl Ramy Saad Nakhla", "ph": "01228539352", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "pend", "lk": 9, "dn": 6, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21083056", "ar": "شهد احمد محمد وفا", "en": "Shahd Ahmed Mohammad Wafa", "ph": "01023031067", "g": "ONL5_DRT6_S3", "grad": true, "gr": "Graduated", "att": 75, "risk": "Critical", "sv": "done", "lk": 3, "dn": 3, "nc": 0, "fx": [], "ga": 3, "jp": "Media Production Influencer"}, {"id": "21180964", "ar": "سارة أشرف محمد إسماعيل", "en": "Sara Ashraf Mohamed Ismael", "ph": "01153090011", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 80, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21155436", "ar": "رجاء محمد فتحي ابراهيم", "en": "Ragaa Mohamed Fathy Ibrahim", "ph": "01092500688", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21173294", "ar": "شهد وليد عبدالمنعم حسين", "en": "Shahd Walid Abdelmoniem Hussein", "ph": "01093322627", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21063781", "ar": "جنى أيمن حازم مصطفى", "en": "Jana Ayman Hazem Mostafa", "ph": "01006651308", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 0, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21171992", "ar": "عمر فكرى عبد الشكور بركات", "en": "omar fekry abdel shakour barakat", "ph": "01120790251", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "done", "lk": 5, "dn": 4, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21178962", "ar": "ابراهيم احمد ابراهيم الحاوي", "en": "Ibrahim Ahmed Ibrahim Elhawy", "ph": "01038678048", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21179003", "ar": "مها احمد فتحى السيد", "en": "Maha Ahmed Fathy ELSayed", "ph": "01025468991", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21179018", "ar": "خالد الوليد اسماعيل شرف الدين", "en": "Khaled Elwalid Ismail Sharafelden", "ph": "01121245360", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 50, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21149649", "ar": "مرام ايمن حسن امين", "en": "Maram Aiman Hassan Amin", "ph": "01017827162", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 80, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21177289", "ar": "عمر محمد فاروق الامام", "en": "Omar Mohamed Farouk Elemam", "ph": "01208984464", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 0, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21177568", "ar": "محمد أحمد شعبان هاشم", "en": "Mohammed Ahmed Shaaban Hashem", "ph": "01092794535", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21177492", "ar": "مازن محمد عبدالمنعم مرسي", "en": "mazen mohamed abdelmoniem morsy", "ph": "01130509985", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21177854", "ar": "اية احمد محمد عبدالله", "en": "Aya Ahmed Mohamed Abdallah", "ph": "01154051833", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21179006", "ar": "سما ضياء الدين عيد جمعة", "en": "Sama Diaa Eldeen Eid Gomaa", "ph": "01155251834", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 80, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21178913", "ar": "محمد مصطفي السيد الدميري", "en": "Mohamed Mostafa El Sayed El Demery", "ph": "01030707160", "g": "ONL5_DRT1_S1", "grad": false, "gr": "0/3", "att": 50, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "Digital Marketing Specialist"}, {"id": "21179867", "ar": "احمد محمد ابراهيم محمد", "en": "Ahmed Mohamed Ibrahim Mohamed", "ph": "01001193670", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 75, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}, {"id": "21180569", "ar": "رناد محمد سلامه سليمان", "en": "RENAD muhammed salama soliman", "ph": "01098088338", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "fix", "lk": 4, "dn": 2, "nc": 2, "fx": ["الخدمة مش ظاهرة (متوقفة أو محذوفة) — لازم تكون خدمة عامة ونشطة"], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21181175", "ar": "احمد عادل عمر مصطفي", "en": "Ahmed Adel Omar Mostafa", "ph": "01065101267", "g": "ONL5_DRT7_S2", "grad": false, "gr": "0/3", "att": 80, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "AI in Digital Arts"}, {"id": "21180744", "ar": "مي سعيد محمد عرفه", "en": "May Said Mohamed Arfa", "ph": "01159419292", "g": "GIZ5_DRT2_S2", "grad": false, "gr": "0/3", "att": 100, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "UI & UX Web Designer"}, {"id": "21182024", "ar": "سندس سامح ابراهيم قنديل", "en": "sondos sameh ibrahim andeel", "ph": "01015541303", "g": "CAI5_SWD2_S4", "grad": false, "gr": "0/3", "att": 25, "risk": "Critical", "sv": "none", "lk": 0, "dn": 0, "nc": 0, "fx": [], "ga": 0, "jp": "React Frontend Web Developer"}], "groups": {"ONL5_DRT6_S3": {"coach": "Ahmed Walid Abd-alaziz", "link": "https://teams.microsoft.com/meet/365343059101620?p=4MovKVPmprixuEhaD7", "track": "Digital Arts", "wa": "https://chat.whatsapp.com/DQxVuD7AkVtJO6uIa2luS6", "cph": "01003604794", "sup": "Esraa Hamada", "notes": [{"w": "Session 4 of 8", "t": "المدرب قسمهم ل جروبات واشتغل مع كل جروب لمده ساعه \nوب النسبه لكل جروب كان بيتابع معاهم تقدمهم بشكل فردي عشان يساعدهم يتخرجو ويتطورو اكتر \nالتزم ب الوقت والتزم بفتح الكاميرا و التزم ب التنبيه ع الطلبه بخصوص الخدمات والتسجيل ع موقع الوزاره"}]}, "ONL5_DRT7_S2": {"coach": "Ziad Moawad", "link": "https://teams.microsoft.com/meet/339540786694366?p=ttDIKO0Ie8MB51ZaVZ", "track": "Digital Arts", "wa": "https://chat.whatsapp.com/HgiFpIxCXNSLvWj5YlnHG2", "cph": "01040748211", "sup": "Esraa Hamada", "notes": [{"w": "Session 5 of 8", "t": "الكوتش مقسمهمش لجروبات واشتغل معاهم كلهم مره واحده\nودا خلا التركيز ع كل طالب لوحدو ضعيف\n ودا أثر ع الطلبه ان اغلبهم مرفعش السيرفس ومحدش فيهم بدأ ف ولا جيج\nاتمني ان المدرب يقتنع ب ان الطلبه المفروض تتقسم عشان يبدأو يرفعو الخدمات و يبدأو ف  تحقيق اول جيج"}]}, "CAI5_SWD2_S4": {"coach": "Seif Eldin Mohamed Ibrahim Yousef", "link": "https://teams.microsoft.com/meet/35105650225777?p=ygf2bW8foTANHGzLJ2", "track": "Software Development", "wa": "https://chat.whatsapp.com/GUF3rz6rLiMItSVgU72bn5", "cph": "01223817860", "sup": "Esraa Hamada", "notes": [{"w": "Session 4 of 8", "t": "المدرب قسمهم ل جروبات واشتغل مع كل جروب لمده ساعه \nوب النسبه لكل جروب كان بيتابع معاهم تقدمهم بشكل فردي عشان يساعدهم يتخرجو ويتطورو اكتر \nالتزم ب الوقت والتزم بفتح الكاميرا و التزم ب التنبيه ع الطلبه بخصوص الخدمات \nطلب من الطلبه التسجيل ع اوتلاير ك تاسك وعمل حساب عليه \nشرح للطلبه طريقه تظبيط لينك الخدمه عشان يرفعوه ع فريلانس يارد"}]}, "GIZ5_DRT2_S2": {"coach": "Mohammed Ashraf Abdelmeneam", "link": "https://teams.microsoft.com/meet/384073623078649?p=ZVqyLxIQztnX4HpiB9", "track": "Digital Arts", "wa": "https://chat.whatsapp.com/EvepTRk0D7BIg8xh8z0GxZ", "cph": "01004422582", "sup": "Esraa Hamada"}, "ONL5_DRT1_S1": {"coach": "Youssef Thabet", "link": "https://teams.microsoft.com/meet/373837110806902?p=AejDpj7EfYd0i119SO", "track": "Digital Arts", "wa": "https://chat.whatsapp.com/Ez5xSYVFZo3E6eDsBNXVTt", "cph": "122163220", "sup": "Esraa Hamada"}}, "ses": [{"g": "ONL5_DRT6_S3", "t": "2026-10-18T15:00:00.000Z", "m": 180, "title": "Session 1 of 8"}, {"g": "ONL5_DRT6_S3", "t": "2026-10-25T15:00:00.000Z", "m": 180, "title": "Session 2 of 8"}, {"g": "ONL5_DRT6_S3", "t": "2026-11-01T16:00:00.000Z", "m": 180, "title": "Session 3 of 8"}, {"g": "GIZ5_DRT2_S2", "t": "2026-11-04T17:00:00.000Z", "m": 180, "title": "Session 4 of 8"}, {"g": "GIZ5_DRT2_S2", "t": "2026-10-28T16:00:00.000Z", "m": 180, "title": "Session 3 of 8"}, {"g": "ONL5_DRT1_S1", "t": "2026-11-05T15:00:00.000Z", "m": 180, "title": "Session 3 of 8"}, {"g": "ONL5_DRT1_S1", "t": "2026-12-03T15:00:00.000Z", "m": 180, "title": "Session 7 of 8"}, {"g": "GIZ5_DRT2_S2", "t": "2026-10-21T16:00:00.000Z", "m": 180, "title": "Session 2 of 8"}, {"g": "GIZ5_DRT2_S2", "t": "2026-10-14T16:00:00.000Z", "m": 180, "title": "Session 1 of 8"}, {"g": "ONL5_DRT1_S1", "t": "2026-11-19T15:00:00.000Z", "m": 180, "title": "Session 5 of 8"}, {"g": "ONL5_DRT1_S1", "t": "2026-11-12T15:00:00.000Z", "m": 180, "title": "Session 4 of 8"}, {"g": "ONL5_DRT7_S2", "t": "2026-10-25T16:00:00.000Z", "m": 180, "title": "Session 3 of 8"}, {"g": "ONL5_DRT7_S2", "t": "2026-10-18T16:00:00.000Z", "m": 180, "title": "Session 2 of 8"}, {"g": "ONL5_DRT7_S2", "t": "2026-11-01T17:00:00.000Z", "m": 180, "title": "Session 4 of 8"}, {"g": "ONL5_DRT7_S2", "t": "2026-11-08T17:00:00.000Z", "m": 180, "title": "Session 5 of 8"}, {"g": "ONL5_DRT7_S2", "t": "2026-11-22T17:00:00.000Z", "m": 180, "title": "Session 7 of 8"}, {"g": "ONL5_DRT7_S2", "t": "2026-11-29T17:00:00.000Z", "m": 180, "title": "Session 8 of 8"}, {"g": "ONL5_DRT7_S2", "t": "2026-11-15T17:00:00.000Z", "m": 180, "title": "Session 6 of 8"}, {"g": "ONL5_DRT7_S2", "t": "2026-10-11T16:00:00.000Z", "m": 180, "title": "Session 1 of 8"}, {"g": "GIZ5_DRT2_S2", "t": "2026-11-18T17:00:00.000Z", "m": 180, "title": "Session 6 of 8"}, {"g": "GIZ5_DRT2_S2", "t": "2026-11-25T17:00:00.000Z", "m": 180, "title": "Session 7 of 8"}, {"g": "GIZ5_DRT2_S2", "t": "2026-12-02T17:00:00.000Z", "m": 180, "title": "Session 8 of 8"}, {"g": "GIZ5_DRT2_S2", "t": "2026-11-11T17:00:00.000Z", "m": 180, "title": "Session 5 of 8"}, {"g": "ONL5_DRT1_S1", "t": "2026-11-26T15:00:00.000Z", "m": 180, "title": "Session 6 of 8"}, {"g": "ONL5_DRT1_S1", "t": "2026-12-10T15:00:00.000Z", "m": 180, "title": "Session 8 of 8"}, {"g": "ONL5_DRT6_S3", "t": "2026-11-08T16:00:00.000Z", "m": 180, "title": "Session 4 of 8"}, {"g": "CAI5_SWD2_S4", "t": "2026-11-08T16:00:00.000Z", "m": 180, "title": "Session 4 of 8"}, {"g": "CAI5_SWD2_S4", "t": "2026-10-18T15:00:00.000Z", "m": 180, "title": "Session 1 of 8"}, {"g": "CAI5_SWD2_S4", "t": "2026-11-01T16:00:00.000Z", "m": 180, "title": "Session 3 of 8"}, {"g": "CAI5_SWD2_S4", "t": "2026-10-25T15:00:00.000Z", "m": 180, "title": "Session 2 of 8"}, {"g": "ONL5_DRT6_S3", "t": "2026-11-15T16:00:00.000Z", "m": 180, "title": "Session 5 of 8"}, {"g": "CAI5_SWD2_S4", "t": "2026-11-15T16:00:00.000Z", "m": 180, "title": "Session 5 of 8"}, {"g": "ONL5_DRT6_S3", "t": "2026-11-22T16:00:00.000Z", "m": 180, "title": "Session 6 of 8"}, {"g": "ONL5_DRT6_S3", "t": "2026-12-06T16:00:00.000Z", "m": 180, "title": "Session 8 of 8"}, {"g": "ONL5_DRT6_S3", "t": "2026-11-29T16:00:00.000Z", "m": 180, "title": "Session 7 of 8"}, {"g": "CAI5_SWD2_S4", "t": "2026-11-22T16:00:00.000Z", "m": 180, "title": "Session 6 of 8"}, {"g": "CAI5_SWD2_S4", "t": "2026-11-29T16:00:00.000Z", "m": 180, "title": "Session 7 of 8"}, {"g": "CAI5_SWD2_S4", "t": "2026-12-06T16:00:00.000Z", "m": 180, "title": "Session 8 of 8"}, {"g": "ONL5_DRT1_S1", "t": "2026-10-22T14:00:00.000Z", "m": 180, "title": "Session 1 of 8"}, {"g": "ONL5_DRT1_S1", "t": "2026-10-29T14:00:00.000Z", "m": 180, "title": "Session 2 of 8"}], "qa": [{"n": "Sagda Saad Mohamed", "ph": "01284098001"}, {"n": "Dunia Hekal", "ph": "01060224240"}, {"n": "Marwa Hammam", "ph": "01068331408"}, {"n": "Tasneem Mohamed", "ph": "01156273094"}], "sup": [{"n": "Esraa Hamada", "ph": "01063920800"}], "end": "2026-11-30T23:59:00+02:00", "asof": "2026-11-15T13:15:30.088Z"};
 
-/* ---------- message templates ---------- */
+/* ---------- storage & language ---------- */
+const store={get(k,d){try{const v=localStorage.getItem(k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const LANG=store.get('lang','ar'),EN=LANG==='en';
+const T=(a,e)=>EN?e:a;
+document.documentElement.lang=LANG;document.documentElement.dir=EN?'ltr':'rtl';
+const STR={sub:['خطة التخرج · المتابعة · رسايل الطلبة والجروبات والكوتشز — في مكان واحد','Graduation plan · tracking · student, group & coach messages — all in one place'],
+ tPlan:['🗺️ خطة العمل','🗺️ Action plan'],tDash:['📊 المتابعة','📊 Tracking'],tStu:['💬 رسايل الطلبة','💬 Student messages'],tGrp:['📣 الجروبات','📣 Groups'],tCoa:['🧑‍🏫 الكوتشز','🧑‍🏫 Coaches'],
+ daily:['☀️ روتين كل يوم','☀️ Daily routine'],dailyP:['دوس «افتح» جنب أي خطوة يوديك على المكان اللي تعملها منه','Hit “Open” next to any step to jump straight to where you do it'],
+ phT:['🗓️ الخطة على ٤ مراحل لحد نهاية المبادرة','🗓️ 4-phase plan until the initiative ends'],phP:['علّم ✓ على كل خطوة تخلصها — بتتحفظ على المتصفح ده','Tick each step you finish — saved in this browser'],
+ gT:['🎯 أهداف كل جروب','🎯 Group targets'],insT:['🔎 ملاحظات مهمة من الداتا','🔎 Key insights from the data'],
+ funT:['مسار الطلبة للتخرج','Student path to graduation'],funP:['دوس على أي مرحلة تفتح طلبتها','Click a stage to open its students'],focT:['🎯 أولوية النهارده','🎯 Today’s priority'],focP:['الأقرب للتخرج الأول','Closest to graduating first'],openAll:['افتحهم كلهم ←','Open all →'],grps:['الجروبات','Groups'],
+ lMsg:['الرسالة','Message'],cSt:['📋 رسالة الحالة','📋 Status message'],cDl:['⏳ تذكير قبل النهاية','⏳ Deadline reminder'],next:['▶ ابعت للي بعده','▶ Send to next'],lGrp:['الجروب','Group'],lStage:['المرحلة','Stage'],
+ hide:['اخفي اللي اتبعتلهم','Hide sent'],editMsg:['✏️ عدّل الرسايل','✏️ Edit messages'],csv:['⬇️ صدّر شيت','⬇️ Export sheet'],reset:['↺ صفّر الإرسال','↺ Reset sent'],
+ gmT:['📣 رسايل الجروبات','📣 Group messages'],gmP:['اختار الرسالة ← عدّل لو حابب ← «انسخ وافتح الجروب» وبعدين الصق','Pick a message → edit if needed → “Copy & open group”, then paste'],editBase:['✏️ عدّل النصوص الأساسية','✏️ Edit base texts'],
+ cmT:['🧑‍🏫 رسايل الكوتشز','🧑‍🏫 Coach messages'],cmP:['كل رسالة فيها أرقام جروبه وأسماء الطلبة حسب مرحلتهم','Each message includes the group numbers and student names by stage'],ctT:['📞 أرقام مهمة','📞 Key contacts'],
+ sendWa:['ابعت على واتساب','Send on WhatsApp'],copy:['📋 انسخ','📋 Copy'],fuSave:['💾 احفظ المتابعة','💾 Save follow-up'],fuClr:['امسح المتابعة','Clear follow-up'],save:['💾 احفظ','💾 Save'],restore:['↺ رجّع النصوص الأصلية','↺ Restore originals']};
+$=s=>document.querySelector(s);
+document.querySelectorAll('[data-t]').forEach(el=>{const v=STR[el.dataset.t];if(v)el.textContent=T(v[0],v[1])});
+$('#q').placeholder=T('دوّر باسم الطالب أو رقمه أو الملاحظة…','Search by name, phone or note…');
+$('#lng').textContent=EN?'ع':'EN';$('#lng').title=T('English','عربي');
+$('#nextBtn').title=T('يفتح واتساب لأول طالب لسه مابعتلوش في الفلتر الحالي','Opens WhatsApp for the next unsent student in the current filter');
+
+/* ---------- student message templates (Arabic — they go to the students) ---------- */
 const DEF={
 open:`أهلاً يا {name}! إيه الأخبار؟ 👋`,
 openGrad:`ألف مبروك يا {name}! 🎉🎓
@@ -188,102 +386,420 @@ road:`🚀 وبالتوازي.. سجّل على Outlier النهارده — ا�
 2️⃣ اعمل حسابك على Outlier من هنا: {outlier}
 3️⃣ امتحن اختبار العربي المصري وأنت مركز (4 أسئلة: 2 مقالي و2 فيديو)
 4️⃣ ابعتلي أول ما تخلص عشان أقولك الخطوة الجاية`};
-const SAME_GROUP='CAI5_SWD2_S4';   // الجروب ده بياخد الرسالة القديمة زي ما هي
+
+Object.assign(DEF,{
+dl:`{name}، فاضل {daysLeft} يوم بس على نهاية المبادرة ({endDate}) ⏳
+
+{step}
+
+لو واقف في أي خطوة ردّ عليا هنا وأنا معاك لحد ما تخلص 🤝`,
+dlNone:`👈 خطوتك دلوقتي: ارفع خدماتك على (خمسات / كافيل / نفذلي) بسعر بداية من 3$ لـ 7$، وابعت اللينكات على Freelance Yard النهارده — من غير الخطوة دي مفيش تخرج.`,
+dlFix:`👈 خطوتك دلوقتي: عدّل الخدمات اللي الجودة رجّعتها وابعتها تاني النهارده:
+{fix}`,
+dlPend:`👈 خدماتك تحت المراجعة ✅ — وفي الوقت ده جهّز عروضك عشان أول طلب ييجي تقفله على طول، وسجّل على Outlier من الدليل: {guide}`,
+dlDone:`👈 خدماتك اتقبلت ✅ — المطلوب دلوقتي أول Gig: قدّم على الطلبات المفتوحة على المنصات كل يوم، وكمّل على Outlier: {guide}`,
+dlG1:`👈 معاك Gig واحد 💪 — فاضلك ٢ بس! ركّز الأيام الجاية وقدّم كل يوم لحد ما تقفلهم.`,
+dlG2:`🔥 فاضلك Gig واحد بس وتتخرج! دي آخر خطوة — خلّصها في أقرب وقت وابعتلي أول ما تتقفل.`});
+
+Object.assign(DEF,{
+dl:`{name}، فاضل {daysLeft} يوم بس على نهاية المبادرة ({endDate}) ⏳
+
+{step}
+
+لو واقف في أي خطوة ردّ عليا هنا وأنا معاك لحد ما تخلص 🤝`,
+dlNone:`👈 خطوتك دلوقتي: ارفع خدماتك على (خمسات / كافيل / نفذلي) بسعر بداية من 3$ لـ 7$، وابعت اللينكات على Freelance Yard النهارده — من غير الخطوة دي مفيش تخرج.`,
+dlFix:`👈 خطوتك دلوقتي: عدّل الخدمات اللي الجودة رجّعتها وابعتها تاني النهارده:
+{fix}`,
+dlPend:`👈 خدماتك تحت المراجعة ✅ — وفي الوقت ده جهّز عروضك عشان أول طلب ييجي تقفله على طول، وسجّل على Outlier من الدليل: {guide}`,
+dlDone:`👈 خدماتك اتقبلت ✅ — المطلوب دلوقتي أول Gig: قدّم على الطلبات المفتوحة على المنصات كل يوم، وكمّل على Outlier: {guide}`,
+dlG1:`👈 معاك Gig واحد 💪 — فاضلك ٢ بس! ركّز الأيام الجاية وقدّم كل يوم لحد ما تقفلهم.`,
+dlG2:`🔥 فاضلك Gig واحد بس وتتخرج! دي آخر خطوة — خلّصها في أقرب وقت وابعتلي أول ما تتقفل.`});
+
+Object.assign(DEF,{
+dl:`{name}، فاضل {daysLeft} يوم بس على نهاية المبادرة ({endDate}) ⏳
+
+{step}
+
+لو واقف في أي خطوة ردّ عليا هنا وأنا معاك لحد ما تخلص 🤝`,
+dlNone:`👈 خطوتك دلوقتي: ارفع خدماتك على (خمسات / كافيل / نفذلي) بسعر بداية من 3$ لـ 7$، وابعت اللينكات على Freelance Yard النهارده — من غير الخطوة دي مفيش تخرج.`,
+dlFix:`👈 خطوتك دلوقتي: عدّل الخدمات اللي الجودة رجّعتها وابعتها تاني النهارده:
+{fix}`,
+dlPend:`👈 خدماتك تحت المراجعة ✅ — وفي الوقت ده جهّز عروضك عشان أول طلب ييجي تقفله على طول، وسجّل على Outlier من الدليل: {guide}`,
+dlDone:`👈 خدماتك اتقبلت ✅ — المطلوب دلوقتي أول Gig: قدّم على الطلبات المفتوحة على المنصات كل يوم، وكمّل على Outlier: {guide}`,
+dlG1:`👈 معاك Gig واحد 💪 — فاضلك ٢ بس! ركّز الأيام الجاية وقدّم كل يوم لحد ما تقفلهم.`,
+dlG2:`🔥 فاضلك Gig واحد بس وتتخرج! دي آخر خطوة — خلّصها في أقرب وقت وابعتلي أول ما تتقفل.`});
+const SAME_GROUP='CAI5_SWD2_S4';
 const LINKS={outlier:'https://outlier.ai/',guide:'https://outlierguide.vercel.app/'};
-const TPL_LABELS=[['open','بداية الرسالة','جروب CAI5_SWD2_S4 — للي لسه ماتخرجش'],['grad','رسالة المتخرجين','تهنئة بس من غير طلبات — لكل الجروبات'],['outlier','جزء Outlier','جروب CAI5_SWD2_S4 — للي لسه ماتخرجش'],['openSt','بداية رسالة الحالة','باقي الجروبات'],['stGigs','سطر الـ Gigs','باقي الجروبات'],['svNone','الخدمات — لسه مرفعش','باقي الجروبات'],['svPend','الخدمات — تحت المراجعة','باقي الجروبات'],['svFix','الخدمات — محتاجة تعديل','باقي الجروبات'],['svDone','الخدمات — اتقبلت','باقي الجروبات'],['attLow','الحضور — لو أقل من ٧٠٪','باقي الجروبات'],['road','خريطة التسجيل على Outlier','باقي الجروبات (متخرجين وغير متخرجين)'],['sesToday','تنبيه السيشن — لو النهارده',''],['sesLater','تنبيه السيشن — لو يوم تاني','الأربع/الخميس…'],['close','الختام','']];
-const store={get(k,d){try{const v=localStorage.getItem(k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const TPL_LABELS=[
+ ['#',T('📋 رسالة الحالة — جروب CAI5_SWD2_S4 (الرسالة الأصلية)','📋 Status message — CAI5_SWD2_S4 (original message)')],['open',T('بداية الرسالة','Opening')],['outlier',T('جزء Outlier','Outlier part')],
+ ['#',T('📋 رسالة الحالة — باقي الجروبات','📋 Status message — other groups')],['openSt',T('البداية','Opening')],['stGigs',T('سطر الـ Gigs','Gigs line')],['svNone',T('الخدمات — لسه مرفعش','Services — not uploaded')],['svPend',T('الخدمات — تحت المراجعة','Services — under review')],['svFix',T('الخدمات — محتاجة تعديل','Services — need fixes')],['svDone',T('الخدمات — اتقبلت','Services — accepted')],['attLow',T('الحضور — لو أقل من ٧٠٪','Attendance — if below 70%')],['road',T('خريطة التسجيل على Outlier','Outlier signup roadmap')],
+ ['#',T('🎓 المتخرجين (تهنئة بس)','🎓 Graduates (congrats only)')],['grad',T('رسالة التهنئة','Congrats message')],
+ ['#',T('📢 تنبيه السيشن والختام','📢 Session reminder & closing')],['sesToday',T('لو السيشن النهارده','If session is today')],['sesLater',T('لو يوم تاني','If another day')],['close',T('الختام','Closing')],
+ ['#',T('⏳ تذكير قبل النهاية','⏳ Deadline reminder')],['dl',T('الإطار العام — {step} = الخطوة حسب المرحلة','Frame — {step} = step by stage')],['dlNone',T('لسه مرفعش','Not uploaded')],['dlFix',T('خدمات محتاجة تعديل','Need fixes')],['dlPend',T('تحت المراجعة','Under review')],['dlDone',T('خدمات مقبولة','Accepted')],['dlG1',T('معاه Gig واحد','Has 1 gig')],['dlG2',T('فاضله Gig واحد','1 gig left')]];
+
+const GDEF={
+kick:`📣 يا شباب جروب {group} 👋
+فاضل {daysLeft} يوم بس على نهاية المبادرة ({endDate}) — وهدفنا إن كل واحد فينا يتخرج 🎓
+
+🗺️ الخطة باختصار:
+1️⃣ أول يومين: كل واحد يرفع خدماته على (خمسات / كافيل / نفذلي) بسعر بداية من 3$ لـ 7$ ويبعت اللينكات على Freelance Yard
+2️⃣ اللي جاله تعديل من الجودة يعدّله في نفس اليوم
+3️⃣ سجّلوا على Outlier من الدليل ده خطوة بخطوة: {guide}
+4️⃣ من الأسبوع ده كلنا شغالين على أول Gig — والسيشنات هتبقى شغل عملي
+{gradLine}
+📢 السيشن الجاية: {nextSes}
+🔗 {link}
+
+أي حد واقف في خطوة يكلمني خاص فوراً 🤝`,
+ses:`📢 تذكير: سيشن جروب {group} {nextSes}
+الحضور إلزامي للكل — وهنشتغل عملي على الخدمات والـ Gigs، فخلّي اللابتوب جاهز وحساباتك مفتوحة 💻
+🔗 {link}`,
+count:`⏳ فاضل {daysLeft} يوم على نهاية المبادرة!
+✅ اتخرج من الجروب لحد دلوقتي: {grad} من {total}
+🎯 اللي لسه: كل يوم بتأخّره بيقلل فرصتك — قدّم على طلبات النهارده، وأي حد عنده تعديل يخلّصه حالاً.
+ابعتلي خاص لو محتاج مساعدة في أي خطوة 💪`,
+celeb:`🎉 ألف مبروك لـ {gradNames} — اتخرجوا رسمي من المبادرة 🎓👏
+إثبات إن الموضوع ممكن وفي إيد أي حد فينا.. الدور عليكم يا شباب 💪
+فاضل {daysLeft} يوم — يلا!`};
+const GLABELS=[['kick',T('🚀 انطلاق الخطة','🚀 Kickoff')],['ses',T('📢 تذكير السيشن','📢 Session reminder')],['count',T('⏳ العد التنازلي','⏳ Countdown')],['celeb',T('🎉 تهنئة المتخرجين','🎉 Celebrate grads')]];
+const CDEF={
+brief:`أهلاً كوتش {coach} 👋
+معاك زياد، كوردينيتور جروب {group}.
+المبادرة بتخلص {endDate} — يعني فاضل {daysLeft} يوم، وهدفنا إن أكبر عدد من الطلبة يتخرج.
+
+📊 وضع الجروب دلوقتي:
+• اتخرجوا: {grad} من {total}
+• عندهم Gigs ولسه ماكملوش: {inGigs}
+• خدمات مقبولة ومستنيين أول Gig: {svDone}
+• خدمات تحت المراجعة: {pend}
+• خدمات محتاجة تعديل: {fix}
+• لسه مرفعوش خدمات: {none}
+
+🎯 محتاج منك في السيشنات الجاية ({sesList}):
+1️⃣ تقسّم الطلبة مجموعات صغيرة حسب مرحلتهم وتتابع كل مجموعة بشكل فردي
+2️⃣ أول ساعة: اللي لسه مرفعوش أو عندهم تعديلات يخلّصوا خدماتهم في السيشن نفسها
+3️⃣ تشتغل مع اللي خدماتهم اتقبلت على إزاي يقفلوا أول Gig
+4️⃣ بعد كل سيشن تبعتلي مين خلّص إيه
+
+🔥 الأقرب للتخرج (أولوية):
+{near}
+
+شكراً جداً على مجهودك 🙏`,
+pre:`أهلاً كوتش {coach} 👋 قبل سيشن {group} ({nextSes}) دي الأسماء حسب المرحلة عشان تقسّمهم:
+
+🔥 قريبين من التخرج:
+{near}
+
+✅ خدمات مقبولة — محتاجين أول Gig:
+{list_done}
+
+⚠️ عندهم تعديلات من الجودة:
+{list_fix}
+
+📤 لسه مرفعوش خدمات:
+{list_none}
+
+ياريت كل مجموعة تخرج من السيشن بخطوة متنفّذة 🙏`,
+post:`أهلاً كوتش {coach} 👋 شكراً على سيشن النهارده 🙏
+ممكن تبعتلي تحديث سريع:
+1️⃣ مين رفع خدمات جديدة؟
+2️⃣ مين قفل Gig أو عنده طلب شغال؟
+3️⃣ مين محتاج دعم فردي مني؟
+فاضل {daysLeft} يوم — كل تحديث بيفرق 💪`};
+const CLABELS=[['brief',T('📋 بريف الخطة','📋 Plan brief')],['pre',T('🎯 قبل السيشن','🎯 Before session')],['post',T('✅ بعد السيشن','✅ After session')]];
+
 let TPL=Object.assign({},DEF,store.get('wa-tpl',{}));
-let SENT=store.get('wa-sent',{});
+let GT=Object.assign({},GDEF,store.get('gtpl',{}));
+let CT=Object.assign({},CDEF,store.get('ctpl',{}));
+let FU=store.get('fu',{});
+let PLAN=store.get('plan-done',{});
+const SENTK={status:'wa-sent',deadline:'wa-sent-deadline'};
+let CAMP=store.get('camp','status');
+let SENT=store.get(SENTK[CAMP],{});
 
 /* ---------- dates (Cairo time) ---------- */
 const TZ='Africa/Cairo';
 const dKey=d=>d.toLocaleDateString('en-CA',{timeZone:TZ});
-const DAYS=['الأحد','الاتنين','التلات','الأربع','الخميس','الجمعة','السبت'];
-const AR=n=>String(n).replace(/\d/g,x=>'٠١٢٣٤٥٦٧٨٩'[x]);
-function wday(d){const s=d.toLocaleDateString('en-US',{timeZone:TZ,weekday:'short'});return ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(s)}
-function nextSession(g){const now=Date.now();return DATA.ses.filter(s=>s.g===g&&new Date(s.t).getTime()+s.m*60000>now).sort((a,b)=>a.t<b.t?-1:1)[0]||null}
-function sesInfo(g){const s=nextSession(g);if(!s)return null;const d=new Date(s.t),today=dKey(new Date()),tom=dKey(new Date(Date.now()+864e5)),k=dKey(d);
- const time=d.toLocaleTimeString('ar-EG',{timeZone:TZ,hour:'numeric',minute:'2-digit'});
- const dm=d.toLocaleDateString('ar-EG',{timeZone:TZ,day:'numeric',month:'long'});
- const rel=k===today?'today':k===tom?'tom':'later';
- const day=rel==='today'?'النهارده':rel==='tom'?'بكره':`يوم ${DAYS[wday(d)]} ${dm}`;
- return {rel,day,time,wd:wday(d),title:s.title,short:rel==='today'?'النهارده':rel==='tom'?'بكره':DAYS[wday(d)]}}
-const INFO={};Object.keys(DATA.groups).forEach(g=>INFO[g]=sesInfo(g));
+const DAYS_AR=['الأحد','الاتنين','التلات','الأربع','الخميس','الجمعة','السبت'],DAYS_EN=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const AR=n=>String(n).replace(/\d/g,x=>'٠١٢٣٤٥٦٧٨٩'[x]);   // for Arabic messages
+const N=n=>EN?String(n):AR(n);                               // for the UI
+function wday(d){const s=d.toLocaleDateString('en-US',{timeZone:TZ,weekday:'short'});return DAYS_EN.indexOf(s)}
+const dmA=d=>d.toLocaleDateString('ar-EG',{timeZone:TZ,day:'numeric',month:'long'});
+const hmA=d=>d.toLocaleTimeString('ar-EG',{timeZone:TZ,hour:'numeric',minute:'2-digit'});
+const dmU=d=>EN?d.toLocaleDateString('en-GB',{timeZone:TZ,day:'numeric',month:'short'}):dmA(d);
+const hmU=d=>EN?d.toLocaleTimeString('en-US',{timeZone:TZ,hour:'numeric',minute:'2-digit'}):hmA(d);
+const dayU=i=>EN?DAYS_EN[i]:DAYS_AR[i];
+const END=new Date(DATA.end), START=new Date('2026-11-15T00:00:00+02:00');
+const TODAY=dKey(new Date()),TOM=dKey(new Date(Date.now()+864e5));
+const daysLeft=Math.max(0,Math.round((Date.parse(dKey(END))-Date.parse(TODAY))/864e5));
+const endDate=dmA(END);
+function upcoming(g){const now=Date.now();return DATA.ses.filter(s=>s.g===g&&new Date(s.t).getTime()+s.m*60000>now).sort((a,b)=>a.t<b.t?-1:1)}
+function sesInfo(g,ui){const s=upcoming(g)[0];if(!s)return null;const d=new Date(s.t),k=dKey(d);const rel=k===TODAY?'today':k===TOM?'tom':'later';
+ if(ui&&EN){const day=rel==='today'?'today':rel==='tom'?'tomorrow':`${DAYS_EN[wday(d)]} ${dmU(d)}`;return {rel,day,time:hmU(d),short:rel==='today'?'today':rel==='tom'?'tomorrow':DAYS_EN[wday(d)]}}
+ const day=rel==='today'?'النهارده':rel==='tom'?'بكره':`يوم ${DAYS_AR[wday(d)]} ${dmA(d)}`;
+ return {rel,day,time:hmA(d),short:rel==='today'?'النهارده':rel==='tom'?'بكره':DAYS_AR[wday(d)]}}
+const INFO={},UI={};Object.keys(DATA.groups).forEach(g=>{INFO[g]=sesInfo(g,false);UI[g]=sesInfo(g,true)});
+const sesTxtA=s=>{const d=new Date(s.t);return `${dKey(d)===TODAY?'النهارده':DAYS_AR[wday(d)]+' '+dmA(d)} الساعة ${hmA(d)}`};
+const sesTxtU=s=>{const d=new Date(s.t);return EN?`${dKey(d)===TODAY?'Today':DAYS_EN[wday(d)]+' '+dmU(d)} ${hmU(d)}`:sesTxtA(s)};
+const sesBeforeEnd=g=>upcoming(g).filter(s=>new Date(s.t)<=END);
 
-/* ---------- build message ---------- */
+/* ---------- student state ---------- */
+const STG={none:{l:['لسه مرفعش خدمات','No services yet'],i:'📤',c:'#8a96a0',r:5},fix:{l:['خدمات محتاجة تعديل','Services need fixes'],i:'⚠️',c:'#d63a3a',r:2},pend:{l:['خدمات تحت المراجعة','Services under review'],i:'⏳',c:'#1c6ed6',r:4},done:{l:['خدمات مقبولة — مستني أول Gig','Services accepted — 1st gig next'],i:'✅',c:'#1faa59',r:3},g1:{l:['معاه Gig واحد','Has 1 gig'],i:'💪',c:'#f08c00',r:1},g2:{l:['فاضله Gig واحد','1 gig left'],i:'🔥',c:'#e8590c',r:0},grad:{l:['اتخرج','Graduated'],i:'🎓',c:'#c48300',r:9}};
+const SL=k=>T(STG[k].l[0],STG[k].l[1]),SLA=k=>STG[k].l[0];
+const ORDER=['none','fix','pend','done','g1','g2','grad'];
+function E(s){const f=FU[s.id]||{};const dg=s.grad?3:(parseInt(s.gr)||0);const g=Math.min(3,Math.max(dg,f.g||0));const grad=s.grad||g>=3;
+ let sv=s.sv||'none';if(sv==='none'&&f.sv)sv='pend';
+ const stage=grad?'grad':g===2?'g2':g===1?'g1':sv;
+ return {g,grad,sv,stage,o:!!f.o,r:f.r||'',n:f.n||'',t:f.t}}
+const isFocus=s=>{const e=E(s);return ['g2','g1','fix','done','pend'].includes(e.stage)||(e.stage==='none'&&s.att>=70)};
+const prio=s=>STG[E(s).stage].r*1000+(100-s.att);
+const nm3=s=>EN?s.en.split(/\s+/).slice(0,3).join(' '):s.ar.split(/\s+/).slice(0,3).join(' ');
+
+/* ---------- build student message ---------- */
 const first=n=>n.trim().split(/\s+/)[0];
-const gigsOf=s=>s.grad?3:(parseInt(s.gr)||0);
-const SV_LBL={none:'📤 لسه مرفعش خدمات',pend:'⏳ خدمات تحت المراجعة',fix:'⚠️ خدمات محتاجة تعديل',done:'✅ خدمات اتقبلت'};
-function msg(s){const i=INFO[s.g],link=(DATA.groups[s.g]||{}).link||'',g=gigsOf(s);
+function fill(t,s){const i=INFO[s.g],e=E(s),link=(DATA.groups[s.g]||{}).link||'';
  const fx=(s.fx&&s.fx.length?s.fx:['راجع ملاحظات الجودة على الموقع']).map(r=>'• '+r).join('\n');
- const fill=t=>t.replace(/\{name\}/g,first(s.ar)).replace(/\{day\}/g,i?i.day:'').replace(/\{time\}/g,i?i.time:'').replace(/\{link\}/g,link).replace(/\{group\}/g,s.g)
-  .replace(/\{gigs\}/g,AR(g)).replace(/\{left\}/g,AR(3-g)).replace(/\{links\}/g,AR(s.lk||0)).replace(/\{done\}/g,AR(s.dn||0)).replace(/\{nc\}/g,AR(s.nc||0)).replace(/\{fix\}/g,fx).replace(/\{att\}/g,AR(s.att))
-  .replace(/\{profile\}/g,s.jp||s.en).replace(/\{ga\}/g,AR(s.ga||3)).replace(/\{svc\}/g,s.dn?`• ${AR(s.dn)} خدمات اتقبلت على منصات العمل الحر\n`:'')
-  .replace(/\{outlier\}/g,LINKS.outlier).replace(/\{guide\}/g,LINKS.guide);
- if(s.grad)return fill(TPL.grad).replace(/\n{3,}/g,'\n\n');
+ return t.replace(/\{name\}/g,first(s.ar)).replace(/\{day\}/g,i?i.day:'').replace(/\{time\}/g,i?i.time:'').replace(/\{link\}/g,link).replace(/\{group\}/g,s.g)
+  .replace(/\{gigs\}/g,AR(e.g)).replace(/\{left\}/g,AR(3-e.g)).replace(/\{links\}/g,AR(s.lk||0)).replace(/\{done\}/g,AR(s.dn||0)).replace(/\{nc\}/g,AR(s.nc||0)).replace(/\{fix\}/g,fx).replace(/\{att\}/g,AR(s.att))
+  .replace(/\{profile\}/g,s.jp||s.en).replace(/\{ga\}/g,AR(Math.max(s.ga||0,e.g))).replace(/\{svc\}/g,s.dn?`• ${AR(s.dn)} خدمات اتقبلت على منصات العمل الحر\n`:'')
+  .replace(/\{daysLeft\}/g,AR(daysLeft)).replace(/\{endDate\}/g,endDate)
+  .replace(/\{outlier\}/g,LINKS.outlier).replace(/\{guide\}/g,LINKS.guide)}
+function msg(s,camp=CAMP){const i=INFO[s.g],e=E(s);
+ if(e.grad)return fill(TPL.grad,s).replace(/\n{3,}/g,'\n\n');
+ if(camp==='deadline'){const step={none:TPL.dlNone,fix:TPL.dlFix,pend:TPL.dlPend,done:TPL.dlDone,g1:TPL.dlG1,g2:TPL.dlG2}[e.stage];return fill(TPL.dl.replace(/\{step\}/g,step),s)}
  let parts;
- if(s.g===SAME_GROUP)parts=[s.grad?TPL.openGrad:TPL.open,s.grad?TPL.outlierGrad:TPL.outlier];
- else if(s.grad)parts=[TPL.openGrad,TPL.road];
- else{const sv={none:TPL.svNone,pend:TPL.svPend,fix:TPL.svFix,done:TPL.svDone}[s.sv||'none'];
+ if(s.g===SAME_GROUP)parts=[TPL.open,TPL.outlier];
+ else{const sv={none:TPL.svNone,pend:TPL.svPend,fix:TPL.svFix,done:TPL.svDone}[e.sv];
   const st=[TPL.openSt,TPL.stGigs,sv];if(s.att<70)st.push(TPL.attLow);
   parts=[st.filter(x=>x&&x.trim()).join('\n\n'),TPL.road]}
  if(i)parts.push(i.rel==='today'?TPL.sesToday:TPL.sesLater);
  parts.push(TPL.close);
- return fill(parts.filter(x=>x&&x.trim()).join('\n\n'))}
-const waNum=p=>{p=p.replace(/\D/g,'');if(p.startsWith('0'))p='20'+p.slice(1);return p};
-const waLink=s=>`https://wa.me/${waNum(s.ph)}?text=${encodeURIComponent(msg(s))}`;
+ return fill(parts.filter(x=>x&&x.trim()).join('\n\n'),s)}
+const waNum=p=>{p=String(p).replace(/\D/g,'');if(p.startsWith('0'))p='20'+p.slice(1);else if(p.length===10&&p.startsWith('1'))p='20'+p;return p};
+const waTo=(ph,t)=>`https://wa.me/${waNum(ph)}?text=${encodeURIComponent(t)}`;
+const waLink=s=>waTo(s.ph,msg(s));
 
-/* ---------- UI ---------- */
-const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-let fG='all',fS='all';
-const WA_IC='<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.3z"/></svg>';
-function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),1600)}
-function pass(s){if(fG!=='all'&&s.g!==fG)return false;const i=INFO[s.g];
- if(fS==='grad'&&!s.grad)return false;if(fS==='notgrad'&&s.grad)return false;
- if(fS==='today'&&!(i&&i.rel==='today'))return false;if(fS==='later'&&!(i&&i.rel!=='today'))return false;
- if(fS==='unsent'&&SENT[s.id])return false;
- if($('#hideSent').checked&&SENT[s.id])return false;
- const q=$('#q').value.trim().toLowerCase();if(q&&!(s.ar+' '+s.en+' '+s.ph+' '+s.id).toLowerCase().includes(q))return false;return true}
-function chips(){
- const cnt=g=>DATA.st.filter(s=>g==='all'||s.g===g).length;
- $('#gChips').innerHTML=['all',...Object.keys(DATA.groups)].map(g=>{const i=INFO[g];return `<button class="chip ${fG===g?'on':''}" data-g="${g}">${g==='all'?'كل الجروبات':g}${g!=='all'&&i?` · ${i.short}`:''} <small>(${AR(cnt(g))})</small></button>`}).join('');
- const base=DATA.st.filter(s=>fG==='all'||s.g===fG);
- const F=[['all','الكل',base.length],['grad','🎓 المتخرجين',base.filter(s=>s.grad).length],['notgrad','لسه ماتخرجوش',base.filter(s=>!s.grad).length],['today','🔴 سيشنهم النهارده',base.filter(s=>INFO[s.g]&&INFO[s.g].rel==='today').length],['later','📅 سيشنهم يوم تاني',base.filter(s=>INFO[s.g]&&INFO[s.g].rel!=='today').length],['unsent','⏳ لسه مابعتلهمش',base.filter(s=>!SENT[s.id]).length]];
- $('#fChips').innerHTML=F.map(f=>`<button class="chip ${fS===f[0]?'on':''}" data-f="${f[0]}">${f[1]} <small>(${AR(f[2])})</small></button>`).join('');
- $$('[data-g]').forEach(b=>b.onclick=()=>{fG=b.dataset.g;render()});$$('[data-f]').forEach(b=>b.onclick=()=>{fS=b.dataset.f;render()})}
+/* ---------- group stats ---------- */
+const GIDS=Object.keys(DATA.groups);
+function GS(g){const L=DATA.st.filter(s=>s.g===g),c={};ORDER.forEach(k=>c[k]=0);L.forEach(s=>c[E(s).stage]++);
+ const grads=L.filter(s=>E(s).grad),ns=upcoming(g)[0],be=sesBeforeEnd(g);
+ return {L,c,total:L.length,grad:grads.length,gradNames:grads.map(s=>first(s.ar)).join(' و'),next:ns?sesTxtA(ns):'هيتحدد',nextU:ns?sesTxtU(ns):T('هيتحدد','TBD'),
+  sesList:be.map(sesTxtA).join(' · ')||'مفيش سيشنات تانية قبل النهاية',sesListU:be.map(sesTxtU).join(' · ')||T('مفيش سيشنات تانية','No more sessions'),
+  gigsLeft:L.reduce((a,s)=>a+(3-E(s).g),0)}}
+const nameList=(L,max=40)=>L.length?L.slice(0,max).map(s=>`• ${s.ar.split(/\s+/).slice(0,3).join(' ')}`).join('\n')+(L.length>max?`\n• و${AR(L.length-max)} كمان`:''):'• مفيش 👌';
+function gfill(t,g){const G=DATA.groups[g],S=GS(g),by=k=>S.L.filter(s=>E(s).stage===k).sort((a,b)=>b.att-a.att);
+ const near=S.L.filter(s=>['g2','g1'].includes(E(s).stage)).sort((a,b)=>prio(a)-prio(b));
+ const nearTxt=near.length?near.map(s=>`• ${s.ar.split(/\s+/).slice(0,3).join(' ')} — ${SLA(E(s).stage)}`).join('\n'):nameList(by('done').concat(by('pend')),12);
+ return t.replace(/\{group\}/g,g).replace(/\{coach\}/g,first(G.coach)).replace(/\{daysLeft\}/g,AR(daysLeft)).replace(/\{endDate\}/g,endDate)
+  .replace(/\{grad\}/g,AR(S.grad)).replace(/\{total\}/g,AR(S.total)).replace(/\{gradNames\}/g,S.gradNames||'—')
+  .replace(/\{gradLine\}/g,S.grad?`\n🎉 مبروك لـ ${S.gradNames} على التخرج — وانتوا الجايين 💪\n`:'')
+  .replace(/\{nextSes\}/g,S.next).replace(/\{sesList\}/g,S.sesList).replace(/\{link\}/g,G.link).replace(/\{guide\}/g,LINKS.guide)
+  .replace(/\{inGigs\}/g,AR(S.c.g1+S.c.g2)).replace(/\{svDone\}/g,AR(S.c.done)).replace(/\{pend\}/g,AR(S.c.pend)).replace(/\{fix\}/g,AR(S.c.fix)).replace(/\{none\}/g,AR(S.c.none))
+  .replace(/\{near\}/g,nearTxt).replace(/\{list_done\}/g,nameList(by('done').concat(by('pend')))).replace(/\{list_fix\}/g,nameList(by('fix'))).replace(/\{list_none\}/g,nameList(by('none')))}
+
+/* ---------- helpers ---------- */
+const $$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),1800)}
+const copy=t=>(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject());
 const GCOL=['#128c7e','#7c5cff','#e0662a','#d6336c','#1c7ed6','#2f9e44'];
-const gcol=g=>GCOL[Object.keys(DATA.groups).indexOf(g)%GCOL.length];
-function stats(){const T=DATA.st.length,S=DATA.st.filter(s=>SENT[s.id]).length,G=DATA.st.filter(s=>s.grad).length,TD=DATA.st.filter(s=>INFO[s.g]&&INFO[s.g].rel==='today').length;
- $('#stats').innerHTML=`<div class="stat"><div class="ring" style="--p:${T?S/T*100:0}"></div><div><b>${AR(S)} / ${AR(T)}</b><span>اتبعتلهم</span></div></div><div class="stat"><div class="si">👥</div><div><b>${AR(T)}</b><span>طالب · ${AR(Object.keys(DATA.groups).length)} جروبات</span></div></div><div class="stat"><div class="si" style="background:var(--goldBg)">🎓</div><div><b style="color:var(--gold)">${AR(G)}</b><span>متخرجين — تهنئة</span></div></div><div class="stat"><div class="si" style="background:var(--redBg)">⏰</div><div><b style="color:var(--red)">${AR(TD)}</b><span>سيشنهم النهارده</span></div></div>`}
-function card(s){const i=INFO[s.g],sent=SENT[s.id],n=s.ar.trim().split(/\s+/);
- return `<div class="st ${s.grad?'grad':''} ${sent?'sent':''}"><div class="who"><div class="av" style="background:${gcol(s.g)}">${esc(n[0][0]||'?')}${s.grad?'<i>🎓</i>':sent?'<i>✅</i>':''}</div><div style="min-width:0"><div class="nm">${esc(n.slice(0,3).join(' '))}</div><div class="ph">${esc(s.ph)}</div></div></div>
- <div class="meta">${s.grad?'<span class="tag g">🎓 متخرج</span>':`<span class="tag">Gigs ${esc(s.gr)}</span>`}${i?`<span class="tag ${i.rel==='today'?'today':''}">⏰ ${i.short} ${i.time}</span>`:''}${!s.grad&&s.g!==SAME_GROUP?`<span class="tag ${s.sv==='fix'?'low':s.sv==='done'?'ok':''}">${SV_LBL[s.sv||'none']}</span>`:''}<span class="tag ${s.att<70?'low':'ok'}">حضور ${AR(s.att)}٪</span>${sent?`<span class="tag ok">✓ ${new Date(sent).toLocaleString('ar-EG',{timeZone:TZ,hour:'numeric',minute:'2-digit'})}</span>`:''}</div>
- <div class="acts"><a class="wa" data-wa="${s.id}" href="${waLink(s)}" target="_blank" rel="noopener">${WA_IC}${sent?'ابعت تاني':'ابعت'}</a><button class="ic" data-pv="${s.id}" title="شوف الرسالة">👁</button><button class="ic" data-tg="${s.id}" title="${sent?'شيل علامة الإرسال':'علّم إنه اتبعت'}">${sent?'↺':'✓'}</button></div></div>`}
-function render(){chips();stats();const L=DATA.st.filter(pass);
- if(!L.length){$('#list').innerHTML='<div class="empty">مفيش طلبة بالفلتر ده 🤷‍♂️</div>';return}
- const gs=Object.keys(DATA.groups).filter(g=>L.some(s=>s.g===g));
- $('#list').innerHTML=gs.map(g=>{const i=INFO[g],arr=L.filter(s=>s.g===g);
-  return `<section class="gsec"><div class="ghd"><span class="av" style="width:12px;height:12px;background:${gcol(g)}"></span><h2>${esc(g)}</h2>${i?`<span class="when ${i.rel==='today'?'today':''}">${i.rel==='today'?'🔴 ':''}سيشن ${esc(i.day)} · ${esc(i.time)}</span>`:''}<span class="cnt">${AR(arr.filter(s=>SENT[s.id]).length)} / ${AR(arr.length)} اتبعتلهم</span></div><div class="list">${arr.map(card).join('')}</div></section>`}).join('')}
+const gcol=g=>GCOL[GIDS.indexOf(g)%GCOL.length];
+const WA_IC='<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.3z"/></svg>';
+const goBtn=(go,label)=>{const [t,st,pre]=go.split(':');return `<button class="btn sm go" data-go="${t}" data-stage="${st||''}" data-pre="${pre||''}">${label||T('افتح ←','Open →')}</button>`};
+
+/* ---------- header ---------- */
+function header(){const Tn=DATA.st.length,G=DATA.st.filter(s=>E(s).grad).length,gl=DATA.st.reduce((a,s)=>a+(3-E(s).g),0),S=Object.keys(SENT).length,TD=DATA.st.filter(s=>INFO[s.g]&&INFO[s.g].rel==='today').length;
+ const el=Math.min(1,Math.max(0,(Date.now()-START)/(END-START)));
+ $('#count').innerHTML=`<div class="big">${N(daysLeft)}</div><div class="lab"><b>${T('يوم فاضل','days left')}</b>${T('على نهاية المبادرة','until the initiative ends')} · ${dmU(END)}</div><div class="tbar"><div class="tr"><i style="width:${el*100}%"></i></div><div class="tl"><span>${T('بداية الخطة','Plan start')} ${dmU(START)}</span><span>${T(`${N(Math.round(el*100))}٪ من الوقت عدّى`,`${Math.round(el*100)}% of time elapsed`)}</span><span>${dmU(END)}</span></div></div>`;
+}
+
+/* ---------- PLAN ---------- */
+const PH=[
+ {k:'p1',n:1,c:'#1c6ed6',t:['تشغيل وتنضيف','Kick-off & clean-up'],from:'2026-11-15',to:'2026-11-17',goal:['كل الطلبة رافعين خدمات ومفيش تعديلات متعلّقة','Everyone has services uploaded, no pending fixes'],items:[
+  ['p1a','15','j',['ابعت رسالة «🚀 انطلاق الخطة» على الـ٥ جروبات','Post the “🚀 Kickoff” message in all 5 groups'],'groups'],
+  ['p1b','15','k',['ابعت «📋 بريف الخطة» لكل كوتش — فيه أرقام جروبه وأسماء الأولوية','Send each coach the “📋 Plan brief” — group numbers & priority names'],'coaches::brief'],
+  ['p1c','15–16','p',['ابعت «📋 رسالة الحالة» لكل طالب في الخاص — استخدم زرار ▶ ابعت للي بعده','Send every student the “📋 Status message” — use ▶ Send to next'],'students'],
+  ['p1d','16','p',['كلّم اللي خدماتهم محتاجة تعديل ({fix} طالب) — التعديل يتبعت في نفس اليوم','Contact students whose services need fixes ({fix}) — fix the same day'],'students:fix'],
+  ['p1e','16','q',['تابع مع فريق الجودة على الخدمات اللي تحت المراجعة ({pend} طالب)','Follow up with QA on services under review ({pend} students)'],'coaches'],
+  ['p1f','17','p',['مكالمة لكل اللي لسه مرفعوش خدمات ({none} طالب) — ابدأ بأعلى حضور','Call everyone with no services yet ({none}) — highest attendance first'],'students:none']]},
+ {k:'p2',n:2,c:'#1faa59',t:['أول Gig','First gig'],from:'2026-11-18',to:'2026-11-23',goal:['كل طالب سجّل على Outlier وقفل أول Gig','Everyone on Outlier and closed a first gig'],items:[
+  ['p2a',['كل سيشن','each session'],'k',['قبل كل سيشن بساعتين ابعت للكوتش «🎯 قبل السيشن» — الأسماء متقسمة حسب المرحلة','2h before each session send the coach “🎯 Before session” — names grouped by stage'],'coaches::pre'],
+  ['p2b','18','k',['اطلب من كل كوتش يقسّم الطلبة مجموعات حسب المرحلة ويشتغل عملي (ده اللي اشتغل في CAI5 وDRT6)','Ask every coach to split students by stage and run hands-on work (worked in CAI5 & DRT6)'],'coaches::brief'],
+  ['p2c','18–20','p',['اسأل كل طالب: سجّلت على Outlier؟ وعلّمها في 📝 المتابعة','Ask each student if they registered on Outlier and tick it in 📝 follow-up'],'students'],
+  ['p2d','20','j',['انشر «🎉 تهنئة» على الجروب لأي حد يقفل Gig — بتحمّس الباقيين','Post a “🎉 congrats” in the group whenever someone closes a gig'],'groups'],
+  ['p2e','21','p',['مراجعة نص المدة: صدّر الشيت وابعت «⏳ تذكير قبل النهاية» لكل اللي لسه','Mid-point review: export the sheet and send the “⏳ Deadline reminder” to everyone pending'],'students:all:deadline'],
+  ['p2f',['يومياً','daily'],'p',['أي طالب مردش يومين ← مكالمة تليفون (علّمه «مردش» في المتابعة)','Any student silent for 2 days → phone call (mark “no reply”)'],'students:noreply']]},
+ {k:'p3',n:3,c:'#e8590c',t:['الحسم','Final push'],from:'2026-11-24',to:'2026-11-28',goal:['اللي معاهم Gig يكمّلوا التلاتة','Students with gigs complete all three'],items:[
+  ['p3a',['يومياً','daily'],'j',['رسالة «⏳ العد التنازلي» على الجروبات كل يوم الصبح','“⏳ Countdown” message in the groups every morning'],'groups'],
+  ['p3b',['يومياً','daily'],'p',['متابعة يومية لـ🔥 اللي فاضلهم Gig و💪 اللي معاهم Gig — دول أسرع تخرج','Daily follow-up with 🔥 1-gig-left and 💪 1-gig students — fastest to graduate'],'students:g'],
+  ['p3c',['آخر سيشن','last session'],'k',['اطلب من الكوتش جلسة فردية للأقرب للتخرج في آخر سيشن','Ask the coach for 1:1 time with the closest-to-graduate in the last session'],'coaches::pre'],
+  ['p3d','26','q',['ابعت تقرير للمشرفة بالأرقام والطلبة اللي محتاجين تدخّل','Send the supervisor a report with numbers and students needing intervention'],'coaches']]},
+ {k:'p4',n:4,c:'#c48300',t:['التقفيل','Wrap-up'],from:'2026-11-29',to:'2026-11-30',goal:['كل Gig متسجّل ومقبول قبل النهاية','Every gig logged and approved before the end'],items:[
+  ['p4a','29','p',['اتأكد إن كل Gig متسجّل ومقبول على البورتال — مفيش حاجة تفضل معلّقة','Make sure every gig is logged and approved on the portal'],'students:g'],
+  ['p4b','30','j',['رسالة «🎉 تهنئة المتخرجين» على كل الجروبات','“🎉 Celebrate grads” message in all groups'],'groups'],
+  ['p4c','30','q',['صدّر الشيت النهائي واحفظه للتقرير','Export the final sheet for the report'],'csv']]}];
+const DAILY=[
+ [['افتح «📊 المتابعة» وشوف أولوية النهارده','Open “📊 Tracking” and check today’s priority'],'dash'],
+ [['رسالة الصبح على الجروبات (حسب المرحلة)','Morning message in the groups (by phase)'],'groups'],
+ [['خلّص قايمة 🎯 الأولوية في الخاص بزرار ▶ ابعت للي بعده','Clear the 🎯 priority list in private chats with ▶ Send to next'],'students:focus'],
+ [['اتصل باللي مردوش امبارح','Call whoever didn’t reply yesterday'],'students:noreply'],
+ [['لو فيه سيشن: «🎯 قبل السيشن» للكوتش + تابع الحضور','Session day: send the coach “🎯 Before session” + track attendance'],'coaches::pre'],
+ [['آخر اليوم: حدّث 📝 متابعة كل طالب كلمته (Gigs / Outlier / رد)','End of day: update 📝 follow-up for everyone you contacted'],'students:contacted']];
+const W={j:['w j',['جروب','Group']],k:['w k',['كوتش','Coach']],p:['w p',['خاص','Private']],q:['w q',['جودة/إشراف','QA/Supervisor']]};
+const dLab=x=>Array.isArray(x)?T(x[0],x[1]):(/^\d+$/.test(x)?dmU(new Date(`2026-11-${x}T12:00:00+02:00`)):T(AR(x),x+' Nov'));
+function plan(){const c={};ORDER.forEach(k=>c[k]=0);DATA.st.forEach(s=>c[E(s).stage]++);
+ const vars=t=>t.replace('{fix}',N(c.fix)).replace('{pend}',N(c.pend)).replace('{none}',N(c.none));
+ $('#phases').innerHTML=PH.map(p=>{const st=TODAY>p.to?'past':TODAY>=p.from?'cur':'fut',dn=p.items.filter(x=>PLAN[x[0]]).length;
+  return `<div class="ph ${st}"><div class="phh"><div class="num" style="background:${p.c}">${N(p.n)}</div><div><h3>${T('المرحلة','Phase')} ${N(p.n)}: ${T(p.t[0],p.t[1])} ${st==='cur'?`<span class="tag today">${T('إحنا هنا','we are here')}</span>`:''}</h3><p>${dmU(new Date(p.from+'T12:00:00+02:00'))} ${EN?'→':'←'} ${dmU(new Date(p.to+'T12:00:00+02:00'))} · 🎯 ${T(p.goal[0],p.goal[1])}</p></div><div class="st"><b>${N(dn)}/${N(p.items.length)}</b><div class="tag ${dn===p.items.length?'ok':''}">${dn===p.items.length?T('خلصت ✓','done ✓'):T('خطوة','steps')}</div></div></div>
+  <div class="phb">${p.items.map(x=>`<div class="it ${PLAN[x[0]]?'dn':''}"><input type="checkbox" data-plan="${x[0]}" ${PLAN[x[0]]?'checked':''}><div class="tx"><span class="${W[x[2]][0]}">${T(W[x[2]][1][0],W[x[2]][1][1])}</span>${vars(T(x[3][0],x[3][1]))}</div><div class="dt">${dLab(x[1])}</div>${x[4]?goBtn(x[4]):''}</div>`).join('')}</div></div>`}).join('');
+ $('#gtable').innerHTML=`<table><tr><th>${T('الجروب','Group')}</th><th>${T('الكوتش','Coach')}</th><th>${T('اتخرج','Grads')}</th><th>${T('Gigs فاضلة','Gigs left')}</th><th>${T('المراحل','Stages')}</th><th>${T('سيشنات لحد النهاية','Sessions until end')}</th></tr>${GIDS.map(g=>{const S=GS(g);return `<tr><td><span class="g">${g}</span></td><td>${esc(DATA.groups[g].coach.split(' ').slice(0,2).join(' '))}</td><td><b>${N(S.grad)}</b>/${N(S.total)}</td><td><b style="color:var(--org)">${N(S.gigsLeft)}</b></td><td><div class="stk" style="margin:4px 0;width:120px">${ORDER.map(k=>`<i style="width:${S.c[k]/S.total*100}%;background:${STG[k].c}" title="${SL(k)}: ${S.c[k]}"></i>`).join('')}</div></td><td style="font-size:12px">${esc(S.sesListU)}</td></tr>`}).join('')}</table>`;
+ insights()}
+function insights(){const R={};DATA.st.forEach(s=>(s.fx||[]).forEach(r=>R[r]=(R[r]||0)+1));const top=Object.entries(R).sort((a,b)=>b[1]-a[1])[0];
+ const bad=GIDS.filter(g=>waNum(DATA.groups[g].cph).length<12),asof=DATA.asof?new Date(DATA.asof):null;
+ const I=[
+  ['💲',T(`أكتر سبب لرفض الخدمات من الجودة: <b>${esc(top?top[0]:'—')}</b> (${N(top?top[1]:0)} طالب). نبّه عليه في كل رسالة جروب وكل سيشن قبل ما الطلبة يرفعوا.`,`Most common QA rejection reason: <b>starting price must be $3–$7</b> (${top?top[1]:0} students). Repeat it in every group message and session before students upload.`)],
+  ['🚫',T(`طالبة اشتكت في الفيدباك إن عمل اختبار Outlier جوه المحاضرة بيعرّض الحساب للـ Ban، وإنها رافضة المنصات دي. خلّي الاختبار يتعمل لوحده بعد قراية الدليل، واللي رافض Outlier يركّز على خمسات/كافيل/نفذلي.`,`A student said in feedback that taking the Outlier test during the session risks a ban, and she refuses those platforms. Have students take the test alone after reading the guide; those refusing Outlier focus on Khamsat/Kafiil/Nafezly.`)],
+  ['👥',T(`ملاحظتك على <b>ONL5_DRT7_S2</b>: الكوتش مقسمش الطلبة ومحدش بدأ Gig. في CAI5 وDRT6 التقسيم اشتغل كويس — اطلبه صراحة في بريف الكوتش.`,`Your note on <b>ONL5_DRT7_S2</b>: the coach didn’t split students and nobody started a gig. Splitting worked in CAI5 and DRT6 — ask for it explicitly in the coach brief.`)],
+  ['🗣️',T(`الفيدباك بيقول المحاضرات بقت مكررة والطلبة عاوزين شغل عملي وبرومبت جاهز لكتابة الخدمات. اقترح على الكوتشز السيشن تبقى «ورشة» يطلع منها كل طالب بخطوة متنفّذة.`,`Feedback says sessions feel repetitive; students want hands-on work and a ready prompt for writing services. Suggest coaches run sessions as workshops where each student leaves with a completed step.`)],
+  ['⚠️',T(`الطلبة اللي قالوا «الحاجات بتتغير من غير ما نعرف» — ابعت قواعد القبول (السعر 3$–7$، خدمة عامة ونشطة، اسم الحساب زي المنحة، مستقل مش مقبولة) في رسالة واحدة مثبّتة على كل جروب.`,`Students said “rules change without notice” — pin one message in every group with the acceptance rules ($3–$7 price, public & active service, account name as registered, Mostaql not accepted).`)],
+  ...(bad.length?[['📵',T(`رقم الكوتش ${bad.map(g=>esc(DATA.groups[g].coach)).join('، ')} في الداتا ناقص — هات الرقم الصح عشان زرار الواتساب يشتغل.`,`Coach ${bad.map(g=>esc(DATA.groups[g].coach)).join(', ')} has an incomplete phone number in the data — get the right one so the WhatsApp button works.`)]]:[]),
+  ['🗂️',T(`الأرقام هنا من الداتا اللي اتصدّرت${asof?' في '+esc(asof.toLocaleString('ar-EG',{timeZone:TZ,day:'numeric',month:'long',hour:'numeric',minute:'2-digit'})):''}. أي تقدّم جديد سجّله من 📝 المتابعة عشان الخطة والرسايل تتحدث.`,`Numbers come from the data export${asof?' of '+esc(asof.toLocaleString('en-GB',{timeZone:TZ,day:'numeric',month:'short',hour:'numeric',minute:'2-digit'})):''}. Log any new progress in 📝 follow-up so the plan and messages stay current.`)]];
+ $('#ins').innerHTML=I.map(x=>`<div class="in"><span class="e">${x[0]}</span><div>${x[1]}</div></div>`).join('')}
+
+/* ---------- DASH ---------- */
+function dash(){const c={};ORDER.forEach(k=>c[k]=0);DATA.st.forEach(s=>c[E(s).stage]++);const mx=Math.max(...Object.values(c));
+ $('#fun').innerHTML=ORDER.map(k=>`<div class="fr" data-go="students" data-stage="${k}"><span>${STG[k].i} ${SL(k)}</span><div class="bar"><i style="width:${c[k]/mx*100}%;background:${STG[k].c}"></i></div><b>${N(c[k])}</b></div>`).join('');
+ const F=DATA.st.filter(s=>!E(s).grad&&isFocus(s)).sort((a,b)=>prio(a)-prio(b)).slice(0,10);
+ $('#focus').innerHTML=F.map(s=>{const e=E(s);return `<div class="in" style="align-items:center"><span class="e">${STG[e.stage].i}</span><div style="flex:1;min-width:0"><b>${esc(nm3(s))}</b><div style="font-size:12px;color:var(--mu)">${SL(e.stage)} · <span dir="ltr">${s.g}</span> · ${T('حضور','att.')} ${N(s.att)}${T('٪','%')}</div></div><a class="btn sm pri" href="${waLink(s)}" target="_blank" rel="noopener" data-wa="${s.id}">${SENT[s.id]?T('✓ تاني','✓ again'):T('ابعت','Send')}</a><button class="btn sm" data-fu="${s.id}">📝</button></div>`}).join('')||`<div class="empty">${T('كله تمام 👌','All clear 👌')}</div>`;
+ $('#gcards').innerHTML=GIDS.map(g=>{const G=DATA.groups[g],S=GS(g),i=UI[g];return `<div class="gcard"><div class="top"><div class="ring lg" style="--p:${S.grad/S.total*100};--c:var(--gold)"><em>${N(S.grad)}/${N(S.total)}</em></div><div style="min-width:0"><h3>${g}</h3><div class="cm">${esc(G.track)} · ${T('كوتش','coach')} ${esc(G.coach.split(' ').slice(0,2).join(' '))}</div>${i?`<span class="tag ${i.rel==='today'?'today':''}">⏰ ${T('السيشن','session')} ${esc(i.day)} ${esc(i.time)}</span>`:''}</div></div>
+  <div class="stk">${ORDER.map(k=>`<i style="width:${S.c[k]/S.total*100}%;background:${STG[k].c}"></i>`).join('')}</div>
+  <div class="leg">${ORDER.filter(k=>S.c[k]).map(k=>`<span style="--c:${STG[k].c}">${SL(k)} ${N(S.c[k])}</span>`).join('')}</div>
+  <div class="row" style="margin-top:8px"><button class="btn sm" data-go="students" data-g="${g}">💬 ${T('الطلبة','Students')}</button><button class="btn sm" data-go="groups">📣 ${T('رسالة للجروب','Group msg')}</button><button class="btn sm" data-go="coaches">🧑‍🏫 ${T('الكوتش','Coach')}</button><a class="btn sm" href="${G.wa}" target="_blank" rel="noopener">${T('افتح الجروب ↗','Open group ↗')}</a></div></div>`}).join('')}
+
+/* ---------- STUDENTS ---------- */
+let fG='all',fS='all';
+const FILTERS=[['all',['الكل','All']],['focus',['🎯 أولوية','🎯 Priority']],...ORDER.slice().reverse().map(k=>[k,[STG[k].i+' '+STG[k].l[0],STG[k].i+' '+STG[k].l[1]]]),['g',['💪🔥 معاهم Gigs','💪🔥 Have gigs']],['today',['🔴 سيشنهم النهارده','🔴 Session today']],['noreply',['📵 مردش / محتاج مكالمة','📵 No reply / call']],['contacted',['📝 اتكلموا النهارده','📝 Contacted today']],['unsent',['⏳ لسه مابعتلهمش','⏳ Not sent yet']]];
+function pass(s,f=fS,full=true){if(fG!=='all'&&s.g!==fG)return false;const e=E(s),i=INFO[s.g];
+ if(f==='focus'&&(e.grad||!isFocus(s)))return false;if(STG[f]&&e.stage!==f)return false;
+ if(f==='g'&&!['g1','g2'].includes(e.stage))return false;
+ if(f==='today'&&!(i&&i.rel==='today'))return false;if(f==='noreply'&&!['no','call'].includes(e.r))return false;
+ if(f==='contacted'&&!((SENT[s.id]&&dKey(new Date(SENT[s.id]))===TODAY)||(e.t&&dKey(new Date(e.t))===TODAY)))return false;
+ if(f==='unsent'&&SENT[s.id])return false;if(!full)return true;if($('#hideSent').checked&&SENT[s.id])return false;
+ const q=$('#q').value.trim().toLowerCase();if(q&&!(s.ar+' '+s.en+' '+s.ph+' '+s.id+' '+e.n).toLowerCase().includes(q))return false;return true}
+function chips(){const cnt=g=>DATA.st.filter(s=>g==='all'||s.g===g).length;
+ $('#gChips').innerHTML=['all',...GIDS].map(g=>{const i=UI[g];return `<button class="chip ${fG===g?'on':''}" data-g="${g}">${g==='all'?T('كل الجروبات','All groups'):g}${g!=='all'&&i?` · ${i.short}`:''} <small>(${N(cnt(g))})</small></button>`}).join('');
+ const res=FILTERS.map(f=>[f[0],T(f[1][0],f[1][1]),DATA.st.filter(s=>pass(s,f[0],false)).length]);
+ $('#fChips').innerHTML=res.filter(f=>f[2]||f[0]==='all'||f[0]===fS).map(f=>`<button class="chip ${fS===f[0]?'on':''}" data-f="${f[0]}">${f[1]} <small>(${N(f[2])})</small></button>`).join('');
+ $$('#gChips [data-g]').forEach(b=>b.onclick=()=>{fG=b.dataset.g;renderStudents()});$$('#fChips [data-f]').forEach(b=>b.onclick=()=>{fS=b.dataset.f;renderStudents()})}
+const RL={ok:[['✅ رد','✅ Replied'],'ok'],no:[['📵 مردش','📵 No reply'],'low'],call:[['📞 محتاج مكالمة','📞 Needs a call'],'or'],ref:[['🙅 رافض Outlier','🙅 Refuses Outlier'],'bl']};
+const RLt=k=>T(RL[k][0][0],RL[k][0][1]);
+function card(s){const i=UI[s.g],sent=SENT[s.id],e=E(s),st=STG[e.stage];
+ return `<div class="stc ${e.grad?'grad':''} ${sent?'sent':''}" style="--sc:${st.c}"><div class="who"><div class="av" style="background:${gcol(s.g)}">${esc((EN?s.en:s.ar).trim()[0]||'?').toUpperCase()}${e.grad?'<i>🎓</i>':sent?'<i>✅</i>':''}</div><div style="min-width:0"><div class="nm">${esc(nm3(s))}</div><div class="ph2">${esc(s.ph)}</div></div>
+ <div class="gb"><div class="s">${[0,1,2].map(k=>`<i class="${k<e.g?'f':''}"></i>`).join('')}</div><small>${e.grad?T('متخرج','graduated'):'Gigs '+N(e.g)+'/'+N(3)}</small></div></div>
+ <div class="meta"><span class="tag" style="background:color-mix(in srgb,${st.c} 15%,transparent);color:${st.c}">${st.i} ${SL(e.stage)}</span>${!e.grad&&i?`<span class="tag ${i.rel==='today'?'today':''}">⏰ ${i.short} ${i.time}</span>`:''}<span class="tag ${s.att<70?'low':'ok'}">${T('حضور','att.')} ${N(s.att)}${T('٪','%')}</span>${e.o?'<span class="tag bl">Outlier ✓</span>':''}${e.r?`<span class="tag ${RL[e.r][1]}">${RLt(e.r)}</span>`:''}${sent?`<span class="tag ok">✓ ${new Date(sent).toLocaleString(EN?'en-GB':'ar-EG',{timeZone:TZ,weekday:'short',hour:'numeric',minute:'2-digit'})}</span>`:''}</div>
+ ${e.n?`<div class="note">📝 ${esc(e.n)}</div>`:''}
+ <div class="acts"><a class="wa" data-wa="${s.id}" href="${waLink(s)}" target="_blank" rel="noopener">${WA_IC}${sent?T('ابعت تاني','Send again'):T('ابعت','Send')}</a><button class="ic" data-pv="${s.id}" title="${T('شوف الرسالة','Preview')}">👁</button><button class="ic" data-fu="${s.id}" title="${T('المتابعة','Follow-up')}">📝</button><a class="ic" href="tel:${esc(s.ph)}" title="${T('اتصل','Call')}">📞</a><button class="ic" data-tg="${s.id}" title="${sent?T('شيل علامة الإرسال','Unmark'):T('علّم إنه اتبعت','Mark as sent')}">${sent?'↺':'✓'}</button></div></div>`}
+function filtered(){return DATA.st.filter(s=>pass(s)).sort((a,b)=>prio(a)-prio(b))}
+function renderStudents(){chips();$$('#camp button').forEach(b=>b.classList.toggle('on',b.dataset.c===CAMP));const L=filtered();
+ if(!L.length){$('#list').innerHTML=`<div class="empty">${T('مفيش طلبة بالفلتر ده 🤷‍♂️','No students match this filter 🤷‍♂️')}</div>`;return}
+ const gs=GIDS.filter(g=>L.some(s=>s.g===g));
+ $('#list').innerHTML=gs.map(g=>{const i=UI[g],arr=L.filter(s=>s.g===g);
+  return `<section class="gsec"><div class="ghd"><span class="av" style="width:12px;height:12px;background:${gcol(g)}"></span><h2>${esc(g)}</h2>${i?`<span class="when ${i.rel==='today'?'today':''}">${i.rel==='today'?'🔴 ':''}${T('سيشن','session')} ${esc(i.day)} · ${esc(i.time)}</span>`:''}<span class="cnt">${N(arr.filter(s=>SENT[s.id]).length)} / ${N(arr.length)} ${T('اتبعتلهم','sent')}</span></div><div class="list">${arr.map(card).join('')}</div></section>`}).join('')}
 const byId=id=>DATA.st.find(s=>s.id===id);
-function mark(id,v){if(v)SENT[id]=Date.now();else delete SENT[id];store.set('wa-sent',SENT)}
-document.addEventListener('click',e=>{
- const w=e.target.closest('[data-wa]');if(w){const id=w.dataset.wa;setTimeout(()=>{mark(id,true);render()},300);return}
- const t=e.target.closest('[data-tg]');if(t){mark(t.dataset.tg,!SENT[t.dataset.tg]);render();return}
- const p=e.target.closest('[data-pv]');if(p){const s=byId(p.dataset.pv);$('#pvT').textContent='💬 '+s.ar;$('#pvB').textContent=msg(s);$('#pvWa').href=waLink(s);$('#pvWa').dataset.id=s.id;$('#pvM').classList.add('on');return}
- if(e.target.closest('[data-close]')||e.target.classList.contains('md'))$$('.md').forEach(m=>m.classList.remove('on'))});
-$('#pvWa').onclick=()=>{const id=$('#pvWa').dataset.id;setTimeout(()=>{mark(id,true);render()},300)};
-$('#pvCp').onclick=()=>{const t=$('#pvB').textContent;(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>toast('اتنسخت ✓'),()=>toast('انسخها يدوي'))};
-$('#q').oninput=render;$('#hideSent').onchange=render;
-$('#resetSent').onclick=()=>{if(confirm('تصفّر علامات الإرسال لكل الطلبة؟ (مفيدة لما تبعت رسالة جديدة)')){SENT={};store.set('wa-sent',SENT);render()}};
-function tplForm(){$('#tplF').innerHTML=TPL_LABELS.map(l=>`<label>${l[1]} ${l[2]?`<small>— ${l[2]}</small>`:''}</label><textarea data-k="${l[0]}">${esc(TPL[l[0]])}</textarea>`).join('')}
-$('#tplBtn').onclick=()=>{tplForm();$('#tplM').classList.add('on')};
-$('#tplSave').onclick=()=>{$$('#tplF [data-k]').forEach(t=>TPL[t.dataset.k]=t.value);store.set('wa-tpl',TPL);$('#tplM').classList.remove('on');render();toast('اتحفظت ✓')};
-$('#tplReset').onclick=()=>{TPL=Object.assign({},DEF);store.set('wa-tpl',{});tplForm();render();toast('رجعت للأصل')};
+function mark(id,v){if(v)SENT[id]=Date.now();else delete SENT[id];store.set(SENTK[CAMP],SENT)}
+
+/* follow-up modal */
+let fuId=null,fuTmp={};
+function openFU(id){const s=byId(id),e=E(s);fuId=id;fuTmp=Object.assign({},FU[id]||{});
+ $('#fuT').textContent='📝 '+T('متابعة','Follow-up')+' — '+nm3(s);
+ const svT={none:T('لسه مرفعش','not uploaded'),pend:T('تحت المراجعة','under review'),fix:T('محتاجة تعديل','needs fixes'),done:T('اتقبلت','accepted')}[s.sv||'none'];
+ $('#fuB').innerHTML=`<div class="kv"><span>${T('الجروب','Group')}</span><b dir="ltr" style="text-align:start">${s.g}</b><span>${T('المسار','Profile')}</span><b>${esc(s.jp)}</b><span>${T('الخدمات (من الداتا)','Services (data)')}</span><b>${svT}${s.lk?` · ${N(s.lk)} ${T('لينك','links')}, ${N(s.dn)} ${T('اتقبل','accepted')}`:''}</b>${s.fx&&s.fx.length?`<span>${T('ملاحظات الجودة','QA notes')}</span><b style="font-weight:600" dir="rtl">${s.fx.map(esc).join('<br>')}</b>`:''}<span>${T('الحضور','Attendance')}</span><b>${N(s.att)}${T('٪','%')}</b><span>${T('الموبايل','Phone')}</span><b dir="ltr" style="text-align:start">${esc(s.ph)}</b></div>
+ <label>${T('عدد الـ Gigs المقبولة','Approved gigs')} <small>— ${T('لو اتقفل Gig جديد بعد الداتا','if a new gig closed after the export')}</small></label><div class="seg" id="fuG">${[0,1,2,3].map(n=>`<button data-n="${n}" class="${e.g===n?'on':''}">${N(n)}</button>`).join('')}</div>
+ <label>${T('الخطوات','Steps')}</label><div class="row"><label class="tg"><input type="checkbox" id="fuSv" ${fuTmp.sv?'checked':''}> ${T('رفع خدماته (بعد الداتا)','Uploaded services (after export)')}</label><label class="tg"><input type="checkbox" id="fuO" ${fuTmp.o?'checked':''}> ${T('سجّل على Outlier','Registered on Outlier')}</label></div>
+ <label>${T('آخر تواصل','Last contact')}</label><div class="seg" id="fuR">${Object.keys(RL).map(k=>`<button data-r="${k}" class="${fuTmp.r===k?'on':''}">${RLt(k)}</button>`).join('')}</div>
+ <label>${T('ملاحظة','Note')}</label><textarea id="fuN" placeholder="${T('مثلاً: وعد يرفع الخدمات بكره الصبح','e.g. promised to upload services tomorrow morning')}">${esc(fuTmp.n||'')}</textarea>`;
+ $$('#fuG button').forEach(b=>b.onclick=()=>{fuTmp.g=+b.dataset.n;$$('#fuG button').forEach(x=>x.classList.toggle('on',x===b))});
+ $$('#fuR button').forEach(b=>b.onclick=()=>{fuTmp.r=fuTmp.r===b.dataset.r?'':b.dataset.r;$$('#fuR button').forEach(x=>x.classList.toggle('on',x.dataset.r===fuTmp.r))});
+ $('#fuM').classList.add('on')}
+$('#fuSave').onclick=()=>{fuTmp.sv=$('#fuSv').checked;fuTmp.o=$('#fuO').checked;fuTmp.n=$('#fuN').value.trim();fuTmp.t=Date.now();FU[fuId]=fuTmp;store.set('fu',FU);$('#fuM').classList.remove('on');renderAll();toast(T('اتحفظت ✓','Saved ✓'))};
+$('#fuClr').onclick=()=>{delete FU[fuId];store.set('fu',FU);$('#fuM').classList.remove('on');renderAll();toast(T('اتمسحت','Cleared'))};
+
+/* ---------- GROUPS & COACHES ---------- */
+const gSel={},cSel={},gTxt={},cTxt={};
+function renderGroups(){$('#gmsgs').innerHTML=GIDS.map(g=>{const G=DATA.groups[g],S=GS(g),k=gSel[g]||'kick',t=gTxt[g+k]??gfill(GT[k],g);
+ return `<div class="cc"><div class="cch"><span class="av" style="background:${gcol(g)};width:40px;height:40px;font-size:13px">${N(S.grad)}/${N(S.total)}</span><div><h3 dir="ltr" style="text-align:start">${g}</h3><p>${esc(G.track)} · ${T('السيشن الجاية','next session')}: ${esc(S.nextU)}</p></div></div>
+ <div class="ccb"><div class="row">${GLABELS.filter(l=>l[0]!=='celeb'||S.grad).map(l=>`<button class="chip ${k===l[0]?'on':''}" data-gs="${g}" data-k="${l[0]}">${l[1]}</button>`).join('')}</div><textarea data-gt="${g}" dir="rtl">${esc(t)}</textarea></div>
+ <div class="ccf"><button class="btn pri" data-gcopy="${g}">${T('📋 انسخ وافتح الجروب','📋 Copy & open group')}</button><button class="btn" data-gc="${g}">${T('📋 انسخ بس','📋 Copy only')}</button><button class="btn sm" data-greset="${g}" title="${T('رجّع النص','Reset text')}">↺</button></div></div>`}).join('')}
+function renderCoaches(){$('#cmsgs').innerHTML=GIDS.map(g=>{const G=DATA.groups[g],k=cSel[g]||'brief',t=cTxt[g+k]??gfill(CT[k],g),ok=waNum(G.cph).length>=12;
+ return `<div class="cc"><div class="cch"><span class="av" style="background:${gcol(g)}">${esc(G.coach[0])}</span><div><h3>${esc(G.coach)}</h3><p><span dir="ltr">${g}</span> · <span dir="ltr">${esc(G.cph)}</span> ${ok?'':`<span class="tag low">${T('الرقم ناقص','incomplete number')}</span>`}</p></div></div>
+ <div class="ccb"><div class="row">${CLABELS.map(l=>`<button class="chip ${k===l[0]?'on':''}" data-cs="${g}" data-k="${l[0]}">${l[1]}</button>`).join('')}</div><textarea data-ct="${g}" dir="rtl">${esc(t)}</textarea></div>
+ <div class="ccf"><button class="btn pri" data-csend="${g}" ${ok?'':'disabled style="opacity:.5"'}>${WA_IC.replace('<svg','<svg style="width:16px;height:16px;fill:currentColor"')} ${T('ابعت للكوتش','Send to coach')}</button><button class="btn" data-cc="${g}">${T('📋 انسخ','📋 Copy')}</button><button class="btn sm" data-creset="${g}">↺</button></div></div>`}).join('');
+ const C=[...DATA.sup.map(x=>({...x,r:T('المشرفة','Supervisor'),i:'⭐'})),...DATA.qa.map(x=>({...x,r:T('فريق الجودة','QA team'),i:'🔍'}))];
+ $('#contacts').innerHTML=C.map(x=>`<div class="in" style="align-items:center;background:var(--card);border:1px solid var(--bd)"><span class="e">${x.i}</span><div style="flex:1"><b>${esc(x.n)}</b><div style="font-size:12px;color:var(--mu)">${x.r} · <span dir="ltr">${esc(x.ph)}</span></div></div><a class="btn sm pri" target="_blank" rel="noopener" href="https://wa.me/${waNum(x.ph)}">WhatsApp</a></div>`).join('')}
+
+/* ---------- template editor ---------- */
+let ED=null;
+function openEditor(kind){ED=kind;let labels,obj,hint;
+ if(kind==='s'){labels=TPL_LABELS;obj=TPL;hint=T('المتغيرات','Variables')+': <b>{name}</b> <b>{day}</b> <b>{time}</b> <b>{link}</b> <b>{gigs}</b> <b>{left}</b> <b>{links}</b> <b>{done}</b> <b>{nc}</b> <b>{fix}</b> <b>{att}</b> <b>{profile}</b> <b>{ga}</b> <b>{svc}</b> <b>{daysLeft}</b> <b>{endDate}</b> <b>{outlier}</b> <b>{guide}</b>'}
+ else{labels=kind==='g'?GLABELS:CLABELS;obj=kind==='g'?GT:CT;hint=T('المتغيرات','Variables')+': <b>{group}</b> <b>{coach}</b> <b>{daysLeft}</b> <b>{endDate}</b> <b>{grad}</b> <b>{total}</b> <b>{gradNames}</b> <b>{gradLine}</b> <b>{nextSes}</b> <b>{sesList}</b> <b>{link}</b> <b>{guide}</b> <b>{inGigs}</b> <b>{svDone}</b> <b>{pend}</b> <b>{fix}</b> <b>{none}</b> <b>{near}</b> <b>{list_done}</b> <b>{list_fix}</b> <b>{list_none}</b>'}
+ $('#tplT').textContent=kind==='s'?T('✏️ رسايل الطلبة','✏️ Student messages'):kind==='g'?T('✏️ رسايل الجروبات','✏️ Group messages'):T('✏️ رسايل الكوتشز','✏️ Coach messages');
+ $('#tplH').innerHTML=hint+' — '+T('التعديلات بتتحفظ على المتصفح ده.','changes are saved in this browser.');
+ $('#tplF').innerHTML=labels.map(l=>l[0]==='#'?`<h4>${l[1]}</h4>`:`<label>${l[1]}</label><textarea data-k="${l[0]}" dir="rtl">${esc(obj[l[0]])}</textarea>`).join('');
+ $('#tplM').classList.add('on')}
+$('#tplSave').onclick=()=>{const obj=ED==='s'?TPL:ED==='g'?GT:CT;$$('#tplF [data-k]').forEach(t=>obj[t.dataset.k]=t.value);store.set(ED==='s'?'wa-tpl':ED==='g'?'gtpl':'ctpl',obj);
+ if(ED!=='s'){for(const k in gTxt)delete gTxt[k];for(const k in cTxt)delete cTxt[k]}$('#tplM').classList.remove('on');renderAll();toast(T('اتحفظت ✓','Saved ✓'))};
+$('#tplReset').onclick=()=>{if(ED==='s'){TPL=Object.assign({},DEF);store.set('wa-tpl',{})}else if(ED==='g'){GT=Object.assign({},GDEF);store.set('gtpl',{})}else{CT=Object.assign({},CDEF);store.set('ctpl',{})}openEditor(ED);renderAll();toast(T('رجعت للأصل','Restored'))};
+
+/* ---------- CSV ---------- */
+function exportCSV(){const H=['ID','Name (AR)','Name (EN)','Phone','Group','Stage','Gigs','Services','Links uploaded','Links accepted','QA notes','Attendance','Outlier','Last contact','Note','Sent (status)','Sent (deadline)'];
+ const S1=store.get('wa-sent',{}),S2=store.get('wa-sent-deadline',{}),q=v=>`"${String(v??'').replace(/"/g,'""')}"`;
+ const rows=DATA.st.slice().sort((a,b)=>a.g<b.g?-1:a.g>b.g?1:prio(a)-prio(b)).map(s=>{const e=E(s);return [s.id,s.ar,s.en,s.ph,s.g,SL(e.stage),e.g+'/3',s.sv,s.lk,s.dn,(s.fx||[]).join(' | '),s.att+'%',e.o?'✓':'',e.r?RLt(e.r):'',e.n,S1[s.id]?'✓':'',S2[s.id]?'✓':''].map(q).join(',')});
+ const b=new Blob(['﻿'+[H.map(q).join(','),...rows].join('\n')],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`gigs-plan-${TODAY}.csv`;a.click()}
+
+/* ---------- tabs & events ---------- */
+let TAB=store.get('tab','plan');
+function setTab(t,scroll=true){TAB=t;store.set('tab',t);$$('.tab').forEach(b=>b.classList.toggle('on',b.dataset.tab===t));$$('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+t));if(scroll)window.scrollTo({top:$('#tabs').offsetTop-8,behavior:'smooth'})}
+function renderAll(){header();plan();dash();renderStudents();renderGroups();renderCoaches()}
+function go(el){const t=el.dataset.go,st=el.dataset.stage||'',pre=el.dataset.pre||'';
+ if(t==='csv'){exportCSV();return}
+ if(t==='students'){fS=st||'all';fG=el.dataset.g||'all';if(pre&&pre!==CAMP){CAMP=pre;store.set('camp',CAMP);SENT=store.get(SENTK[CAMP],{});header()}renderStudents()}
+ if(t==='coaches'&&pre){GIDS.forEach(g=>cSel[g]=pre);renderCoaches()}
+ setTab(t)}
+document.addEventListener('click',e=>{const Tg=e.target;
+ const tb=Tg.closest('.tab');if(tb){setTab(tb.dataset.tab);return}
+ const g=Tg.closest('[data-go]');if(g){go(g);return}
+ const w=Tg.closest('[data-wa]');if(w){const id=w.dataset.wa;setTimeout(()=>{mark(id,true);renderAll()},300);return}
+ const tg=Tg.closest('[data-tg]');if(tg){mark(tg.dataset.tg,!SENT[tg.dataset.tg]);renderAll();return}
+ const fu=Tg.closest('[data-fu]');if(fu){openFU(fu.dataset.fu);return}
+ const p=Tg.closest('[data-pv]');if(p){const s=byId(p.dataset.pv);$('#pvT').textContent='💬 '+nm3(s);$('#pvB').textContent=msg(s);$('#pvWa').href=waLink(s);$('#pvWa').dataset.id=s.id;$('#pvM').classList.add('on');return}
+ const ed=Tg.closest('[data-edit]');if(ed){openEditor(ed.dataset.edit);return}
+ const gs=Tg.closest('[data-gs]');if(gs){gSel[gs.dataset.gs]=gs.dataset.k;renderGroups();return}
+ const cs=Tg.closest('[data-cs]');if(cs){cSel[cs.dataset.cs]=cs.dataset.k;renderCoaches();return}
+ const gc=Tg.closest('[data-gcopy],[data-gc]');if(gc){const g=gc.dataset.gcopy||gc.dataset.gc,t=$(`[data-gt="${g}"]`).value;copy(t).then(()=>toast(T('اتنسخت ✓ — الصقها في الجروب','Copied ✓ — paste it in the group')),()=>toast(T('انسخها يدوي','Copy it manually')));if(gc.dataset.gcopy)window.open(DATA.groups[g].wa,'_blank');return}
+ const gr=Tg.closest('[data-greset]');if(gr){const g=gr.dataset.greset;delete gTxt[g+(gSel[g]||'kick')];renderGroups();return}
+ const cr=Tg.closest('[data-creset]');if(cr){const g=cr.dataset.creset;delete cTxt[g+(cSel[g]||'brief')];renderCoaches();return}
+ const csd=Tg.closest('[data-csend]');if(csd){const g=csd.dataset.csend;window.open(waTo(DATA.groups[g].cph,$(`[data-ct="${g}"]`).value),'_blank');return}
+ const cc=Tg.closest('[data-cc]');if(cc){copy($(`[data-ct="${cc.dataset.cc}"]`).value).then(()=>toast(T('اتنسخت ✓','Copied ✓')),()=>toast(T('انسخها يدوي','Copy it manually')));return}
+ if(Tg.closest('[data-close]')||Tg.classList.contains('md'))$$('.md').forEach(m=>m.classList.remove('on'))});
+document.addEventListener('input',e=>{const t=e.target;
+ if(t.dataset.gt){const g=t.dataset.gt;gTxt[g+(gSel[g]||'kick')]=t.value}
+ if(t.dataset.ct){const g=t.dataset.ct;cTxt[g+(cSel[g]||'brief')]=t.value}});
+document.addEventListener('change',e=>{const t=e.target;
+ if(t.dataset.plan){PLAN[t.dataset.plan]=t.checked;store.set('plan-done',PLAN);plan()}
+ if(t.dataset.daily){const k='daily-'+TODAY,D=store.get(k,{});D[t.dataset.daily]=t.checked;store.set(k,D);plan()}});
+$$('#camp button').forEach(b=>b.onclick=()=>{CAMP=b.dataset.c;store.set('camp',CAMP);SENT=store.get(SENTK[CAMP],{});renderAll()});
+$('#nextBtn').onclick=()=>{const s=filtered().find(x=>!SENT[x.id]);if(!s){toast(T('خلصت كل اللي في الفلتر ده 🎉','Everyone in this filter is done 🎉'));return}window.open(waLink(s),'_blank');mark(s.id,true);renderAll();toast(T('اتفتح: ','Opened: ')+nm3(s))};
+$('#pvWa').onclick=()=>{const id=$('#pvWa').dataset.id;setTimeout(()=>{mark(id,true);renderAll()},300)};
+$('#pvCp').onclick=()=>copy($('#pvB').textContent).then(()=>toast(T('اتنسخت ✓','Copied ✓')),()=>toast(T('انسخها يدوي','Copy it manually')));
+$('#q').oninput=()=>renderStudents();$('#hideSent').onchange=()=>renderStudents();
+$('#tplBtn').onclick=()=>openEditor('s');
+$('#csvBtn').onclick=exportCSV;
+$('#resetSent').onclick=()=>{if(confirm(T('تصفّر علامات الإرسال للرسالة دي لكل الطلبة؟','Reset sent marks for this message for all students?'))){SENT={};store.set(SENTK[CAMP],SENT);renderAll()}};
 addEventListener('keydown',e=>{if(e.key==='Escape')$$('.md').forEach(m=>m.classList.remove('on'))});
+$('#lng').onclick=()=>{store.set('lang',EN?'ar':'en');location.reload()};
 let TH=store.get('wa-theme','light');function applyTh(){document.documentElement.dataset.theme=TH;$('#thm').textContent=TH==='dark'?'☀️':'🌙'}
 $('#thm').onclick=()=>{TH=TH==='dark'?'light':'dark';store.set('wa-theme',TH);applyTh()};applyTh();
-render();
+renderAll();setTab(TAB,false);
 </script>
 </body>
 </html>
